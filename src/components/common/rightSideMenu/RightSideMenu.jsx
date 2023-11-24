@@ -1,22 +1,36 @@
 import React from 'react';
-import { Drawer, IconButton, List, ListItem, ListItemIcon } from '@mui/material';
+import { Drawer, List, IconButton, ListItem, ListItemIcon } from '@mui/material';
 import { makeStyles } from '@mui/styles';
-import { MailOutline, Inbox, Drafts, Delete, Bookmark } from '@mui/icons-material';
+import AllInclusiveIcon from '@mui/icons-material/AllInclusive';
+import CalendarTodayIcon from '@mui/icons-material/CalendarToday';
 
-const drawerWidth = '5%';
+import ChatBubbleOutlineIcon from '@mui/icons-material/ChatBubbleOutline';
+import PsychologyIcon from '@mui/icons-material/Psychology';
+import ContentPasteIcon from '@mui/icons-material/ContentPaste';
+import Paper from '@mui/material/Paper';
+
+           
+const drawerWidth = '6%';
 const drawerOpen = true;
 
 const useStyles = makeStyles((theme) => ({
   drawer: {
     width: drawerWidth,
-    flexShrink: 0,
+    flexShrink: 0
   },
   drawerPaper: {
     width: drawerWidth,
     position: 'sticky',
-    top: 0,
+    marginTop: '5%',
+    top : 0,
+    
   },
   toolbar: theme.mixins.toolbar,
+  customIcon: {
+    backgroundColor: '#8080801f',
+    padding: '7px',
+    borderRadius: '50%',
+  },
 }));
 
 const RightSideMenu = () => {
@@ -39,15 +53,18 @@ const RightSideMenu = () => {
         }}
       >
         <div className={classes.toolbar} />
+        <Paper elevation={3}>
         <List>
-          {[<Inbox />, <MailOutline />, <Drafts />, <Delete />, <Bookmark />].map((icon, index) => (
-            <ListItem IconButton key={index}>
-              <ListItemIcon>
+        {[ <AllInclusiveIcon />,<ContentPasteIcon />, <PsychologyIcon />, <CalendarTodayIcon />, <ChatBubbleOutlineIcon />].map((icon, index) => (
+            <ListItem  key={index}>
+              <ListItemIcon className={classes.customIcon}>
                 <IconButton onClick={handleDrawerOpen}>{icon}</IconButton>
               </ListItemIcon>
             </ListItem>
+           
           ))}
         </List>
+        </Paper>
       </Drawer>
 
       
