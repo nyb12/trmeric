@@ -28,6 +28,7 @@ body {
   place-items: center;
   min-width: 320px;
   min-height: 100vh;
+  background-color: #eee;
 }
 
 h1 {
@@ -64,5 +65,11 @@ button:focus-visible {
   }
   button {
     background-color: #f9f9f9;
+  }
+
+  .page-container{
+    margin: 3rem 0 0 0 ;
+background-color: #eee;
+   
   }
 }

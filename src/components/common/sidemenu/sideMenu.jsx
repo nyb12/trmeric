@@ -23,6 +23,7 @@ import Collapse from "@mui/material/Collapse";
 import ExpandLessIcon from "@mui/icons-material/ExpandLess";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import { useTranslation } from "react-i18next";
+import Paper from '@mui/material/Paper';
 
 //component Import
 import Loader from "../loader/loader";
@@ -116,7 +117,7 @@ export default function Sidenav() {
   };
 
   return (
-    <Box sx={{ display: "flex" }}>
+    <Box sx={{ display: "flex", mt:4, }}>
       <CssBaseline />
       {/* <AppBar position="fixed" open={open}>
         <Toolbar>
@@ -138,7 +139,7 @@ export default function Sidenav() {
         </Toolbar>
       </AppBar> */}
       <Drawer variant="permanent" open={open}>
-        <DrawerHeader style={{ marginTop: "65px" }}>
+        <DrawerHeader style={{ marginTop: "120px" }}>
           {open === false ? (
             <IconButton
               color="inherit"
@@ -243,6 +244,7 @@ export default function Sidenav() {
           {/* <h1>{t("hi")}</h1> */}
           {/* <TrmericCard /> */}
         </Typography>
+        <Paper elevation={1} sx={{ background: '#ff', marginLeft: '6%', padding: '4%', width: '90%' }}>
         <Typography paragraph>
           Consequat mauris nunc congue nisi vitae suscipit. Fringilla est
           ullamcorper eget nulla facilisi etiam dignissim diam. Pulvinar
@@ -320,6 +322,7 @@ export default function Sidenav() {
           accumsan lacus vel facilisis. Nulla posuere sollicitudin aliquam
           ultrices sagittis orci a.
         </Typography>
+</Paper>
       </Box>
     </Box>
   );
