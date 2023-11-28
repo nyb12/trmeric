@@ -1,5 +1,6 @@
 //package Import
-import * as React from "react";
+import React, { useState, useEffect } from 'react';
+import { Stepper, Step, StepLabel } from '@mui/material';
 import { styled, useTheme } from "@mui/material/styles";
 import Box from "@mui/material/Box";
 import MuiDrawer from "@mui/material/Drawer";
@@ -24,11 +25,13 @@ import ExpandLessIcon from "@mui/icons-material/ExpandLess";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import { useTranslation } from "react-i18next";
 import Paper from '@mui/material/Paper';
+import Button from '@mui/material/Button';
 
 //component Import
 import Loader from "../loader/loader";
 import TrmericCard from "../Card/trmericCard";
 import AccordionCard from "../AccordionCard/AccordionCards";
+import Page from './Page';
 
 const drawerWidth = 240;
 
@@ -98,7 +101,68 @@ const Drawer = styled(MuiDrawer, {
   }),
 }));
 
-export default function Sidenav() {
+
+function getSteps() {
+  return ['Step 1', 'Step 2', 'Step 3'];
+}
+
+function getStepContent(step) {
+  switch (step) {
+    case 0:
+      return <Page></Page>;
+    case 1:
+      return '';
+    case 2:
+      return '';
+    default:
+      return 'Unknown step';
+  }
+}
+
+const styles = {
+  container: {
+    display: 'flex',
+    screenY: true
+  },
+  stepper: {
+    flex: '0 0 200px', // Fixed width for the stepper
+  },
+  content: {
+    flex: 1, // Remaining space for the content
+  },
+};
+
+
+const Sidenav = () => {
+  const [activeStep, setActiveStep] = useState(0);
+  const steps = getSteps();
+
+  const handleNext = () => {
+    setActiveStep((prevActiveStep) => prevActiveStep + 1);
+  };
+
+  const handleBack = () => {
+    setActiveStep((prevActiveStep) => prevActiveStep - 1);
+  };
+
+  const handleReset = () => {
+    setActiveStep(0);
+  };
+
+  const handleScroll = () => {
+    const scrollPosition = window.scrollY || document.documentElement.scrollTop;
+    const newActiveStep = Math.floor(scrollPosition / 150); //20 = window.innerHeight
+    setActiveStep(newActiveStep);
+  };
+
+  useEffect(() => {
+    window.addEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+
+
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
   const [isCollapse, setIsCollapse] = React.useState(false);
@@ -160,92 +224,36 @@ export default function Sidenav() {
           )}
         </DrawerHeader>
         <Divider />
-        <List>
-          {["Inbox", "Starred", "Send email", "Drafts"].map((text, index) => (
-            <ListItem key={text} disablePadding sx={{ display: "block" }}>
-              <ListItemButton
-                sx={{
-                  minHeight: 48,
-                  justifyContent: open ? "initial" : "center",
-                  px: 2.5,
-                }}
-              >
-                <ListItemIcon
-                  sx={{
-                    minWidth: 0,
-                    mr: open ? 3 : "auto",
-                    justifyContent: "center",
-                  }}
-                >
-                  {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-                </ListItemIcon>
-                <ListItemText primary={text} sx={{ opacity: open ? 1 : 0 }} />
-              </ListItemButton>
-            </ListItem>
-          ))}
-        </List>
-        <Divider />
-        <List>
-          <ListItem
-            disablePadding
-            sx={{ display: "block" }}
-            onClick={handleCollapse}
-          >
-            <ListItemButton
-              sx={{
-                minHeight: 48,
-                justifyContent: open ? "initial" : "center",
-                px: 2.5,
-              }}
-            >
-              <ListItemIcon
-                sx={{
-                  minWidth: 0,
-                  mr: open ? 3 : "auto",
-                  justifyContent: "center",
-                }}
-              >
-                <MailIcon />
-              </ListItemIcon>
-              <ListItemText primary="Others" sx={{ opacity: open ? 1 : 0 }} />
-              {isCollapse ? <ExpandLessIcon /> : <ExpandMoreIcon />}
-            </ListItemButton>
-          </ListItem>
-          <Collapse in={isCollapse} timeout="auto" unmountOnExit>
-            {["Step1", "Step2", "Step3"].map((text, index) => (
-              <ListItem key={text} disablePadding sx={{ display: "block" }}>
-                <ListItemButton
-                  sx={{
-                    minHeight: 48,
-                    justifyContent: open ? "initial" : "center",
-                    px: 2.5,
-                  }}
-                >
-                  <ListItemIcon
-                    sx={{
-                      minWidth: 0,
-                      mr: open ? 3 : "auto",
-                      justifyContent: "center",
-                    }}
-                  >
-                    {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-                  </ListItemIcon>
-                  <ListItemText primary={text} sx={{ opacity: open ? 1 : 0 }} />
-                </ListItemButton>
-              </ListItem>
-            ))}
-          </Collapse>
-        </List>
+
+      <Stepper orientation="vertical" activeStep={activeStep} sx={{ position: 'sticky', ml:2, mt: 2 }}>
+        {[...Array(5).keys()].map((index) => (
+          <Step key={index}>
+            <StepLabel>{`Step ${index + 1}`}</StepLabel>
+          </Step>
+        ))}
+      </Stepper>
+      <div style={styles.content}>
+        {activeStep === steps.length ? (
+          <div>
+            <Typography sx={{ mt: 2, mb: 1 }}>
+              All steps completed - you&apos;re finished
+            </Typography>
+            <Button onClick={handleReset}>Reset</Button>
+          </div>
+        ) : ''}
+        
+
+    </div>
+       
       </Drawer>
       <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
         <DrawerHeader />
         <Typography paragraph>
-          {/* <Loader /> */}
-          {/* <h1>{t("hi")}</h1> */}
-          {/* <TrmericCard /> */}
+
         </Typography>
         <Paper elevation={1} sx={{ background: '#ff', marginLeft: '6%', padding: '4%', width: '90%' }}>
         <Typography paragraph>
+         {getStepContent(0)}
           Consequat mauris nunc congue nisi vitae suscipit. Fringilla est
           ullamcorper eget nulla facilisi etiam dignissim diam. Pulvinar
           elementum integer enim neque volutpat ac tincidunt. Ornare suspendisse
@@ -327,3 +335,5 @@ export default function Sidenav() {
     </Box>
   );
 }
+
+export default Sidenav;
