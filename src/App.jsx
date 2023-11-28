@@ -1,10 +1,8 @@
-import reactLogo from "./assets/react.svg";
-import viteLogo from "/vite.svg";
-import "./App.css";
 
+import "./App.css";
 // Common components
-import Sidenav from "./components/common/sidemenu/sideMenu";
-import Header from "./components/common/Header/header";
+import Sidenav from "./components/common/sidemenu/SideMenu";
+import Header from "./components/common/Header/Header";
 import RightSideMenu from "./components/common/rightSideMenu/RightSideMenu";
 
 // Libraries
@@ -17,10 +15,12 @@ const theme = createTheme();
 function App() {
   return (
     <>
+     <ThemeProvider theme={theme}>
       <Header />
+      <div className="page-container">
       <Sidenav />
-      <ThemeProvider theme={theme}>
       <RightSideMenu />
+      </div>
       </ThemeProvider>
     </>
   );

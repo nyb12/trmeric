@@ -19,8 +19,9 @@ const useStyles = makeStyles((theme) => ({
     drawerPaper: {
         width: drawerWidth,
         position: 'sticky',
-        marginTop: '5%',
-        top: 0
+        marginTop: '5rem',
+        top: 0,
+        background: '#eee'
     },
     toolbar: theme.mixins.toolbar,
     customIcon: {
@@ -39,6 +40,7 @@ const RightSideMenu = () => {
 
     return (
         <div>
+
             {/* Right Side Menu */}
             <Drawer
                 className={classes.drawer}
@@ -50,11 +52,11 @@ const RightSideMenu = () => {
                 }}
             >
                 <div className={classes.toolbar} />
-                <Paper elevation={3}>
+                <Paper elevation={0}>
                     <List>
                         {[<AllInclusiveIcon />, <ContentPasteIcon />, <PsychologyIcon />, <CalendarTodayIcon />, <ChatBubbleOutlineIcon />].map((icon, index) => (
                             <ListItem key={index}>
-                                <ListItemIcon className={classes.customIcon}>
+                                <ListItemIcon className={classes.customIcon} sx={{ minWidth: '22px' }}>
                                     <IconButton onClick={handleDrawerOpen}>{icon}</IconButton>
                                 </ListItemIcon>
                             </ListItem>
