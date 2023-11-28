@@ -26,6 +26,8 @@ import { useTranslation } from "react-i18next";
 
 //component Import
 import Loader from "../loader/loader";
+import TrmericCard from "../Card/trmericCard";
+import AccordionCard from "../AccordionCard/AccordionCards";
 
 const drawerWidth = 240;
 
@@ -238,7 +240,8 @@ export default function Sidenav() {
         <DrawerHeader />
         <Typography paragraph>
           {/* <Loader /> */}
-          <h1>{t("hi")}</h1>
+          {/* <h1>{t("hi")}</h1> */}
+          {/* <TrmericCard /> */}
         </Typography>
         <Typography paragraph>
           Consequat mauris nunc congue nisi vitae suscipit. Fringilla est
@@ -252,7 +255,70 @@ export default function Sidenav() {
           morbi tristique senectus et. Adipiscing elit duis tristique
           sollicitudin nibh sit. Ornare aenean euismod elementum nisi quis
           eleifend. Commodo viverra maecenas accumsan lacus vel facilisis. Nulla
-          posuere sollicitudin aliquam ultrices sagittis orci a.
+          posuere sollicitudin aliquam ultrices sagittis orci a. Consequat
+          mauris nunc congue nisi vitae suscipit. Fringilla est ullamcorper eget
+          nulla facilisi etiam dignissim diam. Pulvinar elementum integer enim
+          neque volutpat ac tincidunt. Ornare suspendisse sed nisi lacus sed
+          viverra tellus. Purus sit amet volutpat consequat mauris. Elementum eu
+          facilisis sed odio morbi. Euismod lacinia at quis risus sed vulputate
+          odio. Morbi tincidunt ornare massa eget egestas purus viverra accumsan
+          in. In hendrerit gravida rutrum quisque non tellus orci ac.
+          Pellentesque nec nam aliquam sem et tortor. Habitant morbi tristique
+          senectus et. Adipiscing elit duis tristique sollicitudin nibh sit.
+          Ornare aenean euismod elementum nisi quis eleifend. Commodo viverra
+          maecenas accumsan lacus vel facilisis. Nulla posuere sollicitudin
+          aliquam ultrices sagittis orci a. Consequat mauris nunc congue nisi
+          vitae suscipit. Fringilla est ullamcorper eget nulla facilisi etiam
+          dignissim diam. Pulvinar elementum integer enim neque volutpat ac
+          tincidunt. Ornare suspendisse sed nisi lacus sed viverra tellus. Purus
+          sit amet volutpat consequat mauris. Elementum eu facilisis sed odio
+          morbi. Euismod lacinia at quis risus sed vulputate odio. Morbi
+          tincidunt ornare massa eget egestas purus viverra accumsan in. In
+          hendrerit gravida rutrum quisque non tellus orci ac. Pellentesque nec
+          nam aliquam sem et tortor. Habitant morbi tristique senectus et.
+          Adipiscing elit duis tristique sollicitudin nibh sit. Ornare aenean
+          euismod elementum nisi quis eleifend. Commodo viverra maecenas
+          accumsan lacus vel facilisis. Nulla posuere sollicitudin aliquam
+          ultrices sagittis orci a.
+        </Typography>
+        <AccordionCard />
+        <Typography sx={{ mt: "50px" }} paragraph>
+          Consequat mauris nunc congue nisi vitae suscipit. Fringilla est
+          ullamcorper eget nulla facilisi etiam dignissim diam. Pulvinar
+          elementum integer enim neque volutpat ac tincidunt. Ornare suspendisse
+          sed nisi lacus sed viverra tellus. Purus sit amet volutpat consequat
+          mauris. Elementum eu facilisis sed odio morbi. Euismod lacinia at quis
+          risus sed vulputate odio. Morbi tincidunt ornare massa eget egestas
+          purus viverra accumsan in. In hendrerit gravida rutrum quisque non
+          tellus orci ac. Pellentesque nec nam aliquam sem et tortor. Habitant
+          morbi tristique senectus et. Adipiscing elit duis tristique
+          sollicitudin nibh sit. Ornare aenean euismod elementum nisi quis
+          eleifend. Commodo viverra maecenas accumsan lacus vel facilisis. Nulla
+          posuere sollicitudin aliquam ultrices sagittis orci a. Consequat
+          mauris nunc congue nisi vitae suscipit. Fringilla est ullamcorper eget
+          nulla facilisi etiam dignissim diam. Pulvinar elementum integer enim
+          neque volutpat ac tincidunt. Ornare suspendisse sed nisi lacus sed
+          viverra tellus. Purus sit amet volutpat consequat mauris. Elementum eu
+          facilisis sed odio morbi. Euismod lacinia at quis risus sed vulputate
+          odio. Morbi tincidunt ornare massa eget egestas purus viverra accumsan
+          in. In hendrerit gravida rutrum quisque non tellus orci ac.
+          Pellentesque nec nam aliquam sem et tortor. Habitant morbi tristique
+          senectus et. Adipiscing elit duis tristique sollicitudin nibh sit.
+          Ornare aenean euismod elementum nisi quis eleifend. Commodo viverra
+          maecenas accumsan lacus vel facilisis. Nulla posuere sollicitudin
+          aliquam ultrices sagittis orci a. Consequat mauris nunc congue nisi
+          vitae suscipit. Fringilla est ullamcorper eget nulla facilisi etiam
+          dignissim diam. Pulvinar elementum integer enim neque volutpat ac
+          tincidunt. Ornare suspendisse sed nisi lacus sed viverra tellus. Purus
+          sit amet volutpat consequat mauris. Elementum eu facilisis sed odio
+          morbi. Euismod lacinia at quis risus sed vulputate odio. Morbi
+          tincidunt ornare massa eget egestas purus viverra accumsan in. In
+          hendrerit gravida rutrum quisque non tellus orci ac. Pellentesque nec
+          nam aliquam sem et tortor. Habitant morbi tristique senectus et.
+          Adipiscing elit duis tristique sollicitudin nibh sit. Ornare aenean
+          euismod elementum nisi quis eleifend. Commodo viverra maecenas
+          accumsan lacus vel facilisis. Nulla posuere sollicitudin aliquam
+          ultrices sagittis orci a.
         </Typography>
       </Box>
     </Box>
