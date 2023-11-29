@@ -29,7 +29,7 @@ import Button from '@mui/material/Button';
 
 //component Import
 import Loader from "../loader/loader";
-import TrmericCard from "../Card/trmericCard";
+import TrmericCard from "../Card/TrmericCard";
 import AccordionCard from "../AccordionCard/AccordionCards";
 import Page from './Page';
 
@@ -226,7 +226,7 @@ const Sidenav = () => {
         <Divider />
 
       <Stepper orientation="vertical" activeStep={activeStep} sx={{ position: 'sticky', ml:2, mt: 2 }}>
-        {[...Array(5).keys()].map((index) => (
+        {[...Array(3).keys()].map((index) => (
           <Step key={index}>
             <StepLabel>{`Step ${index + 1}`}</StepLabel>
           </Step>
@@ -246,15 +246,15 @@ const Sidenav = () => {
     </div>
        
       </Drawer>
-      <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
+      <Box component="main" sx={{ flexGrow: 1, p: 2 ,marginLeft:"200px",marginRight:"200px"}}>
         <DrawerHeader />
         <Typography paragraph>
 
         </Typography>
-        <Paper elevation={1} sx={{ background: '#ff', marginLeft: '6%', padding: '4%', width: '90%' }}>
+        <Paper elevation={1} sx={{ background: '#ff', marginLeft: '1%', padding: '4%', width: '90%' }}>
         <Typography paragraph>
          {getStepContent(0)}
-          Consequat mauris nunc congue nisi vitae suscipit. Fringilla est
+          {/* Consequat mauris nunc congue nisi vitae suscipit. Fringilla est
           ullamcorper eget nulla facilisi etiam dignissim diam. Pulvinar
           elementum integer enim neque volutpat ac tincidunt. Ornare suspendisse
           sed nisi lacus sed viverra tellus. Purus sit amet volutpat consequat
@@ -289,11 +289,11 @@ const Sidenav = () => {
           Adipiscing elit duis tristique sollicitudin nibh sit. Ornare aenean
           euismod elementum nisi quis eleifend. Commodo viverra maecenas
           accumsan lacus vel facilisis. Nulla posuere sollicitudin aliquam
-          ultrices sagittis orci a.
+          ultrices sagittis orci a. */}
         </Typography>
         <AccordionCard />
         <Typography sx={{ mt: "50px" }} paragraph>
-          Consequat mauris nunc congue nisi vitae suscipit. Fringilla est
+          {/* Consequat mauris nunc congue nisi vitae suscipit. Fringilla est
           ullamcorper eget nulla facilisi etiam dignissim diam. Pulvinar
           elementum integer enim neque volutpat ac tincidunt. Ornare suspendisse
           sed nisi lacus sed viverra tellus. Purus sit amet volutpat consequat
@@ -328,7 +328,7 @@ const Sidenav = () => {
           Adipiscing elit duis tristique sollicitudin nibh sit. Ornare aenean
           euismod elementum nisi quis eleifend. Commodo viverra maecenas
           accumsan lacus vel facilisis. Nulla posuere sollicitudin aliquam
-          ultrices sagittis orci a.
+          ultrices sagittis orci a. */}
         </Typography>
 </Paper>
       </Box>

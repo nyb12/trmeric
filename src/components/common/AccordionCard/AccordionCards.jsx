@@ -5,6 +5,7 @@ import MuiAccordion from "@mui/material/Accordion";
 import MuiAccordionSummary from "@mui/material/AccordionSummary";
 import MuiAccordionDetails from "@mui/material/AccordionDetails";
 import Typography from "@mui/material/Typography";
+import TrmericCard from "../Card/TrmericCard";
 
 const Accordion = styled((props) => (
   <MuiAccordion disableGutters elevation={0} square {...props} />
@@ -51,9 +52,9 @@ export default function AccordionCard() {
 
   React.useEffect(() => {
     const handleScroll = () => {
-      const scrollThreshold1 = 100;
-      const scrollThreshold2 = 300;
-      const scrollThreshold3 = 500;
+      const scrollThreshold1 = -100;
+      const scrollThreshold2 = 200;
+      const scrollThreshold3 = 350;
       if (window.scrollY > scrollThreshold3) {
         setExpanded("panel3");
       } else if (window.scrollY > scrollThreshold2) {
@@ -79,6 +80,7 @@ export default function AccordionCard() {
       <Accordion
         expanded={expanded === "panel1"}
         onChange={handleChange("panel1")}
+        sx={{marginBottom:'300px'}}
       >
         <AccordionSummary aria-controls="panel1d-content" id="panel1d-header">
           <Typography sx={{ fontWeight: "bold" }}>
@@ -86,17 +88,15 @@ export default function AccordionCard() {
           </Typography>
         </AccordionSummary>
         <AccordionDetails>
-          <Typography>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
-            malesuada lacus ex, sit amet blandit leo lobortis eget. Lorem ipsum
-            dolor sit amet, consectetur adipiscing elit. Suspendisse malesuada
-            lacus ex, sit amet blandit leo lobortis eget.
+          <Typography sx={{display:'flex',flexDirection:'row', gap:'40px'}}>
+          <TrmericCard />  <TrmericCard />  <TrmericCard />
           </Typography>
         </AccordionDetails>
       </Accordion>
       <Accordion
         expanded={expanded === "panel2"}
         onChange={handleChange("panel2")}
+        sx={{marginTop:'300px',marginBottom:'300px'}}
       >
         <AccordionSummary aria-controls="panel2d-content" id="panel2d-header">
           <Typography sx={{ fontWeight: "bold" }}>
@@ -104,17 +104,15 @@ export default function AccordionCard() {
           </Typography>
         </AccordionSummary>
         <AccordionDetails>
-          <Typography>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
-            malesuada lacus ex, sit amet blandit leo lobortis eget. Lorem ipsum
-            dolor sit amet, consectetur adipiscing elit. Suspendisse malesuada
-            lacus ex, sit amet blandit leo lobortis eget.
+        <Typography sx={{display:'flex',flexDirection:'row', gap:'40px'}}>
+          <TrmericCard />  <TrmericCard />  <TrmericCard />
           </Typography>
         </AccordionDetails>
       </Accordion>
       <Accordion
         expanded={expanded === "panel3"}
         onChange={handleChange("panel3")}
+        sx={{marginTop:'300px',marginBottom:'300px'}}
       >
         <AccordionSummary aria-controls="panel3d-content" id="panel3d-header">
           <Typography sx={{ fontWeight: "bold" }}>
@@ -122,11 +120,8 @@ export default function AccordionCard() {
           </Typography>
         </AccordionSummary>
         <AccordionDetails>
-          <Typography>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
-            malesuada lacus ex, sit amet blandit leo lobortis eget. Lorem ipsum
-            dolor sit amet, consectetur adipiscing elit. Suspendisse malesuada
-            lacus ex, sit amet blandit leo lobortis eget.
+        <Typography sx={{display:'flex',flexDirection:'row', gap:'40px'}}>
+          <TrmericCard />  <TrmericCard />  <TrmericCard />
           </Typography>
         </AccordionDetails>
       </Accordion>
