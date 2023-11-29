@@ -22,8 +22,10 @@ function App() {
         </Router> */}
 
         <Header />
+      <div className="page-container">
         <Sidenav />
         <RightSideMenu />
+ </div>
       </Suspense>
     </>
   );
