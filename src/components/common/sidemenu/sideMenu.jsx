@@ -1,6 +1,6 @@
 //package Import
-import React, { useState, useEffect } from 'react';
-import { Stepper, Step, StepLabel } from '@mui/material';
+import React, { useState, useEffect } from "react";
+import { Stepper, Step, StepLabel } from "@mui/material";
 import { styled, useTheme } from "@mui/material/styles";
 import Box from "@mui/material/Box";
 import MuiDrawer from "@mui/material/Drawer";
@@ -24,14 +24,15 @@ import Collapse from "@mui/material/Collapse";
 import ExpandLessIcon from "@mui/icons-material/ExpandLess";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import { useTranslation } from "react-i18next";
-import Paper from '@mui/material/Paper';
-import Button from '@mui/material/Button';
+import Paper from "@mui/material/Paper";
+import Button from "@mui/material/Button";
 
 //component Import
 import Loader from "../loader/loader";
 import TrmericCard from "../Card/TrmericCard";
 import AccordionCard from "../AccordionCard/AccordionCards";
-import Page from './Page';
+import Page from "./Page";
+import Modal from "../Modal/modal";
 
 const drawerWidth = 240;
 
@@ -101,9 +102,8 @@ const Drawer = styled(MuiDrawer, {
   }),
 }));
 
-
 function getSteps() {
-  return ['Step 1', 'Step 2', 'Step 3'];
+  return ["Step 1", "Step 2", "Step 3"];
 }
 
 function getStepContent(step) {
@@ -111,27 +111,26 @@ function getStepContent(step) {
     case 0:
       return <Page></Page>;
     case 1:
-      return '';
+      return "";
     case 2:
-      return '';
+      return "";
     default:
-      return 'Unknown step';
+      return "Unknown step";
   }
 }
 
 const styles = {
   container: {
-    display: 'flex',
-    screenY: true
+    display: "flex",
+    screenY: true,
   },
   stepper: {
-    flex: '0 0 200px', // Fixed width for the stepper
+    flex: "0 0 200px", // Fixed width for the stepper
   },
   content: {
     flex: 1, // Remaining space for the content
   },
 };
-
 
 const Sidenav = () => {
   const [activeStep, setActiveStep] = useState(0);
@@ -156,12 +155,11 @@ const Sidenav = () => {
   };
 
   useEffect(() => {
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener("scroll", handleScroll);
     return () => {
-      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener("scroll", handleScroll);
     };
   }, []);
-
 
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
@@ -181,7 +179,7 @@ const Sidenav = () => {
   };
 
   return (
-    <Box sx={{ display: "flex", mt:4, }}>
+    <Box sx={{ display: "flex", mt: 4 }}>
       <CssBaseline />
       {/* <AppBar position="fixed" open={open}>
         <Toolbar>
@@ -225,36 +223,48 @@ const Sidenav = () => {
         </DrawerHeader>
         <Divider />
 
-      <Stepper orientation="vertical" activeStep={activeStep} sx={{ position: 'sticky', ml:2, mt: 2 }}>
-        {[...Array(3).keys()].map((index) => (
-          <Step key={index}>
-            <StepLabel>{`Step ${index + 1}`}</StepLabel>
-          </Step>
-        ))}
-      </Stepper>
-      <div style={styles.content}>
-        {activeStep === steps.length ? (
-          <div>
-            <Typography sx={{ mt: 2, mb: 1 }}>
-              All steps completed - you&apos;re finished
-            </Typography>
-            <Button onClick={handleReset}>Reset</Button>
-          </div>
-        ) : ''}
-        
-
-    </div>
-       
+        <Stepper
+          orientation="vertical"
+          activeStep={activeStep}
+          sx={{ position: "sticky", ml: 2, mt: 2 }}
+        >
+          {[...Array(3).keys()].map((index) => (
+            <Step key={index}>
+              <StepLabel>{`Step ${index + 1}`}</StepLabel>
+            </Step>
+          ))}
+        </Stepper>
+        <div style={styles.content}>
+          {activeStep === steps.length ? (
+            <div>
+              <Typography sx={{ mt: 2, mb: 1 }}>
+                All steps completed - you&apos;re finished
+              </Typography>
+              <Button onClick={handleReset}>Reset</Button>
+            </div>
+          ) : (
+            ""
+          )}
+        </div>
       </Drawer>
-      <Box component="main" sx={{ flexGrow: 1, p: 2 ,marginLeft:"200px",marginRight:"200px"}}>
+      <Box
+        component="main"
+        sx={{ flexGrow: 1, p: 2, marginLeft: "200px", marginRight: "200px" }}
+      >
         <DrawerHeader />
-        <Typography paragraph>
-
-        </Typography>
-        <Paper elevation={1} sx={{ background: '#ff', marginLeft: '1%', padding: '4%', width: '90%' }}>
-        <Typography paragraph>
-         {getStepContent(0)}
-          {/* Consequat mauris nunc congue nisi vitae suscipit. Fringilla est
+        <Typography paragraph></Typography>
+        <Paper
+          elevation={1}
+          sx={{
+            background: "#ff",
+            marginLeft: "1%",
+            padding: "4%",
+            width: "90%",
+          }}
+        >
+          <Typography paragraph>
+            {getStepContent(0)}
+            {/* Consequat mauris nunc congue nisi vitae suscipit. Fringilla est
           ullamcorper eget nulla facilisi etiam dignissim diam. Pulvinar
           elementum integer enim neque volutpat ac tincidunt. Ornare suspendisse
           sed nisi lacus sed viverra tellus. Purus sit amet volutpat consequat
@@ -290,10 +300,10 @@ const Sidenav = () => {
           euismod elementum nisi quis eleifend. Commodo viverra maecenas
           accumsan lacus vel facilisis. Nulla posuere sollicitudin aliquam
           ultrices sagittis orci a. */}
-        </Typography>
-        <AccordionCard />
-        <Typography sx={{ mt: "50px" }} paragraph>
-          {/* Consequat mauris nunc congue nisi vitae suscipit. Fringilla est
+          </Typography>
+          <AccordionCard />
+          <Typography sx={{ mt: "50px" }} paragraph>
+            {/* Consequat mauris nunc congue nisi vitae suscipit. Fringilla est
           ullamcorper eget nulla facilisi etiam dignissim diam. Pulvinar
           elementum integer enim neque volutpat ac tincidunt. Ornare suspendisse
           sed nisi lacus sed viverra tellus. Purus sit amet volutpat consequat
@@ -329,11 +339,14 @@ const Sidenav = () => {
           euismod elementum nisi quis eleifend. Commodo viverra maecenas
           accumsan lacus vel facilisis. Nulla posuere sollicitudin aliquam
           ultrices sagittis orci a. */}
-        </Typography>
-</Paper>
+          </Typography>
+          <Box>
+            <Modal />
+          </Box>
+        </Paper>
       </Box>
     </Box>
   );
-}
+};
 
 export default Sidenav;
