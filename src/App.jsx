@@ -1,6 +1,6 @@
 // import reactLogo from "./assets/react.svg";
 // import viteLogo from "/vite.svg";
-import "./App.css";
+//import "./App.css";
 import { BrowserRouter as Router, Routes, Route, BrowserRouter } from "react-router-dom";
 
 // Common components
@@ -13,6 +13,7 @@ import Login from "./pages/login/login";
 import TrmericCard from "./components/common/Card/TrmericCard";
 import ViewDetails from "./pages/viewDetails/ViewDetails";
 import Layout from "./components/common/layout/Layout";
+import DesignSystem from "./components/common/designSystem/DesignSystem";
 function App() {
   return (
     <>
@@ -22,6 +23,8 @@ function App() {
            <Route path="/login" element={<Login />} />
             <Route path="/viewdetails" element={<ViewDetails />} />
             <Route path="/" element={<Layout />} />
+            <Route path="/design" element={<DesignSystem />} />
+
           </Routes>
       </Suspense>
       </BrowserRouter>

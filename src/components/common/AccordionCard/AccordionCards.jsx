@@ -93,6 +93,7 @@ export default function AccordionCard() {
           </Typography>
         </AccordionDetails>
       </Accordion>
+
       <Accordion
         expanded={expanded === "panel2"}
         onChange={handleChange("panel2")}
@@ -109,6 +110,8 @@ export default function AccordionCard() {
           </Typography>
         </AccordionDetails>
       </Accordion>
+
+
       <Accordion
         expanded={expanded === "panel3"}
         onChange={handleChange("panel3")}
@@ -124,7 +127,7 @@ export default function AccordionCard() {
           <TrmericCard />  <TrmericCard />  <TrmericCard />
           </Typography>
         </AccordionDetails>
-      </Accordion>
+      </Accordion> 
     </div>
   );
 }
