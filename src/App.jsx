@@ -1,7 +1,12 @@
 // import reactLogo from "./assets/react.svg";
 // import viteLogo from "/vite.svg";
 //import "./App.css";
-import { BrowserRouter as Router, Routes, Route, BrowserRouter } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  BrowserRouter,
+} from "react-router-dom";
 
 // Common components
 import Sidenav from "./components/common/sidemenu/sideMenu";
@@ -13,20 +18,21 @@ import Login from "./pages/login/login";
 import TrmericCard from "./components/common/Card/TrmericCard";
 import ViewDetails from "./pages/viewDetails/ViewDetails";
 import Layout from "./components/common/layout/Layout";
+import HomeDashboard from "./pages/dashboard/homeDashboard/homeDashboard";
 import DesignSystem from "./components/common/designSystem/DesignSystem";
 function App() {
   return (
     <>
-    <BrowserRouter>
-      <Suspense fallback={<Loader />}>
-      <Routes>
-           <Route path="/login" element={<Login />} />
+      <BrowserRouter>
+        <Suspense fallback={<Loader />}>
+          <Routes>
+            <Route path="/login" element={<Login />} />
             <Route path="/viewdetails" element={<ViewDetails />} />
             <Route path="/" element={<Layout />} />
+            <Route path="/homepage" element={<HomeDashboard />} />
             <Route path="/design" element={<DesignSystem />} />
-
           </Routes>
-      </Suspense>
+        </Suspense>
       </BrowserRouter>
     </>
   );

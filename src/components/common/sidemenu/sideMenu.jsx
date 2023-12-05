@@ -26,6 +26,7 @@ import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import { useTranslation } from "react-i18next";
 import Paper from "@mui/material/Paper";
 import Button from "@mui/material/Button";
+import Multitab from "../MultiTabs/Multitabs";
 
 //component Import
 import Loader from "../loader/loader";
@@ -342,6 +343,9 @@ const Sidenav = () => {
           </Typography>
           <Box>
             <Modal />
+          </Box>
+          <Box>
+            <Multitab />
           </Box>
         </Paper>
       </Box>
