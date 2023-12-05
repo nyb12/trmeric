@@ -5,12 +5,12 @@ import Sidenav from "../sidemenu/sideMenu";
 import Header from "../Header/header";
 import RightSideMenu from "../rightSideMenu/RightSideMenu";
 
-function Layout() {
+function Layout({ children }) {
   return (
     <>
       <Header />
       <div className="page-container">
-        <Sidenav />
+        <Sidenav>{children}</Sidenav>
         <RightSideMenu />
       </div>
     </>
