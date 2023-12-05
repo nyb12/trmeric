@@ -18,6 +18,7 @@ import Login from "./pages/login/login";
 import TrmericCard from "./components/common/Card/TrmericCard";
 import ViewDetails from "./pages/viewDetails/ViewDetails";
 import Layout from "./components/common/layout/Layout";
+import HomeDashboard from "./pages/dashboard/homeDashboard/homeDashboard";
 import DesignSystem from "./components/common/designSystem/DesignSystem";
 function App() {
   return (
@@ -29,6 +30,7 @@ function App() {
             <Route path="/viewdetails" element={<ViewDetails />} />
             <Route path="/" element={<Layout />} />
             <Route path="/homepage" element={<HomeDashboard />} />
+            <Route path="/design" element={<DesignSystem />} />
           </Routes>
         </Suspense>
       </BrowserRouter>
