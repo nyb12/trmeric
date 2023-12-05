@@ -27,7 +27,7 @@ import { useTranslation } from "react-i18next";
 import Paper from "@mui/material/Paper";
 import Button from "@mui/material/Button";
 import Multitab from "../MultiTabs/Multitabs";
-
+import { useNavigate } from "react-router-dom";
 //component Import
 import Loader from "../loader/loader";
 import TrmericCard from "../Card/TrmericCard";
@@ -136,6 +136,7 @@ const styles = {
 const Sidenav = () => {
   const [activeStep, setActiveStep] = useState(0);
   const steps = getSteps();
+  const navigate = useNavigate();
 
   const handleNext = () => {
     setActiveStep((prevActiveStep) => prevActiveStep + 1);
@@ -346,6 +347,17 @@ const Sidenav = () => {
           </Box>
           <Box>
             <Multitab />
+          </Box>
+          <br />
+          <Box>
+            <Button
+              variant="contained"
+              onClick={() => {
+                navigate("/design");
+              }}
+            >
+              Desgin System
+            </Button>
           </Box>
         </Paper>
       </Box>
