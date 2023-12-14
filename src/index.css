@@ -43,7 +43,7 @@ body{
 .color_scheme_1{
   height: 100px;
   width: 100px;
-  background-color:#FFFBE1;
+  background-color:#CCB447;
   margin-left: 5px;
   display: flex;
   align-items: center;
@@ -54,7 +54,7 @@ body{
 .color_scheme_2{
   height: 100px;
   width: 100px;
-  background-color:#FFF7C8;
+  background-color:#998C54;
   margin-left: 5px;
   display: flex;
   align-items: center;
@@ -65,7 +65,7 @@ body{
 .color_scheme_3{
   height: 100px;
   width: 100px;
-  background-color:#FFF09C;
+  background-color:#FFD726;
   margin-left: 5px;
   display: flex;
   align-items: center;
@@ -76,7 +76,7 @@ body{
 .color_scheme_4{
   height: 100px;
   width: 100px;
-  background-color:#FFE674;
+  background-color:#33322B;
   margin-left: 5px;
   display: flex;
   align-items: center;

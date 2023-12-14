@@ -65,7 +65,7 @@ function DesignSystem() {
               
                     
                 <div className='btn_head'>
-                    <div>Buttons</div>
+                    <div style={{marginTop:"10px"}}>Buttons</div>
                 </div>
                 <div className='button_comp'>
                
@@ -82,7 +82,7 @@ function DesignSystem() {
 
                     <div className="left_sec">
                     <div className="primary_sec">Classes Used   <div className='p12'>primary_button&nbsp; <span className='white_bg'>primary_button:hover &nbsp;</span> primary_button:active &nbsp;</div> </div>
-                    <div className="primary_sec"> Secondary Button <button className='sec_button'>Click Me</button> </div>
+                    <div className="primary_sec"> Classes Used   <div className='p12'>primary_button&nbsp; <span className='white_bg'>primary_button:hover &nbsp;</span> primary_button:active &nbsp;</div>  </div>
                     </div>
                
                  
