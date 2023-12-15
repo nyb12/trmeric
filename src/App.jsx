@@ -1,32 +1,29 @@
 // import reactLogo from "./assets/react.svg";
 // import viteLogo from "/vite.svg";
 //import "./App.css";
-import { BrowserRouter as Router, Routes, Route, BrowserRouter } from "react-router-dom";
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
 // Common components
-import Sidenav from "./components/common/sidemenu/sideMenu";
-import Header from "./components/common/Header/header";
-import RightSideMenu from "./components/common/rightSideMenu/RightSideMenu";
-import { Suspense } from "react";
-import Loader from "./components/common/loader/loader";
-import Login from "./pages/login/login";
-import TrmericCard from "./components/common/Card/TrmericCard";
-import ViewDetails from "./pages/viewDetails/ViewDetails";
-import Layout from "./components/common/layout/Layout";
-import DesignSystem from "./components/common/designSystem/DesignSystem";
+import { Suspense } from 'react';
+import DesignSystem from './components/common/designSystem/DesignSystem';
+import Layout from './components/common/layout/Layout';
+import Loader from './components/common/loader/loader';
+import HomeDashboard from './pages/dashboard/homeDashboard/homeDashboard';
+import Login from './pages/login/login';
+import ViewDetails from './pages/viewDetails/ViewDetails';
 function App() {
   return (
     <>
-    <BrowserRouter>
-      <Suspense fallback={<Loader />}>
-      <Routes>
-           <Route path="/login" element={<Login />} />
-            <Route path="/viewdetails" element={<ViewDetails />} />
-            <Route path="/" element={<Layout />} />
-            <Route path="/design" element={<DesignSystem />} />
-
+      <BrowserRouter>
+        <Suspense fallback={<Loader />}>
+          <Routes>
+            <Route path='/login' element={<Login />} />
+            <Route path='/viewdetails' element={<ViewDetails />} />
+            <Route path='/' element={<Layout />} />
+            <Route path='/homepage' element={<HomeDashboard />} />
+            <Route path='/design' element={<DesignSystem />} />
           </Routes>
-      </Suspense>
+        </Suspense>
       </BrowserRouter>
     </>
   );

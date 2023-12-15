@@ -1,16 +1,21 @@
-import "../../../../src/App.css";
+import '../../../../src/App.css';
 
 // Common components
-import Sidenav from "../sidemenu/sideMenu";
-import Header from "../Header/header";
-import RightSideMenu from "../rightSideMenu/RightSideMenu";
+import Sidenav from '../sidemenu/sideMenu';
+import Header from '../Header/header';
+import RightSideMenu from '../rightSideMenu/RightSideMenu';
+import { Box } from '@mui/material';
+import SubHeader from '../subHeader/subHearder';
 
-function Layout() {
+function Layout({ children }) {
   return (
     <>
       <Header />
-      <div className="page-container">
-        <Sidenav />
+      <Box>
+        <SubHeader />
+      </Box>
+      <div className='page-container'>
+        <Sidenav>{children}</Sidenav>
         <RightSideMenu />
       </div>
     </>
