@@ -559,6 +559,7 @@ export default function Sidenav() {
                   edge='end'
                   color='inherit'
                   onClick={() => {
+                    handleClear();
                     openModal(false);
                     setError({});
                   }}
