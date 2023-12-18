@@ -7,6 +7,9 @@ import RightSideMenu from '../rightSideMenu/RightSideMenu';
 import { Box } from '@mui/material';
 import SubHeader from '../subHeader/subHearder';
 
+import '../../../../src/index.css';
+
+
 function Layout({ children }) {
   return (
     <>
