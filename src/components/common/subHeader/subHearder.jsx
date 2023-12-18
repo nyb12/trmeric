@@ -11,12 +11,8 @@ export default function SubHeader() {
   return (
     <>
       <AppBar position='fixed' style={{ zIndex: 2222, marginTop: '70px' }}>
-        <Paper
-          //   elevation={0}
-          square
-          sx={{ padding: 2, color: '#000', background: '#fff' }}
-        >
-          <Typography>My Mission</Typography>
+        <Paper square sx={{ padding: 2, color: '#000', background: '#fff' }}>
+          <Typography>Digital Inventory System</Typography>
         </Paper>
       </AppBar>
     </>

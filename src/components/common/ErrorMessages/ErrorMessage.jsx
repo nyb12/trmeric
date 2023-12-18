@@ -1,14 +1,21 @@
-import { Box, Typography } from '@mui/material';
+import { Box } from '@mui/material';
 import React from 'react';
 import { FontSizes } from '../../../constants/Sizes';
 import Colors from '../../../constants/Colors';
+import Fonts from '../../../constants/Fonts';
 
 function ErrorMessage({ error }) {
   return (
     <Box>
-      <Typography sx={{ fontSize: FontSizes.fontTen, color: Colors.red }}>
+      <Box
+        sx={{
+          fontSize: FontSizes.fontTen,
+          color: Colors.red,
+          fontFamily: Fonts.PoppinsSemiBold,
+        }}
+      >
         {error}
-      </Typography>
+      </Box>
     </Box>
   );
 }
