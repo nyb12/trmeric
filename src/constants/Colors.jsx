@@ -28,6 +28,8 @@ const Colors = {
   bookedIconColor: '#094E8F',
   gradient: `linear-gradient(to right,#FF8A00, #FFD700)`,
   gradientLight: `linear-gradient(to right,#ECEBEB, #ECEBEB)`,
+  lightBackground: '#F7F9FB',
+  blue: '#2194f0',
 };
 
 export default Colors;

@@ -84,7 +84,6 @@ export default function Header() {
               alignItems: 'center',
               flex: '1 0 0',
               alignSelf: 'stretch',
-             
               padding: '0px 40px',
             }}
           >

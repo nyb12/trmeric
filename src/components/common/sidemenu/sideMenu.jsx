@@ -1,21 +1,21 @@
-import AddIcon from "@mui/icons-material/Add";
+import AddIcon from '@mui/icons-material/Add';
 import CloseIcon from '@mui/icons-material/Close';
-import MuiAppBar from "@mui/material/AppBar";
-import Box from "@mui/material/Box";
-import CssBaseline from "@mui/material/CssBaseline";
-import Divider from "@mui/material/Divider";
-import MuiDrawer from "@mui/material/Drawer";
-import IconButton from "@mui/material/IconButton";
-import List from "@mui/material/List";
-import ListItem from "@mui/material/ListItem";
-import ListItemButton from "@mui/material/ListItemButton";
-import ListItemIcon from "@mui/material/ListItemIcon";
-import ListItemText from "@mui/material/ListItemText";
-import Toolbar from "@mui/material/Toolbar";
-import Typography from "@mui/material/Typography";
-import { styled, useTheme } from "@mui/material/styles";
-import React, { useEffect, useState }  from "react";
-import {Provdr, Eval, Milestones} from '../../../svg.js';
+import MuiAppBar from '@mui/material/AppBar';
+import Box from '@mui/material/Box';
+import CssBaseline from '@mui/material/CssBaseline';
+import Divider from '@mui/material/Divider';
+import MuiDrawer from '@mui/material/Drawer';
+import IconButton from '@mui/material/IconButton';
+import List from '@mui/material/List';
+import ListItem from '@mui/material/ListItem';
+import ListItemButton from '@mui/material/ListItemButton';
+import ListItemIcon from '@mui/material/ListItemIcon';
+import ListItemText from '@mui/material/ListItemText';
+import Toolbar from '@mui/material/Toolbar';
+import Typography from '@mui/material/Typography';
+import { styled, useTheme } from '@mui/material/styles';
+import React, { useEffect, useState } from 'react';
+import { Provdr, Eval, Milestones } from '../../../svg.js';
 import Modal from '@mui/material/Modal';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Radio from '@mui/material/Radio';
@@ -28,12 +28,11 @@ import { FontSizes } from '../../../constants/Sizes';
 
 import ErrorMessage from '../ErrorMessages/ErrorMessage';
 
-
-import KeyboardDoubleArrowRightIcon from "@mui/icons-material/KeyboardDoubleArrowRight";
-import KeyboardDoubleArrowLeftIcon from "@mui/icons-material/KeyboardDoubleArrowLeft";
-import Fonts from "../../../constants/Fonts.jsx";
+import KeyboardDoubleArrowRightIcon from '@mui/icons-material/KeyboardDoubleArrowRight';
+import KeyboardDoubleArrowLeftIcon from '@mui/icons-material/KeyboardDoubleArrowLeft';
+import Fonts from '../../../constants/Fonts.jsx';
+import { Link } from 'react-router-dom';
 const drawerWidth = 250;
-
 
 const MAX_PHONE_LENGTH = 10;
 const style = {
@@ -41,7 +40,6 @@ const style = {
   top: '50%',
   left: '50%',
   transform: 'translate(-50%, -50%)',
-  
   bgcolor: 'background.paper',
   border: '2px solid #000',
   boxShadow: 24,
@@ -49,49 +47,50 @@ const style = {
   width: '50%',
   maxWidth: '600px',
   padding: '0 !important',
+  // overflow: 'scroll',
 };
 const openedMixin = (theme) => ({
   width: drawerWidth,
-  transition: theme.transitions.create("width", {
+  transition: theme.transitions.create('width', {
     easing: theme.transitions.easing.sharp,
     duration: theme.transitions.duration.enteringScreen,
   }),
-  overflowX: "hidden",
+  overflowX: 'hidden',
 });
 
 const closedMixin = (theme) => ({
-  transition: theme.transitions.create("width", {
+  transition: theme.transitions.create('width', {
     easing: theme.transitions.easing.sharp,
     duration: theme.transitions.duration.leavingScreen,
   }),
-  overflowX: "hidden",
+  overflowX: 'hidden',
   width: `calc(${theme.spacing(7)} + 1px)`,
-  [theme.breakpoints.up("sm")]: {
+  [theme.breakpoints.up('sm')]: {
     width: `calc(${theme.spacing(8)} + 1px)`,
   },
 });
 
-const DrawerHeader = styled("div")(({ theme }) => ({
-  display: "flex",
-  alignItems: "center",
-  justifyContent: "flex-end",
+const DrawerHeader = styled('div')(({ theme }) => ({
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'flex-end',
   padding: theme.spacing(0, 1),
   // necessary for content to be below app bar
   ...theme.mixins.toolbar,
 }));
 
 const AppBar = styled(MuiAppBar, {
-  shouldForwardProp: (prop) => prop !== "open",
+  shouldForwardProp: (prop) => prop !== 'open',
 })(({ theme, open }) => ({
   zIndex: theme.zIndex.drawer + 1,
-  transition: theme.transitions.create(["width", "margin"], {
+  transition: theme.transitions.create(['width', 'margin'], {
     easing: theme.transitions.easing.sharp,
     duration: theme.transitions.duration.leavingScreen,
   }),
   ...(open && {
     marginLeft: drawerWidth,
     width: `calc(100% - ${drawerWidth}px)`,
-    transition: theme.transitions.create(["width", "margin"], {
+    transition: theme.transitions.create(['width', 'margin'], {
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.enteringScreen,
     }),
@@ -99,21 +98,21 @@ const AppBar = styled(MuiAppBar, {
 }));
 
 const Drawer = styled(MuiDrawer, {
-  shouldForwardProp: (prop) => prop !== "open",
+  shouldForwardProp: (prop) => prop !== 'open',
 })(({ theme, open }) => ({
   width: drawerWidth,
   flexShrink: 0,
-  whiteSpace: "nowrap",
-  boxSizing: "border-box",
-  border: "none",
+  whiteSpace: 'nowrap',
+  boxSizing: 'border-box',
+  border: 'none',
 
   ...(open && {
     ...openedMixin(theme),
-    "& .MuiDrawer-paper": openedMixin(theme),
+    '& .MuiDrawer-paper': openedMixin(theme),
   }),
   ...(!open && {
     ...closedMixin(theme),
-    "& .MuiDrawer-paper": closedMixin(theme),
+    '& .MuiDrawer-paper': closedMixin(theme),
   }),
 }));
 
@@ -124,7 +123,6 @@ export default function Sidenav() {
 
   const [selectedValue, setSelectedValue] = useState('');
   const [selectedRecommend, setSelectedRecommend] = useState('');
-
 
   const handleDrawerOpen = () => {
     setOpen(true);
@@ -239,29 +237,29 @@ export default function Sidenav() {
     }
   };
   return (
-    <Box sx={{ display: "flex", background: "#F2F4F7" }}>
+    <Box sx={{ display: 'flex', background: '#F2F4F7' }}>
       <CssBaseline />
-      <AppBar position="fixed" open={open}>
+      <AppBar position='fixed' open={open}>
         <Toolbar>
-          <Typography variant="h6" noWrap component="div">
+          <Typography variant='h6' noWrap component='div'>
             Mini variant drawer
           </Typography>
         </Toolbar>
       </AppBar>
       <Drawer
-        variant="permanent"
+        variant='permanent'
         open={open}
         PaperProps={{
           sx: {
-            border: "none",
-            background: "white",
+            border: 'none',
+            background: 'white',
             zIndex: 1,
-            height: "auto",
-            borderRadius: "18px",
-            marginTop: "200px",
-            marginLeft: "10px",
-            marginRight: "10px",
-            width: "50px",
+            height: 'auto',
+            borderRadius: '18px',
+            marginTop: '150px',
+            marginLeft: '10px',
+            marginRight: '10px',
+            width: '50px',
           },
         }}
       >
@@ -298,35 +296,36 @@ export default function Sidenav() {
 
         <List>
           <ListItem>
-            <ListItemButton onClick={() => {
-              openModal(true);
-            }}
+            <ListItemButton
+              onClick={() => {
+                openModal(true);
+              }}
               sx={{
                 minHeight: 48,
-                display: "flex",
-                justifyContent: open ? "initial" : "center",
-                alignItems: "center",
+                display: 'flex',
+                justifyContent: open ? 'initial' : 'center',
+                alignItems: 'center',
 
-                border: "1px solid #D0D5DD",
-                borderRadius: "8px",
+                border: '1px solid #D0D5DD',
+                borderRadius: '8px',
               }}
             >
               <ListItemIcon
                 sx={{
                   minWidth: 0,
-                  ml: open ? 0 : "auto",
+                  ml: open ? 0 : 'auto',
 
-                  alignItems: "center",
-                  color: "#FF8A00",
+                  alignItems: 'center',
+                  color: '#FF8A00',
                 }}
               >
                 <AddIcon></AddIcon>
               </ListItemIcon>
               <ListItemText
                 sx={{
-                  fontWeight: "500",
+                  fontWeight: '500',
                   opacity: open ? 1 : 0,
-                  marginRight: "5px",
+                  marginRight: '5px',
                 }}
               >
                 <b>Add my own provider</b>
@@ -335,39 +334,39 @@ export default function Sidenav() {
           </ListItem>
           <Divider></Divider>
 
-          <ListItem disablePadding sx={{ display: "flex" }}>
+          <ListItem disablePadding sx={{ display: 'flex' }}>
             <ListItemButton
               sx={{
                 minHeight: 48,
-                display: "flex",
-                justifyContent: open ? "initial" : "center",
+                display: 'flex',
+                justifyContent: open ? 'initial' : 'center',
                 px: 2.5,
               }}
             >
               <ListItemIcon
                 sx={{
                   minWidth: 0,
-                  ml: open ? 0 : "auto",
+                  ml: open ? 0 : 'auto',
 
-                  alignItems: "center",
-                  color: "#FF8A00",
+                  alignItems: 'center',
+                  color: '#FF8A00',
                 }}
               >
                 <Box
-                  component="img"
-                  alt="The house from the offer."
+                  component='img'
+                  alt='The house from the offer.'
                   src={Provdr}
                   sx={{
-                    flex: "0 0 auto",
+                    flex: '0 0 auto',
                     order: -1,
-                    marginRight: "10px",
+                    marginRight: '10px',
                   }}
                 />
               </ListItemIcon>
               <ListItemText
                 sx={{
                   opacity: open ? 1 : 0,
-                  fontWeight: "bold",
+                  fontWeight: 'bold',
                 }}
               >
                 <b>Provider Summary</b>
@@ -376,33 +375,33 @@ export default function Sidenav() {
           </ListItem>
           <Divider></Divider>
 
-          <ListItem disablePadding sx={{ display: "flex" }}>
+          <ListItem disablePadding sx={{ display: 'flex' }}>
             <ListItemButton
               sx={{
                 minHeight: 48,
-                display: "flex",
-                justifyContent: open ? "initial" : "center",
+                display: 'flex',
+                justifyContent: open ? 'initial' : 'center',
                 px: 2.5,
               }}
             >
               <ListItemIcon
                 sx={{
                   minWidth: 0,
-                  ml: open ? 0 : "auto",
+                  ml: open ? 0 : 'auto',
 
-                  alignItems: "center",
-                  color: "#344054",
+                  alignItems: 'center',
+                  color: '#344054',
                 }}
               >
                 <Box
-                  component="img"
-                  alt="The house from the offer."
+                  component='img'
+                  alt='The house from the offer.'
                   src={Eval}
                   sx={{
-                    flex: "0 0 auto",
+                    flex: '0 0 auto',
                     order: -1,
-                    marginRight: "30px",
-                    marginLeft: open ? "15px " : "22px",
+                    marginRight: '30px',
+                    marginLeft: open ? '15px ' : '22px',
                   }}
                 />
               </ListItemIcon>
@@ -417,41 +416,40 @@ export default function Sidenav() {
           </ListItem>
           <Divider></Divider>
 
-          <ListItem disablePadding sx={{ display: "flex" }}>
+          <ListItem disablePadding sx={{ display: 'flex' }}>
             <ListItemButton
               sx={{
                 minHeight: 48,
-                display: "flex",
-                justifyContent: open ? "initial" : "center",
+                display: 'flex',
+                justifyContent: open ? 'initial' : 'center',
                 px: 2.5,
               }}
             >
               <ListItemIcon
                 sx={{
                   minWidth: 0,
-                  ml: open ? 0 : "auto",
+                  ml: open ? 0 : 'auto',
 
-                  alignItems: "center",
-                  color: "#344054",
+                  alignItems: 'center',
+                  color: '#344054',
                 }}
               >
                 <Box
-                  component="img"
-                  alt="The house from the offer."
+                  component='img'
+                  alt='The house from the offer.'
                   src={Milestones}
                   sx={{
-                    flex: "0 0 auto",
+                    flex: '0 0 auto',
                     order: -1,
-                    marginRight: "30px",
-                    marginLeft: open ? "15px " : "22px",
-
+                    marginRight: '30px',
+                    marginLeft: open ? '15px ' : '22px',
                   }}
                 />
               </ListItemIcon>
               <ListItemText
                 sx={{
                   opacity: open ? 1 : 0,
-                  fontFamily:Fonts.Noto_Sans_KR
+                  fontFamily: Fonts.Noto_Sans_KR,
                 }}
               >
                 <b>Milestones</b>
@@ -463,21 +461,21 @@ export default function Sidenav() {
         <Divider></Divider>
         <DrawerHeader
           sx={{
-            background: "#F2F4F7",
+            background: '#F2F4F7',
           }}
         >
           {open === false ? (
             <IconButton
-              color="inherit"
-              aria-label="open drawer"
+              color='inherit'
+              aria-label='open drawer'
               onClick={handleDrawerOpen}
-              edge="start"
+              edge='start'
             >
               <KeyboardDoubleArrowRightIcon></KeyboardDoubleArrowRightIcon>
             </IconButton>
           ) : (
             <IconButton onClick={handleDrawerClose}>
-              {theme.direction === "rtl" ? (
+              {theme.direction === 'rtl' ? (
                 <KeyboardDoubleArrowLeftIcon />
               ) : (
                 <KeyboardDoubleArrowLeftIcon />
@@ -487,7 +485,10 @@ export default function Sidenav() {
         </DrawerHeader>
         <Divider />
       </Drawer>
-      <Box component="main" sx={{ flexGrow: 1, p: 3, border: "none" }}>
+      <Box
+        component='main'
+        sx={{ flexGrow: 1, p: 3, border: 'none', mt: '70px' }}
+      >
         <DrawerHeader />
         <Box paragraph>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
@@ -518,405 +519,396 @@ export default function Sidenav() {
           eleifend. Commodo viverra maecenas accumsan lacus vel facilisis. Nulla
           posuere sollicitudin aliquam ultrices sagittis orci a.
         </Box>
+        <Link to={'/viewdetails'}>View Details</Link>
       </Box>
 
       <Box>
-          <Modal
-            open={modal}
-            // onClose={() => {
-            //   setOpen(false);
-            // }}
-            aria-labelledby='modal-modal-title'
-            aria-describedby='modal-modal-description'
-            sx={{ zIndex: '3333', padding: '2 !important' }}
-          >
-            <Box sx={style}>
+        <Modal
+          open={modal}
+          // onClose={() => {
+          //   setOpen(false);
+          // }}
+          aria-labelledby='modal-modal-title'
+          aria-describedby='modal-modal-description'
+          sx={{ zIndex: '3333', padding: '2 !important' }}
+        >
+          <Box sx={style}>
+            <Box
+              sx={{
+                bgcolor: Colors.veryLightGrey,
+                padding: '10px',
+                display: 'flex',
+                justifyContent: 'space-between',
+              }}
+            >
+              <Box>
+                <Typography
+                  id='modal-title'
+                  variant='h6'
+                  component='h2'
+                  sx={{ fontWeight: 'bold' }}
+                >
+                  Add a provider
+                </Typography>
+                <Typography
+                  id='modal-sub-title'
+                  sx={{
+                    fontSize: FontSizes.fontSixteen,
+                  }}
+                >
+                  Enter the information below to add a provider
+                </Typography>
+              </Box>
+              <Box>
+                <IconButton
+                  edge='end'
+                  color='inherit'
+                  onClick={() => {
+                    handleClear();
+                    openModal(false);
+                    setError({});
+                  }}
+                  aria-label='close'
+                  sx={{ top: 0, right: 10 }}
+                >
+                  <CloseIcon />
+                </IconButton>
+              </Box>
+            </Box>
+            <Box sx={{ padding: '20px' }}>
               <Box
                 sx={{
-                  bgcolor: Colors.veryLightGrey,
-                  padding: '10px',
                   display: 'flex',
+                  flexDirection: 'row',
                   justifyContent: 'space-between',
+                  marginTop: '20px',
                 }}
               >
-                <Box>
-                  <Typography
-                    id='modal-title'
-                    variant='h6'
-                    component='h2'
-                    sx={{ fontWeight: 'bold' }}
-                  >
-                    Add a provider
-                  </Typography>
-                  <Typography
-                    id='modal-sub-title'
-                    sx={{
-                      fontSize: FontSizes.fontSixteen,
-                    }}
-                  >
-                    Enter the information below to add a provider
-                  </Typography>
-                </Box>
-                <Box>
-                  <IconButton
-                    edge='end'
-                    color='inherit'
-                    onClick={() => {
-                      openModal(false);
-                      setError({});
-                    }}
-                    aria-label='close'
-                    sx={{ top: 0, right: 10 }}
-                  >
-                    <CloseIcon />
-                  </IconButton>
+                <Typography
+                  id='modal-modal-description'
+                  sx={{
+                    fontSize: FontSizes.fontSixteen,
+                  }}
+                >
+                  Is this an existing providers for your company ?
+                </Typography>
+                <Box sx={{ ml: '20px' }}>
+                  <FormControlLabel
+                    value='yes'
+                    control={
+                      <Radio
+                        checked={selectedValue === 'yes'}
+                        onChange={handleChange}
+                        value='yes'
+                        name='radio-buttons'
+                        inputProps={{ 'aria-label': 'Yes' }}
+                        style={{ display: 'none' }}
+                      />
+                    }
+                    label={
+                      <Button
+                        variant={
+                          selectedValue === 'yes' ? 'contained' : 'outlined'
+                        }
+                        sx={{
+                          color: Colors.black,
+
+                          backgroundImage:
+                            selectedValue === 'yes'
+                              ? Colors.gradient
+                              : Colors.gradientLight,
+                        }}
+                        onClick={() => handleButtonClick('yes')}
+                      >
+                        Yes
+                      </Button>
+                    }
+                  />
+                  <FormControlLabel
+                    value='no'
+                    control={
+                      <Radio
+                        checked={selectedValue === 'no'}
+                        onChange={handleChange}
+                        value='no'
+                        name='radio-buttons'
+                        inputProps={{ 'aria-label': 'No' }}
+                        style={{ display: 'none' }}
+                      />
+                    }
+                    label={
+                      <Button
+                        variant={
+                          selectedValue === 'no' ? 'contained' : 'outlined'
+                        }
+                        sx={{
+                          color: Colors.black,
+                          backgroundImage:
+                            selectedValue === 'no'
+                              ? Colors.gradient
+                              : Colors.gradientLight,
+                        }}
+                        onClick={() => handleButtonClick('no')}
+                      >
+                        No
+                      </Button>
+                    }
+                  />
                 </Box>
               </Box>
-              <Box sx={{ padding: '20px' }}>
-                <Box
-                  sx={{
-                    display: 'flex',
-                    flexDirection: 'row',
-                    justifyContent: 'space-between',
-                    marginTop: '20px',
-                  }}
-                >
-                  <Typography
-                    id='modal-modal-description'
-                    sx={{
-                      fontSize: FontSizes.fontSixteen,
-                    }}
-                  >
-                    Is this an existing providers for your company ?
-                  </Typography>
-                  <Box sx={{ ml: '20px' }}>
-                    <FormControlLabel
-                      value='yes'
-                      control={
-                        <Radio
-                          checked={selectedValue === 'yes'}
-                          onChange={handleChange}
-                          value='yes'
-                          name='radio-buttons'
-                          inputProps={{ 'aria-label': 'Yes' }}
-                          style={{ display: 'none' }}
-                        />
-                      }
-                      label={
-                        <Button
-                          variant={
-                            selectedValue === 'yes' ? 'contained' : 'outlined'
-                          }
-                          sx={{
-                            color: Colors.black,
-
-                            backgroundImage:
-                              selectedValue === 'yes'
-                                ? Colors.gradient
-                                : Colors.gradientLight,
-                          }}
-                          onClick={() => handleButtonClick('yes')}
-                        >
-                          Yes
-                        </Button>
-                      }
-                    />
-                    <FormControlLabel
-                      value='no'
-                      control={
-                        <Radio
-                          checked={selectedValue === 'no'}
-                          onChange={handleChange}
-                          value='no'
-                          name='radio-buttons'
-                          inputProps={{ 'aria-label': 'No' }}
-                          style={{ display: 'none' }}
-                        />
-                      }
-                      label={
-                        <Button
-                          variant={
-                            selectedValue === 'no' ? 'contained' : 'outlined'
-                          }
-                          sx={{
-                            color: Colors.black,
-                            backgroundImage:
-                              selectedValue === 'no'
-                                ? Colors.gradient
-                                : Colors.gradientLight,
-                          }}
-                          onClick={() => handleButtonClick('no')}
-                        >
-                          No
-                        </Button>
-                      }
-                    />
-                  </Box>
-                </Box>
-                <Box
-                  sx={{
-                    mt: '10px',
-                    display: 'flex',
-                    flexDirection: 'column',
-                    gap: 1,
-                  }}
-                >
-                  <FormControl>
-                    <OutlinedInput
-                      id='my-input'
-                      required
-                      aria-describedby='my-helper-text'
-                      placeholder='Company Name'
-                      sx={{
-                        borderRadius: '15px',
-                        width: '100%',
-                      }}
-                      value={formData.companyName}
-                      onChange={(e) =>
-                        handleInputChange('companyName', e.target.value)
-                      }
-                      onBlur={() =>
-                        validateField('companyName', formData.companyName)
-                      }
-                    />
-                    <ErrorMessage error={error?.companyName} />
-                  </FormControl>
-
+              <Box
+                sx={{
+                  mt: '10px',
+                  display: 'flex',
+                  flexDirection: 'column',
+                  gap: 1,
+                }}
+              >
+                <FormControl>
                   <OutlinedInput
                     id='my-input'
+                    required
                     aria-describedby='my-helper-text'
-                    placeholder='Company Website'
+                    placeholder='Company Name'
                     sx={{
                       borderRadius: '15px',
                       width: '100%',
                     }}
-                    value={formData.companyWebsite}
+                    value={formData.companyName}
                     onChange={(e) =>
-                      handleInputChange('companyWebsite', e.target.value)
+                      handleInputChange('companyName', e.target.value)
                     }
                     onBlur={() =>
-                      validateField('companyWebsite', formData.companyWebsite)
+                      validateField('companyName', formData.companyName)
                     }
                   />
-                  <ErrorMessage error={error?.companyWebsite} />
-                  <FormControl>
-                    <OutlinedInput
-                      id='my-input'
-                      aria-describedby='my-helper-text'
-                      placeholder='Contact Name'
-                      sx={{
-                        borderRadius: '15px',
-                        width: '100%',
-                      }}
-                      value={formData.contactName}
-                      onChange={(e) =>
-                        handleInputChange('contactName', e.target.value)
-                      }
-                      onBlur={() =>
-                        validateField('contactName', formData.contactName)
-                      }
-                    />
-                    <ErrorMessage error={error?.contactName} />
-                  </FormControl>
-                  <Box
+                  <ErrorMessage error={error?.companyName} />
+                </FormControl>
+
+                <OutlinedInput
+                  id='my-input'
+                  aria-describedby='my-helper-text'
+                  placeholder='Company Website'
+                  sx={{
+                    borderRadius: '15px',
+                    width: '100%',
+                  }}
+                  value={formData.companyWebsite}
+                  onChange={(e) =>
+                    handleInputChange('companyWebsite', e.target.value)
+                  }
+                  onBlur={() =>
+                    validateField('companyWebsite', formData.companyWebsite)
+                  }
+                />
+                <ErrorMessage error={error?.companyWebsite} />
+                <FormControl>
+                  <OutlinedInput
+                    id='my-input'
+                    aria-describedby='my-helper-text'
+                    placeholder='Contact Name'
                     sx={{
-                      display: 'flex',
-                      flexDirection: 'row',
-                      justifyContent: 'space-between',
+                      borderRadius: '15px',
+                      width: '100%',
                     }}
-                  >
-                    <FormControl>
-                      <OutlinedInput
-                        id='my-input'
-                        aria-describedby='my-helper-text'
-                        placeholder='Email'
-                        sx={{
-                          borderRadius: '15px',
-                          width: '100%',
-                        }}
-                        value={formData.email}
-                        onChange={(e) =>
-                          handleInputChange('email', e.target.value)
-                        }
-                        onBlur={() => validateField('email', formData.email)}
-                      />
-                      <ErrorMessage error={error?.email} />
-                    </FormControl>
-                    <FormControl>
-                      <OutlinedInput
-                        id='my-input'
-                        aria-describedby='my-helper-text'
-                        placeholder='Phone'
-                        sx={{
-                          borderRadius: '15px',
-                          width: '100%',
-                        }}
-                        value={formData.phone}
-                        type='number'
-                        inputProps={{ maxLength: MAX_PHONE_LENGTH }}
-                        onChange={(e) => {
-                          const value = e.target.value.slice(
-                            0,
-                            MAX_PHONE_LENGTH
-                          );
-                          handleInputChange('phone', value);
-                        }}
-                        onBlur={() => validateField('phone', formData.phone)}
-                      />
-                      <ErrorMessage error={error?.phone} />
-                    </FormControl>
-                  </Box>
-                  <FormControl>
-                    <OutlinedInput
-                      id='my-input'
-                      aria-describedby='my-helper-text'
-                      placeholder='Please describe the reason for including this provider on this mission.'
-                      sx={{
-                        borderRadius: '15px',
-                        width: '100%',
-                      }}
-                      value={formData.description}
-                      onChange={(e) =>
-                        handleInputChange('description', e.target.value)
-                      }
-                      onBlur={() =>
-                        validateField('description', formData.description)
-                      }
-                    />
-                    <ErrorMessage error={error?.description} />
-                  </FormControl>
-                </Box>
+                    value={formData.contactName}
+                    onChange={(e) =>
+                      handleInputChange('contactName', e.target.value)
+                    }
+                    onBlur={() =>
+                      validateField('contactName', formData.contactName)
+                    }
+                  />
+                  <ErrorMessage error={error?.contactName} />
+                </FormControl>
                 <Box
                   sx={{
                     display: 'flex',
                     flexDirection: 'row',
                     justifyContent: 'space-between',
-                    marginTop: '20px',
                   }}
                 >
-                  <Typography
-                    id='modal-modal-description'
+                  <FormControl>
+                    <OutlinedInput
+                      id='my-input'
+                      aria-describedby='my-helper-text'
+                      placeholder='Email'
+                      sx={{
+                        borderRadius: '15px',
+                        width: '100%',
+                      }}
+                      value={formData.email}
+                      onChange={(e) =>
+                        handleInputChange('email', e.target.value)
+                      }
+                      onBlur={() => validateField('email', formData.email)}
+                    />
+                    <ErrorMessage error={error?.email} />
+                  </FormControl>
+                  <FormControl>
+                    <OutlinedInput
+                      id='my-input'
+                      aria-describedby='my-helper-text'
+                      placeholder='Phone'
+                      sx={{
+                        borderRadius: '15px',
+                        width: '100%',
+                      }}
+                      value={formData.phone}
+                      type='number'
+                      inputProps={{ maxLength: MAX_PHONE_LENGTH }}
+                      onChange={(e) => {
+                        const value = e.target.value.slice(0, MAX_PHONE_LENGTH);
+                        handleInputChange('phone', value);
+                      }}
+                      onBlur={() => validateField('phone', formData.phone)}
+                    />
+                    <ErrorMessage error={error?.phone} />
+                  </FormControl>
+                </Box>
+                <FormControl>
+                  <OutlinedInput
+                    id='my-input'
+                    aria-describedby='my-helper-text'
+                    placeholder='Please describe the reason for including this provider on this mission.'
                     sx={{
-                      fontSize: FontSizes.fontSixteen,
+                      borderRadius: '15px',
+                      width: '100%',
                     }}
-                  >
-                    Would you recommend this Provider into Trmeric community?
-                  </Typography>
-                  <Box
-                    sx={{ ml: '20px', display: 'flex', flexDirection: 'row' }}
-                  >
-                    <FormControlLabel
-                      value='yes'
-                      control={
-                        <Radio
-                          checked={selectedRecommend === 'yes'}
-                          onChange={handleRecChange}
-                          value='yes'
-                          name='radio-buttons'
-                          inputProps={{ 'aria-label': 'Yes' }}
-                          style={{ display: 'none' }}
-                        />
-                      }
-                      label={
-                        <Button
-                          variant={
-                            selectedRecommend === 'yes'
-                              ? 'contained'
-                              : 'outlined'
-                          }
-                          sx={{
-                            color: Colors.black,
-                            backgroundImage:
-                              selectedRecommend === 'yes'
-                                ? Colors.gradient
-                                : Colors.gradientLight,
-                          }}
-                          onClick={() => handleRecButtonClick('yes')}
-                        >
-                          Yes
-                        </Button>
-                      }
-                    />
-                    <FormControlLabel
-                      value='no'
-                      control={
-                        <Radio
-                          checked={selectedRecommend === 'no'}
-                          onChange={handleRecChange}
-                          value='no'
-                          name='radio-buttons'
-                          inputProps={{ 'aria-label': 'No' }}
-                          style={{ display: 'none' }}
-                        />
-                      }
-                      label={
-                        <Button
-                          variant={
-                            selectedRecommend === 'no'
-                              ? 'contained'
-                              : 'outlined'
-                          }
-                          sx={{
-                            color: Colors.black,
-                            // bgcolor:
-                            //   selectedRecommend === 'no'
-                            //     ? Colors.primary
-                            //     : Colors.lightGrey,
-                            backgroundImage:
-                              selectedRecommend === 'no'
-                                ? Colors.gradient
-                                : Colors.gradientLight,
-                          }}
-                          onClick={() => handleRecButtonClick('no')}
-                        >
-                          No
-                        </Button>
-                      }
-                    />
-                  </Box>
-                </Box>
-                <Box sx={{ width: '100%', mt: '15px' }}>
-                  <hr />
-                </Box>
-                <Box
+                    value={formData.description}
+                    onChange={(e) =>
+                      handleInputChange('description', e.target.value)
+                    }
+                    onBlur={() =>
+                      validateField('description', formData.description)
+                    }
+                  />
+                  <ErrorMessage error={error?.description} />
+                </FormControl>
+              </Box>
+              <Box
+                sx={{
+                  display: 'flex',
+                  flexDirection: 'row',
+                  justifyContent: 'space-between',
+                  marginTop: '20px',
+                }}
+              >
+                <Typography
+                  id='modal-modal-description'
                   sx={{
-                    display: 'flex',
-                    flexDirection: 'row',
-                    justifyContent: 'flex-end',
-                    gap: 2,
+                    fontSize: FontSizes.fontSixteen,
                   }}
                 >
-                  <Button
-                    sx={{ color: Colors.black, bgcolor: Colors.lightGrey }}
-                    onClick={() => {
-                      handleClear();
-                      setError({});
-                    }}
-                  >
-                    Clear
-                  </Button>
-                  <Button
-                    sx={{
-                      color: Colors.black,
-                      // bgcolor: Colors.primary,
-                      backgroundImage: Colors.gradient,
-                      '&:hover': {
-                        bgcolor: Colors.primary,
-                      },
-                    }}
-                    onClick={() => {
-                      handleSubmit();
-                    }}
-                  >
-                    Submit
-                  </Button>
+                  Would you recommend this Provider into Trmeric community?
+                </Typography>
+                <Box sx={{ ml: '20px', display: 'flex', flexDirection: 'row' }}>
+                  <FormControlLabel
+                    value='yes'
+                    control={
+                      <Radio
+                        checked={selectedRecommend === 'yes'}
+                        onChange={handleRecChange}
+                        value='yes'
+                        name='radio-buttons'
+                        inputProps={{ 'aria-label': 'Yes' }}
+                        style={{ display: 'none' }}
+                      />
+                    }
+                    label={
+                      <Button
+                        variant={
+                          selectedRecommend === 'yes' ? 'contained' : 'outlined'
+                        }
+                        sx={{
+                          color: Colors.black,
+                          backgroundImage:
+                            selectedRecommend === 'yes'
+                              ? Colors.gradient
+                              : Colors.gradientLight,
+                        }}
+                        onClick={() => handleRecButtonClick('yes')}
+                      >
+                        Yes
+                      </Button>
+                    }
+                  />
+                  <FormControlLabel
+                    value='no'
+                    control={
+                      <Radio
+                        checked={selectedRecommend === 'no'}
+                        onChange={handleRecChange}
+                        value='no'
+                        name='radio-buttons'
+                        inputProps={{ 'aria-label': 'No' }}
+                        style={{ display: 'none' }}
+                      />
+                    }
+                    label={
+                      <Button
+                        variant={
+                          selectedRecommend === 'no' ? 'contained' : 'outlined'
+                        }
+                        sx={{
+                          color: Colors.black,
+                          // bgcolor:
+                          //   selectedRecommend === 'no'
+                          //     ? Colors.primary
+                          //     : Colors.lightGrey,
+                          backgroundImage:
+                            selectedRecommend === 'no'
+                              ? Colors.gradient
+                              : Colors.gradientLight,
+                        }}
+                        onClick={() => handleRecButtonClick('no')}
+                      >
+                        No
+                      </Button>
+                    }
+                  />
                 </Box>
               </Box>
+              <Box sx={{ width: '100%', mt: '15px' }}>
+                <hr />
+              </Box>
+              <Box
+                sx={{
+                  display: 'flex',
+                  flexDirection: 'row',
+                  justifyContent: 'flex-end',
+                  gap: 2,
+                }}
+              >
+                <Button
+                  sx={{ color: Colors.black, bgcolor: Colors.lightGrey }}
+                  onClick={() => {
+                    handleClear();
+                    setError({});
+                  }}
+                >
+                  Clear
+                </Button>
+                <Button
+                  sx={{
+                    color: Colors.black,
+                    // bgcolor: Colors.primary,
+                    backgroundImage: Colors.gradient,
+                    '&:hover': {
+                      bgcolor: Colors.primary,
+                    },
+                  }}
+                  onClick={() => {
+                    handleSubmit();
+                  }}
+                >
+                  Submit
+                </Button>
+              </Box>
             </Box>
-          </Modal>
-        </Box>
+          </Box>
+        </Modal>
+      </Box>
     </Box>
-
-    
   );
 }
