@@ -2,9 +2,9 @@
 import { Button, Grid, Modal } from "@mui/material";
 import Box from "@mui/material/Box";
 import React, { useState } from "react";
-import dum1 from "./../../../assets/Screen 1.png";
-import dum2 from "./../../../assets/Screen 3.png";
-import dum3 from "./../../../assets/Screen 1.png";
+import dum1 from "./../../../../src/assets/Screen1.png";
+import dum2 from "./../../../../src/assets/Screen3.png"
+import dum3 from "./../../../../src/assets/Screen1.png";
 import { useNavigate } from "react-router-dom";
 
 export default function Tutorial() {
