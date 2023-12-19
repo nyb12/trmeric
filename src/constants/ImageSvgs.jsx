@@ -1,2 +1,3 @@
 import TrmericImage from '../../public/svgs/Trmeric.svg';
-export { TrmericImage };
+import Featured_video from '../../src/assets/Featured_video.svg';
+export { TrmericImage, Featured_video };

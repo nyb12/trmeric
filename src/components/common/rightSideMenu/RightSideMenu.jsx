@@ -20,6 +20,7 @@ import { makeStyles } from '@mui/styles';
 import React, { useState } from 'react';
 import Colors from '../../../constants/Colors';
 import MyNotes from '../MyNotes/MyNotes';
+import MyNotesCards from '../MyNotes/MyNotesCard';
 
 const drawerWidth = '6%';
 const drawerOpen = true;
@@ -125,7 +126,12 @@ const RightSideMenu = () => {
                   </Button>
                 )}
               </Box>
-              {isCardOpen && <MyNotes setIsCardOpen={setIsCardOpen} />}
+              <Box>
+                {isCardOpen && <MyNotes setIsCardOpen={setIsCardOpen} />}
+                <Box sx={{ marginTop: '20px' }}>
+                  <MyNotesCards />
+                </Box>
+              </Box>
             </Box>
           </ListItem>
           {/* Add more Swipeable Drawer content as needed */}

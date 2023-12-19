@@ -31,6 +31,7 @@ import ErrorMessage from '../ErrorMessages/ErrorMessage';
 import KeyboardDoubleArrowRightIcon from '@mui/icons-material/KeyboardDoubleArrowRight';
 import KeyboardDoubleArrowLeftIcon from '@mui/icons-material/KeyboardDoubleArrowLeft';
 import Fonts from '../../../constants/Fonts.jsx';
+import { Link } from 'react-router-dom';
 const drawerWidth = 250;
 
 const MAX_PHONE_LENGTH = 10;
@@ -255,7 +256,7 @@ export default function Sidenav() {
             zIndex: 1,
             height: 'auto',
             borderRadius: '18px',
-            marginTop: '200px',
+            marginTop: '150px',
             marginLeft: '10px',
             marginRight: '10px',
             width: '50px',
@@ -484,7 +485,10 @@ export default function Sidenav() {
         </DrawerHeader>
         <Divider />
       </Drawer>
-      <Box component='main' sx={{ flexGrow: 1, p: 3, border: 'none' }}>
+      <Box
+        component='main'
+        sx={{ flexGrow: 1, p: 3, border: 'none', mt: '70px' }}
+      >
         <DrawerHeader />
         <Box paragraph>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
@@ -515,6 +519,7 @@ export default function Sidenav() {
           eleifend. Commodo viverra maecenas accumsan lacus vel facilisis. Nulla
           posuere sollicitudin aliquam ultrices sagittis orci a.
         </Box>
+        <Link to={'/viewdetails'}>View Details</Link>
       </Box>
 
       <Box>

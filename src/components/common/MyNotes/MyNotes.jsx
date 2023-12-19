@@ -5,6 +5,7 @@ import {
   CardContent,
   IconButton,
   TextField,
+  Divider,
 } from '@mui/material';
 import { Box } from '@mui/system';
 import React, { useState } from 'react';
@@ -12,13 +13,30 @@ import Colors from '../../../constants/Colors';
 import { FontSizes } from '../../../constants/Sizes';
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
+const modules = {
+  toolbar: [
+    [{ header: [2, 3, false] }],
+    ['bold', 'italic', 'underline'],
+    [{ list: 'ordered' }, { list: 'bullet' }],
+    // ['link', 'image'],
+    // ['clean'],
+  ],
+};
+
+const formats = ['header', 'bold', 'italic', 'underline', 'list', 'bullet'];
 
 function MyNotes({ setIsCardOpen }) {
   const [value, setValue] = useState('');
 
+  const onSubmit = () => {
+    console.log(value);
+  };
+
   return (
     <Box>
-      <Box sx={{ display: 'flex', flexDirection: 'column' }}>
+      <Box
+        sx={{ display: 'flex', flexDirection: 'column', borderRadius: '12px' }}
+      >
         <Box
           sx={{
             height: '8px',
@@ -28,7 +46,7 @@ function MyNotes({ setIsCardOpen }) {
           }}
         ></Box>
 
-        <Card sx={{ width: 250 }}>
+        <Card sx={{ width: 300 }}>
           <CardContent sx={{ padding: '0 !important' }}>
             <Box
               sx={{
@@ -61,7 +79,7 @@ function MyNotes({ setIsCardOpen }) {
                   aria-label='close'
                   sx={{
                     top: 0,
-                    right: 5,
+                    right: 15,
                     fontSize: FontSizes.fontEight,
                   }}
                 >
@@ -70,6 +88,7 @@ function MyNotes({ setIsCardOpen }) {
               </Box>
             </Box>
           </CardContent>
+          <Divider />
           <Box sx={{ padding: '5px' }}>
             <ReactQuill
               className='quill-style'
@@ -77,6 +96,8 @@ function MyNotes({ setIsCardOpen }) {
               placeholder='Add description'
               value={value}
               onChange={setValue}
+              modules={modules}
+              formats={formats}
             />
           </Box>
           <Box
@@ -88,7 +109,7 @@ function MyNotes({ setIsCardOpen }) {
           >
             <Button
               variant='text'
-              // onClick={handleNewNoteClick}
+              onClick={onSubmit}
               sx={{
                 color: Colors.black,
                 textTransform: 'none',
