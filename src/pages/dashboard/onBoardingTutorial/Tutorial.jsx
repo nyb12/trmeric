@@ -293,7 +293,7 @@ export default function Tutorial() {
                 xs={12}
               >
                 <Box>
-                  <h1>shreyas shinde</h1>
+                  <h1>Title</h1>
                   <img className="img-responsive" src={dum1} alt="dum1"></img>
                 </Box>
                 <Box>
