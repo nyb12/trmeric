@@ -1,50 +1,121 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
-body {
-  background-color: '#f5f5f5';
+/* Need to go back and clean this up. Make names more specific. Maybe use sass? */
+@import url("https://fonts.googleapis.com/css?family=Amatic+SC:700|Roboto");
+
+:root {
+  --primary: #2196f3;
+  --primary-dark: #1976d2;
+  --primary-text: #fff;
+  --secondary: rgba(0, 0, 0, 0.38);
+  --disabled: rgb(188, 188, 188);
 }
 
-.cursor-pointer {
+* {
+  box-sizing: border-box;
+  font-family: "Roboto", sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+.steps {
+  display: flex;
+  min-height: 4rem;
+  margin: 0 0 0.5rem 0;
+}
+
+.step {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  padding: 1rem 0.5rem 0 0;
+  transition: 0.5s;
+  border-radius: 4px;
+  user-select: none;
+}
+
+
+.step .icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 3.3rem;
+    height: 0.3rem;
+    background-color: var(--secondary);
+    margin-right: 0.5rem;
+}
+/* buttons  */
+
+.yell_btn{
+  border-radius: 8px;
+border: 1px solid var(--Primary, #FF8A00);
+background: #E5ECF6;
+background: var(--Primary, linear-gradient(83deg, #FF8A00 0%, #FFC000 100%));
+padding: 10px 24px;
+cursor: pointer;
+}
+.skip_btn{
+  border-radius: 8px;
+  background: unset;
+  padding: 10px 0px;
+  border: none;
   cursor: pointer;
 }
+.back_btn{
+  border-radius: 8px;
+  background: #E5ECF6;
+  padding: 10px 24px;
+  cursor: pointer;
+  border: 1px solid #D0D5DD; 
+}
+.gap-10{
+  display: flex;
+  gap: 10px;
+}
+.mt-20 {
+  margin-top: 20px;
+}
+.px-30{
+padding: 0 30px;
+}
+.ht-100vh{
+  height: 100%;
+}
 
-.display-row {
-  display: flex;
-  justify-content: space-evenly;
-  flex-direction: row;
+.main_title{
+  color: #1C1C1C;
+  font-family: Inter;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 600;
+  margin-top: 50px;
 }
-.display-row-flex-start {
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
-  gap: 24px;
+.sub_title{
+  color: var(--black-80, rgba(28, 28, 28, 0.80));
+  font-family: Inter;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 26px;
+  padding: 15px 0 5px 0;
 }
-.display-row-space-between {
+.buttons{
+  margin-top: 120px;
+  gap: 20px;
   display: flex;
   justify-content: space-between;
-  flex-direction: row;
 }
 
-.display-column {
+.p-10{
+  padding: 10px !important;
+}
+
+.flex-center {
   display: flex;
-  justify-content: space-between;
-  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
-.display-data {
-  display: flex;
-  padding: 24px;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: var(--Gap-16, 16px);
-  align-self: stretch;
-}
-
-.text-decorator-none {
-  text-decoration: none;
-  transition: width 2s, height 4s;
-  color: black;
-}
-
-html {
-  scroll-behavior: smooth;
+.img-responsive {
+  display: block;
+  max-width: 100%;
+  height: auto;
 }
