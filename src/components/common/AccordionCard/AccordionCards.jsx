@@ -76,15 +76,15 @@ export default function AccordionCard() {
   }, []);
 
   return (
-    <div>
+    <div className="mt-200 w-900">
       <Accordion
         expanded={expanded === "panel1"}
         onChange={handleChange("panel1")}
-        sx={{marginBottom:'300px'}}
+        sx={{marginTop:'200px'}}
       >
         <AccordionSummary aria-controls="panel1d-content" id="panel1d-header">
           <Typography sx={{ fontWeight: "bold" }}>
-            Collapsible Group Item #1
+             Provider Summary
           </Typography>
         </AccordionSummary>
         <AccordionDetails>
