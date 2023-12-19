@@ -26,6 +26,7 @@ function HomeDashboard() {
       <Layout />
       <Box
         component="main"
+        className="flex-center"
         sx={{
           flexGrow: 1,
           p: 2,

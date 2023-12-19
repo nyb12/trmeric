@@ -11,6 +11,7 @@ import Loader from './components/common/loader/loader';
 import HomeDashboard from './pages/dashboard/homeDashboard/homeDashboard';
 import Login from './pages/login/login';
 import ViewDetails from './pages/viewDetails/ViewDetails';
+import Tutorial from './pages/dashboard/onBoardingTutorial/Tutorial';
 import './fonts/fonts.css';
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
             <Route path='/' element={<Layout />} />
             <Route path='/homepage' element={<HomeDashboard />} />
             <Route path='/design' element={<DesignSystem />} />
+            <Route path='/Tutorial' element={<Tutorial />} />
           </Routes>
         </Suspense>
       </BrowserRouter>

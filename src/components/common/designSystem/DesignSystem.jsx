@@ -1,5 +1,4 @@
 import { useState } from "react";
-import "../../../index.css";
 import { CopyAll } from "@mui/icons-material";
 import AccordionCard from "../AccordionCard/AccordionCards";
 import TrmericCard from "../Card/TrmericCard";

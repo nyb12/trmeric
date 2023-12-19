@@ -6,6 +6,12 @@ import MuiAccordionSummary from "@mui/material/AccordionSummary";
 import MuiAccordionDetails from "@mui/material/AccordionDetails";
 import Typography from "@mui/material/Typography";
 import TrmericCard from "../Card/TrmericCard";
+import TrText from "../TrText/TrText";
+import '../../../../src/index.css';
+import Fonts from '../../../constants/Fonts';
+import { FontSizes } from "../../../constants/Sizes";
+
+
 
 const Accordion = styled((props) => (
   <MuiAccordion disableGutters elevation={0} square {...props} />
@@ -13,6 +19,7 @@ const Accordion = styled((props) => (
   border: `1px solid ${theme.palette.divider}`,
   "&:not(:last-child)": {
     borderBottom: 0,
+   
   },
   "&:before": {
     display: "none",
@@ -76,16 +83,33 @@ export default function AccordionCard() {
   }, []);
 
   return (
-    <div className="mt-200 w-900">
-      <Accordion
+    <div>
+      <div className="mt-150"></div>
+      <Accordion className="w-90"
         expanded={expanded === "panel1"}
         onChange={handleChange("panel1")}
-        sx={{marginTop:'200px'}}
+        
       >
         <AccordionSummary aria-controls="panel1d-content" id="panel1d-header">
-          <Typography sx={{ fontWeight: "bold" }}>
+          <div className="display-column ml-8">
+            <div className="lh-24 mb-8"><TrText sx={{
+                    fontSize: FontSizes.fontEighteen,
+                    fontFamily: Fonts.Poppins,
+                    fontWeight: '600',
+                  
+                  }}>
              Provider Summary
-          </Typography>
+          </TrText></div>
+          <div> <TrText sx={{
+                    fontSize: FontSizes.fontFourteen,
+                    fontFamily: Fonts.Poppins,
+                    fontWeight: '400',
+                  }}
+           title="A brief introduction to the providers background, emphasizing their unique expertise"></TrText></div>
+
+          </div>
+          
+         
         </AccordionSummary>
         <AccordionDetails>
           <Typography sx={{display:'flex',flexDirection:'row', gap:'40px'}}>
