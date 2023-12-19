@@ -243,13 +243,7 @@ export default function Sidenav() {
   return (
     <Box sx={{ display: "flex", background: "#F2F4F7" }}>
       <CssBaseline />
-      <AppBar position="fixed" open={open}>
-        <Toolbar>
-          <Typography variant="h6" noWrap component="div">
-            Mini variant drawer
-          </Typography>
-        </Toolbar>
-      </AppBar>
+      {/* <AppBar position='fixed' open={open}></AppBar> */}
       <Drawer
         variant="permanent"
         open={open}

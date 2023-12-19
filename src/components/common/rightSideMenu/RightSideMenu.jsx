@@ -40,7 +40,7 @@ const useStyles = makeStyles((theme) => ({
   toolbar: theme.mixins.toolbar,
   customIcon: {
     backgroundColor: '#8080801f',
-    padding: '7px',
+    padding: '2px',
     borderRadius: '50%',
   },
 }));
@@ -67,15 +67,30 @@ const RightSideMenu = () => {
       {/* Right Side Menu */}
       <Drawer
         className={classes.drawer}
-        variant='persistent'
+        variant='permanent'
         anchor='right'
         open={drawerOpen}
         classes={{
           paper: classes.drawerPaper,
         }}
-        sx={{ width: 250 }}
+        sx={{
+          width: 250,
+        }}
+        PaperProps={{
+          sx: {
+            border: 'none',
+            background: 'white',
+            zIndex: 1,
+            height: 'auto',
+            borderRadius: '10px',
+            marginTop: '150px',
+            marginLeft: '10px',
+            marginRight: '10px',
+            width: '60px',
+          },
+        }}
       >
-        <div className={classes.toolbar} />
+        <div />
         <Paper elevation={0}>
           <List>
             {[
@@ -88,7 +103,7 @@ const RightSideMenu = () => {
               <ListItem key={index}>
                 <ListItemIcon
                   className={classes.customIcon}
-                  sx={{ minWidth: '22px' }}
+                  sx={{ minWidth: '10px' }}
                 >
                   <IconButton onClick={handleDrawerOpen}>{icon}</IconButton>
                 </ListItemIcon>
