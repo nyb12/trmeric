@@ -12,6 +12,7 @@ import HomeDashboard from './pages/dashboard/homeDashboard/homeDashboard';
 import Login from './pages/login/login';
 import ViewDetails from './pages/viewDetails/ViewDetails';
 import Tutorial from './pages/dashboard/onBoardingTutorial/Tutorial';
+import './fonts/fonts.css';
 function App() {
   return (
     <>

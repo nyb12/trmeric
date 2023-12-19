@@ -12,7 +12,7 @@ const Colors = {
   lightPink: '#FFD5CF',
   mediumDarkGrey: '#353535',
   blueTransparent: 'rgba(232, 242, 251, 0.2)',
-  veryLightGrey: 'rgba(0, 0, 0, 0.2)',
+  veryLightGrey: '#F2F4F7',
   red: 'rgba(227, 28, 36, 1)',
   lightGrey: '#ECEBEB',
   progressHeaderGrey: '#F4F4F4',
@@ -26,6 +26,10 @@ const Colors = {
   whiteGray: '#E8E8E866',
   textGray: '#6C6C6C',
   bookedIconColor: '#094E8F',
+  gradient: `linear-gradient(to right,#FF8A00, #FFD700)`,
+  gradientLight: `linear-gradient(to right,#ECEBEB, #ECEBEB)`,
+  lightBackground: '#F7F9FB',
+  blue: '#2194f0',
 };
 
 export default Colors;
