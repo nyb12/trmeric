@@ -165,19 +165,52 @@ export default function ViewDetails() {
               </TrText>
               <Box className='display-row-space-between' sx={{ gap: '24px' }}>
                 <Box className='dispay-column'>
-                  <TrText title={'Experience'} />
-                  <TrText title={'10+ Years'} />
+                  <TrText
+                    sx={{
+                      fontFamily: Fonts.Inter,
+                    }}
+                    title={'Experience'}
+                  />
+                  <TrText
+                    sx={{
+                      fontFamily: Fonts.Inter,
+                      fontWeight: '600',
+                    }}
+                    title={'10+ Years'}
+                  />
                 </Box>
                 <Divider orientation='vertical' sx={{ height: '20px' }} />
                 <Box className='dispay-column'>
-                  <TrText title={'Team'} />
-                  <TrText title={'150-200'} />
+                  <TrText
+                    sx={{
+                      fontFamily: Fonts.Inter,
+                    }}
+                    title={'Team'}
+                  />
+                  <TrText
+                    sx={{
+                      fontFamily: Fonts.Inter,
+                      fontWeight: '600',
+                    }}
+                    title={'150-200'}
+                  />
                 </Box>
 
                 <Divider orientation='vertical' sx={{ height: '20px' }} />
                 <Box className='dispay-column'>
-                  <TrText title={'Success Rate'} />
-                  <TrText title={'90%'} />
+                  <TrText
+                    sx={{
+                      fontFamily: Fonts.Inter,
+                    }}
+                    title={'Success Rate'}
+                  />
+                  <TrText
+                    sx={{
+                      fontFamily: Fonts.Inter,
+                      fontWeight: '600',
+                    }}
+                    title={'90%'}
+                  />
                 </Box>
               </Box>
             </Box>
@@ -215,26 +248,40 @@ export default function ViewDetails() {
                 />
               </AccordionSummary>
               <AccordionDetails>
-                <Box className='display-row'>
-                  <Box>
-                    <TrText
+                <Box className='outer-box'>
+                  <Box className='display-view-details'>
+                    <Box
                       sx={{
-                        fontSize: FontSizes.fontFourteen,
-                        fontFamily: Fonts.Poppins,
-                        maxWidth: '85%',
+                        backgroundColor: 'white',
+                        padding: '10px',
+                        height: '80vh',
                       }}
-                      title={
-                        'Expertise Their solutions are tailored to meet the unique challenges faced by businesses transitioning to digital platforms. Client Feedback Their dedication to understanding and addressing specific client needs shines through in feedback. Areas for Improvement Their initial onboarding process can take a bit longer than anticipated. However, this is often offset by the quality of the final deliverable. Why Trmeric Recommends Considering their consistent performance, client-centric methodology, and innovative solutions, NexaTech is an ideal match for those seeking to elevate their inventory management systems.'
-                      }
-                    />
-                  </Box>
-                  <Box>
-                    <TrText
-                      sx={{ fontWeight: '600' }}
-                      title={'Performance Analysis'}
-                    />
-                    <br />
-                    <RadarChart />
+                    >
+                      <TrText
+                        sx={{
+                          fontSize: FontSizes.fontFourteen,
+                          fontFamily: Fonts.Poppins,
+                          maxWidth: '95%',
+                        }}
+                        title={
+                          'Expertise Their solutions are tailored to meet the unique challenges faced by businesses transitioning to digital platforms. Client Feedback Their dedication to understanding and addressing specific client needs shines through in feedback. Areas for Improvement Their initial onboarding process can take a bit longer than anticipated. However, this is often offset by the quality of the final deliverable. Why Trmeric Recommends Considering their consistent performance, client-centric methodology, and innovative solutions, NexaTech is an ideal match for those seeking to elevate their inventory management systems.'
+                        }
+                      />
+                    </Box>
+                    <Box
+                      sx={{
+                        backgroundColor: 'white',
+                        padding: '10px',
+                        height: '80vh',
+                      }}
+                    >
+                      <TrText
+                        sx={{ fontWeight: '600' }}
+                        title={'Performance Analysis'}
+                      />
+                      <br />
+                      <RadarChart />
+                    </Box>
                   </Box>
                 </Box>
               </AccordionDetails>
