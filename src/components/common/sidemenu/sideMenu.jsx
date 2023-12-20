@@ -31,7 +31,8 @@ import ErrorMessage from '../ErrorMessages/ErrorMessage';
 import KeyboardDoubleArrowRightIcon from '@mui/icons-material/KeyboardDoubleArrowRight';
 import KeyboardDoubleArrowLeftIcon from '@mui/icons-material/KeyboardDoubleArrowLeft';
 import Fonts from '../../../constants/Fonts.jsx';
-import { Link } from 'react-router-dom';
+import TrmericCard from '../Card/TrmericCard.jsx';
+import AccordionCard from '../AccordionCard/AccordionCards.jsx';
 const drawerWidth = 250;
 
 const MAX_PHONE_LENGTH = 10;
@@ -40,6 +41,7 @@ const style = {
   top: '50%',
   left: '50%',
   transform: 'translate(-50%, -50%)',
+
   bgcolor: 'background.paper',
   border: '2px solid #000',
   boxShadow: 24,
@@ -47,7 +49,6 @@ const style = {
   width: '50%',
   maxWidth: '600px',
   padding: '0 !important',
-  // overflow: 'scroll',
 };
 const openedMixin = (theme) => ({
   width: drawerWidth,
@@ -239,13 +240,7 @@ export default function Sidenav() {
   return (
     <Box sx={{ display: 'flex', background: '#F2F4F7' }}>
       <CssBaseline />
-      <AppBar position='fixed' open={open}>
-        <Toolbar>
-          <Typography variant='h6' noWrap component='div'>
-            Mini variant drawer
-          </Typography>
-        </Toolbar>
-      </AppBar>
+      {/* <AppBar position='fixed' open={open}></AppBar> */}
       <Drawer
         variant='permanent'
         open={open}
@@ -256,7 +251,7 @@ export default function Sidenav() {
             zIndex: 1,
             height: 'auto',
             borderRadius: '18px',
-            marginTop: '150px',
+            marginTop: '200px',
             marginLeft: '10px',
             marginRight: '10px',
             width: '50px',
@@ -485,12 +480,9 @@ export default function Sidenav() {
         </DrawerHeader>
         <Divider />
       </Drawer>
-      <Box
-        component='main'
-        sx={{ flexGrow: 1, p: 3, border: 'none', mt: '70px' }}
-      >
+      <Box component='main' sx={{ flexGrow: 1, p: 3, border: 'none' }}>
         <DrawerHeader />
-        <Box paragraph>
+        {/* <Box paragraph>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
           eiusmod tempor incididunt ut labore et dolore magna aliqua. Rhoncus
           dolor purus non enim praesent elementum facilisis leo vel. Risus at
@@ -518,8 +510,9 @@ export default function Sidenav() {
           sollicitudin nibh sit. Ornare aenean euismod elementum nisi quis
           eleifend. Commodo viverra maecenas accumsan lacus vel facilisis. Nulla
           posuere sollicitudin aliquam ultrices sagittis orci a.
-        </Box>
-        <Link to={'/viewdetails'}>View Details</Link>
+        </Box> */}
+        {/* <AccordionCard></AccordionCard> */}
+        <TrmericCard></TrmericCard>
       </Box>
 
       <Box>
@@ -564,7 +557,6 @@ export default function Sidenav() {
                   edge='end'
                   color='inherit'
                   onClick={() => {
-                    handleClear();
                     openModal(false);
                     setError({});
                   }}
@@ -723,9 +715,9 @@ export default function Sidenav() {
                 </FormControl>
                 <Box
                   sx={{
-                    display: 'flex',
-                    flexDirection: 'row',
-                    justifyContent: 'space-between',
+                    display: 'grid',
+                    gridTemplateColumns: '1fr 1fr',
+                    gridGap: '10px',
                   }}
                 >
                   <FormControl>
@@ -878,6 +870,7 @@ export default function Sidenav() {
                   flexDirection: 'row',
                   justifyContent: 'flex-end',
                   gap: 2,
+                  mt: '15px',
                 }}
               >
                 <Button
