@@ -20,7 +20,7 @@ import Modal from '@mui/material/Modal';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Radio from '@mui/material/Radio';
 import Button from '@mui/material/Button';
-import { FormControl, OutlinedInput } from '@mui/material';
+import { FormControl, FormHelperText, OutlinedInput } from '@mui/material';
 import * as yup from 'yup';
 
 import Colors from '../../../constants/Colors';
@@ -33,6 +33,7 @@ import KeyboardDoubleArrowLeftIcon from '@mui/icons-material/KeyboardDoubleArrow
 import Fonts from '../../../constants/Fonts.jsx';
 import TrmericCard from '../Card/TrmericCard.jsx';
 import AccordionCard from '../AccordionCard/AccordionCards.jsx';
+import TrText from '../TrText/TrText.jsx';
 const drawerWidth = 250;
 
 const MAX_PHONE_LENGTH = 10;
@@ -43,7 +44,6 @@ const style = {
   transform: 'translate(-50%, -50%)',
 
   bgcolor: 'background.paper',
-  border: '2px solid #000',
   boxShadow: 24,
   p: 4,
   width: '50%',
@@ -122,8 +122,8 @@ export default function Sidenav() {
   const [open, setOpen] = React.useState(true);
   const [modal, openModal] = useState(false);
 
-  const [selectedValue, setSelectedValue] = useState('');
-  const [selectedRecommend, setSelectedRecommend] = useState('');
+  const [selectedValue, setSelectedValue] = useState('no');
+  const [selectedRecommend, setSelectedRecommend] = useState('no');
 
   const handleDrawerOpen = () => {
     setOpen(true);
@@ -139,7 +139,12 @@ export default function Sidenav() {
     email: yup
       .string()
       .email('Invalid email format *')
-      .required('Email is required *'),
+      .required('Email is required *')
+      .test('valid-domain', 'Invalid top-level domain *', (value) => {
+        if (!value) return true;
+        const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return regex.test(value);
+      }),
     phone: yup
       .string()
       .matches(/^[6-9]\d{9}$/, 'Invalid phone number')
@@ -523,7 +528,10 @@ export default function Sidenav() {
           // }}
           aria-labelledby='modal-modal-title'
           aria-describedby='modal-modal-description'
-          sx={{ zIndex: '3333', padding: '2 !important' }}
+          sx={{
+            zIndex: '3333',
+            padding: '2 !important',
+          }}
         >
           <Box sx={style}>
             <Box
@@ -535,22 +543,28 @@ export default function Sidenav() {
               }}
             >
               <Box>
-                <Typography
+                <TrText
                   id='modal-title'
                   variant='h6'
                   component='h2'
-                  sx={{ fontWeight: 'bold' }}
+                  sx={{
+                    fontWeight: '600',
+                    fontFamily: Fonts.Inter,
+                    fontSize: FontSizes.fontEighteen,
+                  }}
                 >
                   Add a provider
-                </Typography>
-                <Typography
+                </TrText>
+                <TrText
                   id='modal-sub-title'
                   sx={{
                     fontSize: FontSizes.fontSixteen,
+                    fontWeight: '400',
+                    fontFamily: Fonts.Poppins,
                   }}
                 >
                   Enter the information below to add a provider
-                </Typography>
+                </TrText>
               </Box>
               <Box>
                 <IconButton
@@ -572,19 +586,21 @@ export default function Sidenav() {
                 sx={{
                   display: 'flex',
                   flexDirection: 'row',
+                  marginTop: '10px',
                   justifyContent: 'space-between',
-                  marginTop: '20px',
                 }}
               >
-                <Typography
+                <TrText
                   id='modal-modal-description'
                   sx={{
                     fontSize: FontSizes.fontSixteen,
+                    fontWeight: '400',
+                    fontFamily: Fonts.Poppins,
                   }}
                 >
                   Is this an existing providers for your company ?
-                </Typography>
-                <Box sx={{ ml: '20px' }}>
+                </TrText>
+                <Box sx={{ ml: '20px', display: 'flex', flexDirection: 'row' }}>
                   <FormControlLabel
                     value='yes'
                     control={
@@ -604,7 +620,9 @@ export default function Sidenav() {
                         }
                         sx={{
                           color: Colors.black,
-
+                          textTransform: 'none !important',
+                          fontFamily: Fonts.Poppins,
+                          fontWeight: '500',
                           backgroundImage:
                             selectedValue === 'yes'
                               ? Colors.gradient
@@ -635,6 +653,9 @@ export default function Sidenav() {
                         }
                         sx={{
                           color: Colors.black,
+                          textTransform: 'none !important',
+                          fontFamily: Fonts.Poppins,
+                          fontWeight: '400',
                           backgroundImage:
                             selectedValue === 'no'
                               ? Colors.gradient
@@ -673,8 +694,11 @@ export default function Sidenav() {
                     onBlur={() =>
                       validateField('companyName', formData.companyName)
                     }
+                    error={error?.companyName}
                   />
-                  <ErrorMessage error={error?.companyName} />
+                  {/* {error && (
+                    <FormHelperText>{error?.companyName}</FormHelperText>
+                  )} */}
                 </FormControl>
 
                 <OutlinedInput
@@ -692,8 +716,11 @@ export default function Sidenav() {
                   onBlur={() =>
                     validateField('companyWebsite', formData.companyWebsite)
                   }
+                  error={error?.companyWebsite}
                 />
-                <ErrorMessage error={error?.companyWebsite} />
+                {/* {error && (
+                  <FormHelperText>{error?.companyWebsite}</FormHelperText>
+                )} */}
                 <FormControl>
                   <OutlinedInput
                     id='my-input'
@@ -710,8 +737,11 @@ export default function Sidenav() {
                     onBlur={() =>
                       validateField('contactName', formData.contactName)
                     }
+                    error={error?.contactName}
                   />
-                  <ErrorMessage error={error?.contactName} />
+                  {/* {error && (
+                    <FormHelperText>{error?.contactName}</FormHelperText>
+                  )} */}
                 </FormControl>
                 <Box
                   sx={{
@@ -734,8 +764,9 @@ export default function Sidenav() {
                         handleInputChange('email', e.target.value)
                       }
                       onBlur={() => validateField('email', formData.email)}
+                      error={error.email}
                     />
-                    <ErrorMessage error={error?.email} />
+                    {/* {error && <FormHelperText>{error?.email}</FormHelperText>} */}
                   </FormControl>
                   <FormControl>
                     <OutlinedInput
@@ -748,14 +779,19 @@ export default function Sidenav() {
                       }}
                       value={formData.phone}
                       type='number'
-                      inputProps={{ maxLength: MAX_PHONE_LENGTH }}
+                      inputProps={{
+                        maxLength: MAX_PHONE_LENGTH,
+                        inputMode: 'numeric',
+                        pattern: '[0-9]*',
+                      }}
                       onChange={(e) => {
                         const value = e.target.value.slice(0, MAX_PHONE_LENGTH);
                         handleInputChange('phone', value);
                       }}
                       onBlur={() => validateField('phone', formData.phone)}
+                      error={error?.phone}
                     />
-                    <ErrorMessage error={error?.phone} />
+                    {/* {error && <FormHelperText>{error?.phone}</FormHelperText>} */}
                   </FormControl>
                 </Box>
                 <FormControl>
@@ -763,6 +799,8 @@ export default function Sidenav() {
                     id='my-input'
                     aria-describedby='my-helper-text'
                     placeholder='Please describe the reason for including this provider on this mission.'
+                    multiline
+                    rows={3}
                     sx={{
                       borderRadius: '15px',
                       width: '100%',
@@ -774,8 +812,11 @@ export default function Sidenav() {
                     onBlur={() =>
                       validateField('description', formData.description)
                     }
+                    error={error?.description}
                   />
-                  <ErrorMessage error={error?.description} />
+                  {/* {error && (
+                    <FormHelperText>{error?.description}</FormHelperText>
+                  )} */}
                 </FormControl>
               </Box>
               <Box
@@ -790,6 +831,7 @@ export default function Sidenav() {
                   id='modal-modal-description'
                   sx={{
                     fontSize: FontSizes.fontSixteen,
+                    fontFamily: Fonts.Poppins,
                   }}
                 >
                   Would you recommend this Provider into Trmeric community?
@@ -814,6 +856,9 @@ export default function Sidenav() {
                         }
                         sx={{
                           color: Colors.black,
+                          textTransform: 'none !important',
+                          fontFamily: Fonts.Poppins,
+                          fontWeight: '500',
                           backgroundImage:
                             selectedRecommend === 'yes'
                               ? Colors.gradient
@@ -844,10 +889,9 @@ export default function Sidenav() {
                         }
                         sx={{
                           color: Colors.black,
-                          // bgcolor:
-                          //   selectedRecommend === 'no'
-                          //     ? Colors.primary
-                          //     : Colors.lightGrey,
+                          textTransform: 'none !important',
+                          fontFamily: Fonts.Poppins,
+                          fontWeight: '500',
                           backgroundImage:
                             selectedRecommend === 'no'
                               ? Colors.gradient
@@ -874,7 +918,13 @@ export default function Sidenav() {
                 }}
               >
                 <Button
-                  sx={{ color: Colors.black, bgcolor: Colors.lightGrey }}
+                  sx={{
+                    color: Colors.black,
+                    bgcolor: Colors.lightGrey,
+                    textTransform: 'none !important',
+                    fontFamily: Fonts.Poppins,
+                    fontWeight: '500',
+                  }}
                   onClick={() => {
                     handleClear();
                     setError({});
@@ -885,11 +935,13 @@ export default function Sidenav() {
                 <Button
                   sx={{
                     color: Colors.black,
-                    // bgcolor: Colors.primary,
+                    fontFamily: Fonts.Poppins,
+                    fontWeight: '500',
                     backgroundImage: Colors.gradient,
                     '&:hover': {
                       bgcolor: Colors.primary,
                     },
+                    textTransform: 'none !important',
                   }}
                   onClick={() => {
                     handleSubmit();

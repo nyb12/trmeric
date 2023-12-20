@@ -176,11 +176,11 @@ html {
 }
 
 .display-view-details {
-  display: flex;
-  justify-content: space-evenly;
-  flex-direction: row;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
   gap: 20px;
   width: 95%;
+  margin: 0 auto;
 }
 
 .display-column-center {
@@ -201,4 +201,24 @@ html {
   width: 90%;
   margin: 10px;
   gap: 24px;
+}
+
+.details-box-video {
+  flex: 0 0 auto;
+  order: -1;
+  margin-right: 10px;
+}
+
+.details-box-accordion {
+  background-color: white;
+  padding: 10px;
+  height: 80vh;
+}
+
+input[type='number']::-webkit-inner-spin-button,
+input[type='number']::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  margin: 0;
 }

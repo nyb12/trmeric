@@ -165,7 +165,7 @@ export default function ViewDetails() {
                     title={'10+ Years'}
                   />
                 </Box>
-                <Divider orientation='vertical' sx={{ height: '20px' }} />
+                <Divider orientation='vertical' className='.ht-100vh' />
                 <Box className='dispay-column'>
                   <TrText
                     sx={{
@@ -182,7 +182,7 @@ export default function ViewDetails() {
                   />
                 </Box>
 
-                <Divider orientation='vertical' sx={{ height: '20px' }} />
+                <Divider orientation='vertical' className='.ht-100vh' />
                 <Box className='dispay-column'>
                   <TrText
                     sx={{
@@ -206,11 +206,7 @@ export default function ViewDetails() {
                   component='img'
                   alt='Featured_video'
                   src={Featured_video}
-                  sx={{
-                    flex: '0 0 auto',
-                    order: -1,
-                    marginRight: '10px',
-                  }}
+                  className='details-box-video'
                 />
               </Box>
             </Box>
@@ -236,13 +232,7 @@ export default function ViewDetails() {
               <AccordionDetails>
                 <Box className='outer-box'>
                   <Box className='display-view-details'>
-                    <Box
-                      sx={{
-                        backgroundColor: 'white',
-                        padding: '10px',
-                        height: '80vh',
-                      }}
-                    >
+                    <Box className='details-box-accordion'>
                       <TrText
                         sx={{
                           fontSize: FontSizes.fontFourteen,
@@ -254,13 +244,7 @@ export default function ViewDetails() {
                         }
                       />
                     </Box>
-                    <Box
-                      sx={{
-                        backgroundColor: 'white',
-                        padding: '10px',
-                        height: '80vh',
-                      }}
-                    >
+                    <Box className='details-box-accordion'>
                       <TrText
                         sx={{ fontWeight: '600' }}
                         title={'Performance Analysis'}
