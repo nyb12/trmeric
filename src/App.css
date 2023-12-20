@@ -182,3 +182,23 @@ html {
   gap: 20px;
   width: 95%;
 }
+
+.display-column-center {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.details-box-main {
+  height: auto;
+  width: 100%;
+  margin-top: 140px;
+  display: flex;
+}
+
+.details-box-inner {
+  height: auto;
+  width: 90%;
+  margin: 10px;
+  gap: 24px;
+}

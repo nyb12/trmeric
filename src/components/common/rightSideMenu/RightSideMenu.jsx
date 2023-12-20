@@ -85,8 +85,8 @@ const RightSideMenu = () => {
             borderRadius: '10px',
             marginTop: '150px',
             marginLeft: '10px',
-            marginRight: '10px',
-            width: '60px',
+            marginRight: '20px',
+            width: '104px',
           },
         }}
       >
@@ -100,7 +100,7 @@ const RightSideMenu = () => {
               <CalendarTodayIcon />,
               <ChatBubbleOutlineIcon />,
             ].map((icon, index) => (
-              <ListItem key={index}>
+              <ListItem key={index} className='display-column-center'>
                 <ListItemIcon
                   className={classes.customIcon}
                   sx={{ minWidth: '10px' }}
@@ -121,12 +121,14 @@ const RightSideMenu = () => {
       >
         <List>
           <ListItem>
-            <Box
-              sx={{ display: 'flex', flexDirection: 'column', boxShadow: '' }}
-            >
+            <Box>
               <ListItemText primary='Notes' />
 
-              <Box sx={{ mb: '10px' }}>
+              <Box
+                sx={{
+                  mb: '10px',
+                }}
+              >
                 {isCardOpen ? (
                   <Box />
                 ) : (
@@ -134,7 +136,7 @@ const RightSideMenu = () => {
                     variant='text'
                     startIcon={<AddIcon />}
                     // onClick={handleNewNoteClick}
-                    sx={{ color: Colors.black, textTransform: 'none' }}
+                    sx={{ color: Colors.black }}
                     onClick={handleNewNoteClick}
                   >
                     New note
@@ -143,7 +145,7 @@ const RightSideMenu = () => {
               </Box>
               <Box>
                 {isCardOpen && <MyNotes setIsCardOpen={setIsCardOpen} />}
-                <Box sx={{ marginTop: '20px' }}>
+                <Box className='mt-20'>
                   <MyNotesCards />
                 </Box>
               </Box>
