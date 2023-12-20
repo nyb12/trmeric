@@ -1,11 +1,10 @@
 // import * as React from "react";
-import { Button, Grid, Modal } from "@mui/material";
+import { Button, Checkbox, Grid, Modal } from "@mui/material";
 import Box from "@mui/material/Box";
 import React, { useState } from "react";
 import dum1 from "./../../../../src/assets/Screen1.png";
-import dum2 from "./../../../../src/assets/Screen3.png"
+import dum2 from "./../../../../src/assets/Screen3.png";
 import dum3 from "./../../../../src/assets/Screen1.png";
-import { useNavigate } from "react-router-dom";
 
 export default function Tutorial() {
   const style = {
@@ -23,7 +22,6 @@ export default function Tutorial() {
   const [counter, setCounter] = useState(1);
 
   const [isSkip, setIsSkip] = useState(false);
-  const navigate = useNavigate();
   const handelNext = () => {
     if (counter <= 3) {
       setCounter(counter + 1);
@@ -39,6 +37,15 @@ export default function Tutorial() {
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
+  const [isChecked, setIsChecked] = useState({
+    customerRating1: false,
+    customerRating2: false,
+    customerRating3: false,
+    customerRating4: false,
+    customerRating5: false,
+    customerRating6: false,
+  });
+  // console.log(isChecked.customerRating1);
   return (
     <>
       <Button onClick={handleOpen}>Open modal</Button>
@@ -110,23 +117,19 @@ export default function Tutorial() {
                       <Box>
                         <Box>MEET YOUR WORKSPACE </Box>
 
-                        <Box className="main_title">
-                          Action Panel 
-                        </Box>
+                        <Box className="main_title">Action Panel</Box>
                         <Box className="sub_title">
-                            Keep everything at your fingertips with the Action Panel.  
+                          Keep everything at your fingertips with the Action
+                          Panel.
                         </Box>
+                        <Box className="sub_title">Copilot</Box>
                         <Box className="sub_title">
-                          Copilot
+                          Discuss details, get guidance, or seek advice
                         </Box>
+                        <Box className="sub_title">knowledge Assets</Box>
                         <Box className="sub_title">
-                          Discuss details, get guidance, or seek advice   
-                        </Box>
-                        <Box className="sub_title">
-                          knowledge Assets 
-                        </Box>
-                        <Box className="sub_title">
-                          Capture Key points and reminders and essential resources  
+                          Capture Key points and reminders and essential
+                          resources
                         </Box>
                       </Box>
                     ) : (
@@ -279,7 +282,7 @@ export default function Tutorial() {
                 xs={8}
               >
                 <Box>
-                  <img className="img-responsive" src={dum3} alt="dum1"></img>
+                  <img className="img-responsive" src={dum2} alt="dum1"></img>
                 </Box>
               </Grid>
             ) : (
@@ -293,23 +296,215 @@ export default function Tutorial() {
                 xs={12}
               >
                 <Box>
-                  <h1>shreyas shinde</h1>
-                  <img className="img-responsive" src={dum1} alt="dum1"></img>
-                </Box>
-                <Box>
-                  {counter === 1 ? (
-                    ""
-                  ) : (
-                    <button
-                      onClick={() => {
-                        setCounter(1);
-                        setIsSkip(false);
-                      }}
-                      class="btn step-back back_btn"
-                    >
-                      Back
+                  <Box>
+                    <Box>
+                      <Box className="text-center">
+                        Build your Provider Comparison View{" "}
+                      </Box>
+                      <Box className="text-center">
+                        Choose What is important for you
+                      </Box>
+                      <br /> <br /> <br />
+                      <Box className="text-center">
+                        Choose What is important for you
+                      </Box>
+                      <br /> <br />
+                      <Box className="flex-center gap-10 mt-10">
+                        <Box
+                          className={`${
+                            isChecked.customerRating1
+                              ? "checkBoxBorderBlack"
+                              : "checkBoxBorder"
+                          }`}
+                        >
+                          <Box className="flex-center">
+                            <Checkbox
+                              onClick={(e) =>
+                                setIsChecked({
+                                  ...isChecked,
+                                  customerRating1: e.target.checked,
+                                })
+                              }
+                            />
+                            <Box
+                              className={`${
+                                isChecked.customerRating1
+                                  ? "text-white"
+                                  : "text-black"
+                              }`}
+                            >
+                              Customer Rating
+                            </Box>
+                          </Box>
+                        </Box>
+                        <Box
+                          className={`${
+                            isChecked.customerRating2
+                              ? "checkBoxBorderBlack"
+                              : "checkBoxBorder"
+                          }`}
+                        >
+                          <Box className="flex-center">
+                            <Checkbox
+                              onClick={(e) =>
+                                setIsChecked({
+                                  ...isChecked,
+                                  customerRating2: e.target.checked,
+                                })
+                              }
+                            />
+                            <Box
+                              className={`${
+                                isChecked.customerRating2
+                                  ? "text-white"
+                                  : "text-black"
+                              }`}
+                            >
+                              Customer Rating
+                            </Box>
+                          </Box>
+                        </Box>
+                        <Box
+                          className={`${
+                            isChecked.customerRating3
+                              ? "checkBoxBorderBlack"
+                              : "checkBoxBorder"
+                          }`}
+                        >
+                          <Box className="flex-center">
+                            <Checkbox
+                              onClick={(e) =>
+                                setIsChecked({
+                                  ...isChecked,
+                                  customerRating3: e.target.checked,
+                                })
+                              }
+                            />
+                            <Box
+                              className={`${
+                                isChecked.customerRating3
+                                  ? "text-white"
+                                  : "text-black"
+                              }`}
+                            >
+                              Customer Rating
+                            </Box>
+                          </Box>
+                        </Box>
+                      </Box>
+                      <Box className="flex-center gap-10 mt-10">
+                        <Box
+                          className={`${
+                            isChecked.customerRating4
+                              ? "checkBoxBorderBlack"
+                              : "checkBoxBorder"
+                          }`}
+                        >
+                          <Box className="flex-center">
+                            <Checkbox
+                              onClick={(e) =>
+                                setIsChecked({
+                                  ...isChecked,
+                                  customerRating4: e.target.checked,
+                                })
+                              }
+                            />
+                            <Box
+                              className={`${
+                                isChecked.customerRating4
+                                  ? "text-white"
+                                  : "text-black"
+                              }`}
+                            >
+                              Customer Rating
+                            </Box>
+                          </Box>
+                        </Box>
+                        <Box
+                          className={`${
+                            isChecked.customerRating5
+                              ? "checkBoxBorderBlack"
+                              : "checkBoxBorder"
+                          }`}
+                        >
+                          <Box className="flex-center">
+                            <Checkbox
+                              onClick={(e) =>
+                                setIsChecked({
+                                  ...isChecked,
+                                  customerRating5: e.target.checked,
+                                })
+                              }
+                            />
+                            <Box
+                              className={`${
+                                isChecked.customerRating5
+                                  ? "text-white"
+                                  : "text-black"
+                              }`}
+                            >
+                              Customer Rating
+                            </Box>
+                          </Box>
+                        </Box>
+                        <Box
+                          className={`${
+                            isChecked.customerRating6
+                              ? "checkBoxBorderBlack"
+                              : "checkBoxBorder"
+                          }`}
+                        >
+                          <Box className="flex-center">
+                            <Checkbox
+                              onClick={(e) =>
+                                setIsChecked({
+                                  ...isChecked,
+                                  customerRating6: e.target.checked,
+                                })
+                              }
+                            />
+                            <Box
+                              className={`${
+                                isChecked.customerRating6
+                                  ? "text-white "
+                                  : "text-black"
+                              }`}
+                            >
+                              Customer Rating
+                            </Box>
+                          </Box>
+                        </Box>
+                      </Box>
+                      <Box className="or">OR</Box>
+                      <Box>
+                        Began with Trmeric curated suggesstion. Configure
+                        anything to fit your needs.
+                      </Box>
+                      <Box className="flex-center">
+                        <Box className="checkBoxBorder mt-20">
+                          Star with our picks
+                        </Box>
+                      </Box>
+                    </Box>
+                  </Box>
+                  <Box className="mt-10 pb-20 flex-end gap-10">
+                    {counter === 1 ? (
+                      ""
+                    ) : (
+                      <button
+                        onClick={() => {
+                          setCounter(1);
+                          setIsSkip(false);
+                        }}
+                        class="btn step-back back_btn"
+                      >
+                        Back
+                      </button>
+                    )}
+                    <button onClick={handelNext} class="btn yell_btn step-next">
+                      Get Started
                     </button>
-                  )}
+                  </Box>
                 </Box>
               </Grid>
             ) : (
