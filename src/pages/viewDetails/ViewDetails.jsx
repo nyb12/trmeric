@@ -71,22 +71,8 @@ export default function ViewDetails() {
     <div>
       <Header />
       <SubHeader detailedPage />
-      <Box
-        sx={{
-          height: 'auto',
-          width: '100%',
-          marginTop: '140px',
-          display: 'flex',
-        }}
-      >
-        <Box
-          sx={{
-            height: 'auto',
-            width: '90%',
-            margin: '10px',
-            gap: '24px',
-          }}
-        >
+      <Box className='details-box-main'>
+        <Box className='details-box-inner'>
           <Box className='display-row'>
             <a
               href='#'

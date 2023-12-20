@@ -13,6 +13,7 @@ import {Nexatech} from "../../../svg.js";
 import Rating from '@mui/material/Rating';
 import Stack from '@mui/material/Stack';
 import { SpatialTracking } from "@mui/icons-material";
+import BookmarkBorderIcon from '@mui/icons-material/BookmarkBorder';
 
 
 
@@ -31,7 +32,7 @@ export default function TrmericCard() {
       <CardContent>
         <div className="display-row p-24 g-8">
           
-            <img src={Nexatech} alt="logo" />
+            <img className="logo"src={Nexatech} alt="logo" />
          
           <TrText sx={{
                     fontSize: FontSizes.fontEighteen,
@@ -42,12 +43,19 @@ export default function TrmericCard() {
              Nexatech Solutions
           </TrText>
        
-        </div>
+        </div>  
       </CardContent>
+
       <CardContent className="display-row  p-24 g-8" >
         <Button className="primary-btn" size="medium" onClick={()=>{navigate('/viewdetails')}}>View Details</Button>
        
-        Shortlist 
+       <div className="dflex">
+       <span>Shortlist</span>
+        <BookmarkBorderIcon className="ml-8 shortlist-color"></BookmarkBorderIcon>
+       </div>
+       
+       
+        
       </CardContent>
       <CardContent>
         <div className="display-start pl-24 pr-24 g-8">
@@ -64,13 +72,14 @@ export default function TrmericCard() {
          
          <div>
           <div  className="display-start-row  g-8">
-            <div>
-              <Stack spacing={2}>
-               <Rating name="half-rating-read" defaultValue={3.0} precision={0.5} readOnly size="small"/>
-              </Stack>
+            <div className="rating">
+              
+            <span>3 </span> <Rating name="half-rating-read" className="mt-5"defaultValue={3.0} precision={0.5} readOnly size="small"/>
+             
           </div>
+         
           <div>
-                 <a href="">45 Reviews</a>
+                 <a href="#" className="shortlist-color">45 Reviews</a>
                  
           </div>
           </div>
@@ -80,7 +89,7 @@ export default function TrmericCard() {
       </CardContent>
 
       <CardContent>
-        <div className="display-start pl-24 pr-24  g-8">
+        <div className="display-start pl-24   g-8">
         <div>
           <TrText sx={{
                     fontSize: FontSizes.fontFourteen,
@@ -98,7 +107,7 @@ export default function TrmericCard() {
                     fontWeight: '400',
                   
                   }}>
-            Established 2005, HQ in San Jose
+            Established 2005, HQ in San Fransico
           </TrText>
           </div>
         </div>
