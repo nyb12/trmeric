@@ -119,7 +119,7 @@ export default function AccordionCard() {
         </AccordionSummary>
         <AccordionDetails>
           <Typography sx={{display:'flex',flexDirection:'row', justifyContent:"flex-start"}}>
-          <TrmericCard />  <TrmericCard />  <TrmericCard />
+          <TrmericCard />  <TrmericCard />  <TrmericCard />  <TrmericCard />
           </Typography>
         </AccordionDetails>
       </Accordion>
