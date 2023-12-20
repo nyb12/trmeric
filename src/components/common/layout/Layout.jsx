@@ -7,12 +7,14 @@ import RightSideMenu from '../rightSideMenu/RightSideMenu';
 import { Box } from '@mui/material';
 import SubHeader from '../subHeader/subHearder';
 
+
 function Layout({ children }) {
   return (
     <>
       <Header />
       <Box>
-        <SubHeader />
+       
+        <SubHeader></SubHeader>
       </Box>
       <div className='page-container'>
         <Sidenav>{children}</Sidenav>

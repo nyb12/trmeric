@@ -46,7 +46,7 @@ export default function TrmericCard() {
         </div>  
       </CardContent>
 
-      <CardContent className="display-row  p-24 g-8" >
+      <CardContent className="display-row  pt-24 pl-24 pb-24 g-8" >
         <Button className="primary-btn" size="medium" onClick={()=>{navigate('/viewdetails')}}>View Details</Button>
        
        <div className="dflex">

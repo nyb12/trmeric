@@ -1,38 +1,53 @@
 import * as React from 'react';
+import Box from '@mui/material/Box';
+import Stepper from '@mui/material/Stepper';
+import Step from '@mui/material/Step';
+import StepLabel from '@mui/material/StepLabel';
+import TrText from '../TrText/TrText';
+import Fonts from '../../../constants/Fonts';
+import { FontSizes } from "../../../constants/Sizes";
 
-// importing material UI components
-import { Box, Paper } from '@mui/material';
-import AppBar from '@mui/material/AppBar';
-import Typography from '@mui/material/Typography';
-import ArrowBackIcon from '@mui/icons-material/ArrowBack';
-import { useNavigate } from 'react-router-dom';
+const steps = [
+  'Discover',
+  'Engage',
+  'Build',
+  'Transact'
+];
 
-export default function SubHeader({ detailedPage }) {
-  const navigate = useNavigate();
-  const steps = ['Discover', 'Engage', 'Build', 'Transact'];
+export default function SubHeader() {
   return (
-    <>
-      <AppBar position='fixed' style={{ zIndex: 2222, marginTop: '70px' }}>
-        <Paper square sx={{ padding: 2, color: '#000', background: '#fff' }}>
-          <Box className='display-row-flex-start'>
-            {detailedPage ? (
-              <ArrowBackIcon
-                onClick={() => {
-                  navigate(-1);
-                }}
-                sx={{ cursor: 'pointer' }}
-              />
-            ) : (
-              <></>
-            )}
-            {detailedPage ? (
-              <Typography>NexaTech Solution</Typography>
-            ) : (
-              <Typography>Digital Inventory System</Typography>
-            )}
-          </Box>
-        </Paper>
-      </AppBar>
-    </>
+    <div>
+      <div className="h-200 p-fixed">
+        <div className="display-column">
+          <div className='display-start-row mt-5 pt-8 pl-24 pr-24'>
+            <div className="lh-24 mb-8">
+              <TrText sx={{
+                    fontSize: FontSizes.fontEighteen,
+                    fontFamily: Fonts.Poppins,
+                    fontWeight: '400',
+                  
+                  }}>
+                Digital Inventory System
+              </TrText>
+            </div>
+          <div>
+            
+            <button className='secondary-btn'>Invite People</button>
+            
+          </div>
+          </div>
+          <div>
+          <Stepper className='w-50 pl-24' activeStep={1}>
+        {steps.map((label) => (
+          <Step key={label}>
+            <StepLabel>{label}</StepLabel>
+          </Step>
+        ))}
+      </Stepper>
+          </div>
+        </div>
+      </div>
+    
+    </div>
   );
 }
