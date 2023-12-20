@@ -29,9 +29,11 @@ margin-bottom: 8px;
 
 /* Widths */
 .w-90{
-  width: 93%;
+  width: 67%;
 }
-
+.w-auto{
+  width: auto;
+}
 /* Flex */
 .display-column{
   display: flex;
@@ -136,4 +138,8 @@ font-weight: 600 !important;
 .rating{
   width:150px;
   border-right: 1px solid #999;
+}
+
+.primary-color{
+  background-color: (linear-gradient(83deg, #FF8A00 0%, #FFC000 100%))
 }

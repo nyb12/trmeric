@@ -23,7 +23,7 @@ export default function TrmericCard() {
 
 
   return (
-    <Card sx={{ marginTop:'120px',maxWidth: 345 }}>
+    <Card sx={{ maxWidth: 345 }}>
       {/* <CardMedia
         sx={{ height: 140 }}
         image="https://picsum.photos/200/300"

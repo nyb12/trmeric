@@ -10,7 +10,7 @@ import TrText from "../TrText/TrText";
 import '../../../../src/index.css';
 import Fonts from '../../../constants/Fonts';
 import { FontSizes } from "../../../constants/Sizes";
-
+//import {Colors} from "../../../constants/Colors";
 
 
 const Accordion = styled((props) => (
@@ -21,9 +21,13 @@ const Accordion = styled((props) => (
     borderBottom: 0,
    
   },
+ 
   "&:before": {
     display: "none",
   },
+  borderTop:`8px solid #FF8A00`,
+  borderRadius:"20px",
+  marginBottom:"32px"
 }));
 
 const AccordionSummary = styled((props) => (
@@ -48,6 +52,8 @@ const AccordionSummary = styled((props) => (
 const AccordionDetails = styled(MuiAccordionDetails)(({ theme }) => ({
   padding: theme.spacing(2),
   borderTop: "1px solid rgba(0, 0, 0, .125)",
+  
+
 }));
 
 export default function AccordionCard() {
@@ -60,7 +66,7 @@ export default function AccordionCard() {
   React.useEffect(() => {
     const handleScroll = () => {
       const scrollThreshold1 = -100;
-      const scrollThreshold2 = 200;
+      const scrollThreshold2 = 250;
       const scrollThreshold3 = 350;
       if (window.scrollY > scrollThreshold3) {
         setExpanded("panel3");
@@ -112,43 +118,71 @@ export default function AccordionCard() {
          
         </AccordionSummary>
         <AccordionDetails>
-          <Typography sx={{display:'flex',flexDirection:'row', gap:'40px'}}>
+          <Typography sx={{display:'flex',flexDirection:'row', justifyContent:"flex-start"}}>
           <TrmericCard />  <TrmericCard />  <TrmericCard />
           </Typography>
         </AccordionDetails>
       </Accordion>
 
-      <Accordion
+      <Accordion className="w-90"
         expanded={expanded === "panel2"}
         onChange={handleChange("panel2")}
-        sx={{marginTop:'300px',marginBottom:'300px'}}
+        sx={{}}
       >
         <AccordionSummary aria-controls="panel2d-content" id="panel2d-header">
-          <Typography sx={{ fontWeight: "bold" }}>
-            Collapsible Group Item #2
-          </Typography>
+        <div className="display-column ml-8">
+            <div className="lh-24 mb-8"><TrText sx={{
+                    fontSize: FontSizes.fontEighteen,
+                    fontFamily: Fonts.Poppins,
+                    fontWeight: '600',
+                  
+                  }}>
+             Evaluation
+          </TrText></div>
+          <div> <TrText sx={{
+                    fontSize: FontSizes.fontFourteen,
+                    fontFamily: Fonts.Poppins,
+                    fontWeight: '400',
+                  }}
+           title="Compare and Assess Providers"></TrText></div>
+
+          </div>
         </AccordionSummary>
         <AccordionDetails>
         <Typography sx={{display:'flex',flexDirection:'row', gap:'40px'}}>
-          <TrmericCard />  <TrmericCard />  <TrmericCard />
+        hi
           </Typography>
         </AccordionDetails>
       </Accordion>
 
 
-      <Accordion
+      <Accordion className="w-90"
         expanded={expanded === "panel3"}
         onChange={handleChange("panel3")}
-        sx={{marginTop:'300px',marginBottom:'300px'}}
+        sx={{}}
       >
         <AccordionSummary aria-controls="panel3d-content" id="panel3d-header">
-          <Typography sx={{ fontWeight: "bold" }}>
-            Collapsible Group Item #3
-          </Typography>
+        <div className="display-column ml-8">
+            <div className="lh-24 mb-8"><TrText sx={{
+                    fontSize: FontSizes.fontEighteen,
+                    fontFamily: Fonts.Poppins,
+                    fontWeight: '600',
+                  
+                  }}>
+             Milestones
+          </TrText></div>
+          <div> <TrText sx={{
+                    fontSize: FontSizes.fontFourteen,
+                    fontFamily: Fonts.Poppins,
+                    fontWeight: '400',
+                  }}
+           title="Customize and Track Engagement Stages"></TrText></div>
+
+          </div>
         </AccordionSummary>
         <AccordionDetails>
         <Typography sx={{display:'flex',flexDirection:'row', gap:'40px'}}>
-          <TrmericCard />  <TrmericCard />  <TrmericCard />
+          hi
           </Typography>
         </AccordionDetails>
       </Accordion> 
