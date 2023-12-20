@@ -44,11 +44,11 @@ export default function TrmericCard() {
        
         </div>
       </CardContent>
-      <CardActions className="display-row p-24 g-8" >
+      <CardContent className="display-row  p-24 g-8" >
         <Button className="primary-btn" size="medium" onClick={()=>{navigate('/viewdetails')}}>View Details</Button>
        
         Shortlist 
-      </CardActions>
+      </CardContent>
       <CardContent>
         <div className="display-start pl-24 pr-24 g-8">
           <div>
@@ -65,8 +65,8 @@ export default function TrmericCard() {
          <div>
           <div  className="display-start-row  g-8">
             <div>
-              <Stack spacing={1}>
-               <Rating name="half-rating-read" defaultValue={3.0} precision={0.5} readOnly />
+              <Stack spacing={2}>
+               <Rating name="half-rating-read" defaultValue={3.0} precision={0.5} readOnly size="small"/>
               </Stack>
           </div>
           <div>
