@@ -92,7 +92,6 @@ export default function Sidenav() {
       <CssBaseline />
       <Box component='main' sx={{ flexGrow: 1, p: 3, border: 'none' }}>
         <DrawerHeader />
-        <TrmericCard></TrmericCard>
       </Box>
     </Box>
   );

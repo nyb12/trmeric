@@ -71,7 +71,7 @@ export default function ViewDetails() {
     <div>
       {/* <Header /> */}
       <ResponsiveDrawer detailedPage>
-        <SubHeader detailedPage />
+        {/* <SubHeader detailedPage /> */}
         <Box className='details-box-main'>
           <Box className='details-box-inner'>
             <Box className='display-row'>

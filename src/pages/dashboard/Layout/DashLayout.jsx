@@ -182,6 +182,7 @@ const ResponsiveDrawer = ({ children, detailedPage }) => {
           display: 'flex',
         }}
       >
+        {/* Left Side menu */}
         <CssBaseline />
         {/* <MuiAppBar
           position='fixed'
@@ -192,8 +193,8 @@ const ResponsiveDrawer = ({ children, detailedPage }) => {
           </Toolbar>
         </MuiAppBar> */}
         <Header />
-        <SubHeader />
-        {/* {detailedPage ? (
+        {detailedPage ? <SubHeader detailedPage /> : <SubHeader />}
+        {detailedPage ? (
           <Box></Box>
         ) : (
           <Drawer
@@ -410,222 +411,9 @@ const ResponsiveDrawer = ({ children, detailedPage }) => {
             </DrawerHeader>
             <Divider />
           </Drawer>
-        )} */}
-        {/* remove after changes */}
-        <Drawer
-          variant='permanent'
-          open={openLeft}
-          PaperProps={{
-            sx: {
-              border: 'none',
-              background: 'white',
-              zIndex: 1,
-              height: 'auto',
-              borderRadius: '18px',
-              marginTop: '200px',
-              marginLeft: '10px',
-              marginRight: '10px',
-              width: '50px',
-            },
-          }}
-        >
-          <List>
-            <ListItem>
-              <ListItemButton
-                onClick={() => {
-                  openModal(true);
-                }}
-                sx={{
-                  minHeight: 48,
-                  display: 'flex',
-                  justifyContent: openLeft ? 'initial' : 'center',
-                  alignItems: 'center',
+        )}
 
-                  border: '1px solid #D0D5DD',
-                  borderRadius: '8px',
-                }}
-              >
-                <ListItemIcon
-                  sx={{
-                    minWidth: 0,
-                    ml: openLeft ? 0 : 'auto',
-
-                    alignItems: 'center',
-                    color: '#FF8A00',
-                  }}
-                >
-                  <AddIcon></AddIcon>
-                </ListItemIcon>
-                <ListItemText
-                  sx={{
-                    fontWeight: '500',
-                    opacity: openLeft ? 1 : 0,
-                    marginRight: '5px',
-                  }}
-                >
-                  <b>Add my own provider</b>
-                </ListItemText>
-              </ListItemButton>
-            </ListItem>
-            <Divider></Divider>
-
-            <ListItem disablePadding sx={{ display: 'flex' }}>
-              <ListItemButton
-                sx={{
-                  minHeight: 48,
-                  display: 'flex',
-                  justifyContent: openLeft ? 'initial' : 'center',
-                  px: 2.5,
-                }}
-              >
-                <ListItemIcon
-                  sx={{
-                    minWidth: 0,
-                    ml: openLeft ? 0 : 'auto',
-
-                    alignItems: 'center',
-                    color: '#FF8A00',
-                  }}
-                >
-                  <Box
-                    component='img'
-                    alt='The house from the offer.'
-                    src={Provdr}
-                    sx={{
-                      flex: '0 0 auto',
-                      order: -1,
-                      marginRight: '10px',
-                    }}
-                  />
-                </ListItemIcon>
-                <ListItemText
-                  sx={{
-                    opacity: openLeft ? 1 : 0,
-                    fontWeight: 'bold',
-                  }}
-                >
-                  <b>Provider Summary</b>
-                </ListItemText>
-              </ListItemButton>
-            </ListItem>
-            <Divider></Divider>
-
-            <ListItem disablePadding sx={{ display: 'flex' }}>
-              <ListItemButton
-                sx={{
-                  minHeight: 48,
-                  display: 'flex',
-                  justifyContent: openLeft ? 'initial' : 'center',
-                  px: 2.5,
-                }}
-              >
-                <ListItemIcon
-                  sx={{
-                    minWidth: 0,
-                    ml: openLeft ? 0 : 'auto',
-
-                    alignItems: 'center',
-                    color: '#344054',
-                  }}
-                >
-                  <Box
-                    component='img'
-                    alt='The house from the offer.'
-                    src={Eval}
-                    sx={{
-                      flex: '0 0 auto',
-                      order: -1,
-                      marginRight: '30px',
-                      marginLeft: openLeft ? '15px ' : '22px',
-                    }}
-                  />
-                </ListItemIcon>
-                <ListItemText
-                  sx={{
-                    opacity: openLeft ? 1 : 0,
-                  }}
-                >
-                  <b>Evaluation</b>
-                </ListItemText>
-              </ListItemButton>
-            </ListItem>
-            <Divider></Divider>
-
-            <ListItem disablePadding sx={{ display: 'flex' }}>
-              <ListItemButton
-                sx={{
-                  minHeight: 48,
-                  display: 'flex',
-                  justifyContent: openLeft ? 'initial' : 'center',
-                  px: 2.5,
-                }}
-              >
-                <ListItemIcon
-                  sx={{
-                    minWidth: 0,
-                    ml: openLeft ? 0 : 'auto',
-
-                    alignItems: 'center',
-                    color: '#344054',
-                  }}
-                >
-                  <Box
-                    component='img'
-                    alt='The house from the offer.'
-                    src={Milestones}
-                    sx={{
-                      flex: '0 0 auto',
-                      order: -1,
-                      marginRight: '30px',
-                      marginLeft: openLeft ? '15px ' : '22px',
-                    }}
-                  />
-                </ListItemIcon>
-                <ListItemText
-                  sx={{
-                    opacity: openLeft ? 1 : 0,
-                    fontFamily: Fonts.Noto_Sans_KR,
-                  }}
-                >
-                  <b>Milestones</b>
-                </ListItemText>
-              </ListItemButton>
-            </ListItem>
-          </List>
-
-          <Divider></Divider>
-          <DrawerHeader
-            sx={{
-              background: '#F2F4F7',
-            }}
-          >
-            {openLeft === false ? (
-              <IconButton
-                color='inherit'
-                aria-label='open drawer'
-                onClick={() => {
-                  setOpenLeft(true);
-                }}
-                edge='start'
-              >
-                <KeyboardDoubleArrowRightIcon></KeyboardDoubleArrowRightIcon>
-              </IconButton>
-            ) : (
-              <IconButton
-                onClick={() => {
-                  setOpenLeft(false);
-                }}
-              >
-                {theme.direction === 'rtl' ? (
-                  <KeyboardDoubleArrowLeftIcon />
-                ) : (
-                  <KeyboardDoubleArrowLeftIcon />
-                )}
-              </IconButton>
-            )}
-          </DrawerHeader>
-          <Divider />
-        </Drawer>
+        {/* Main Content */}
         <MainContent
           sx={{
             marginLeft: openLeft ? `0` : '0',
@@ -634,7 +422,6 @@ const ResponsiveDrawer = ({ children, detailedPage }) => {
         >
           <DrawerHeader />
 
-          {/* Main Content */}
           {children}
         </MainContent>
 
