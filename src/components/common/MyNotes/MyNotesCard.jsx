@@ -11,11 +11,9 @@ import { FontSizes } from '../../../constants/Sizes';
 import Fonts from '../../../constants/Fonts';
 import Colors from '../../../constants/Colors';
 
-function MyNotesCards({ setIsCardOpen }) {
+function MyNotesCards({ setIsCardOpen, data }) {
   const [isEditorOpen, setIsEditorOpen] = useState(false);
-  const [editorContent, setEditorContent] = useState(
-    '<ul><li>Aligns with evaluation criteria</li><li>Need to connect with the larger team to review the profile</li></ul>'
-  );
+  const [editorContent, setEditorContent] = useState(data);
 
   const handleEditClick = () => {
     setIsEditorOpen(true);
@@ -43,7 +41,7 @@ function MyNotesCards({ setIsCardOpen }) {
           }}
         ></Box>
 
-        <Card sx={{ width: 300 }}>
+        <Card sx={{ width: 250 }}>
           <CardContent sx={{ padding: '0 !important' }}>
             <Box
               sx={{

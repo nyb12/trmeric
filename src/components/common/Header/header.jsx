@@ -11,6 +11,7 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import { TrmericImage } from '../../../constants/ImageSvgs';
+import { useNavigate } from 'react-router-dom';
 const theme = createTheme({
   palette: {
     primary: {
@@ -31,7 +32,7 @@ export default function Header() {
   const steps = ['Discover', 'Engage', 'Build', 'Transact'];
   const [activeStep, setActiveStep] = React.useState(0);
   const [skipped, setSkipped] = React.useState(new Set());
-
+  const navigate = useNavigate();
   const isStepOptional = (step) => {
     return step === 1;
   };
@@ -117,6 +118,9 @@ export default function Header() {
                 <Settings />
                 &nbsp;
                 <Avatar
+                  onClick={() => {
+                    navigate('/tutorial');
+                  }}
                   alt='Travis Howard'
                   src='https://robohash.org/impeditautest.png'
                 />
