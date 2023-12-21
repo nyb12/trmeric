@@ -1,4 +1,4 @@
-import * as React from "react";
+import React, { useEffect, useState } from 'react';
 import Card from "@mui/material/Card";
 import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
@@ -14,16 +14,22 @@ import Rating from '@mui/material/Rating';
 import Stack from '@mui/material/Stack';
 import { SpatialTracking } from "@mui/icons-material";
 import BookmarkBorderIcon from '@mui/icons-material/BookmarkBorder';
-
+import BookmarkIcon from '@mui/icons-material/Bookmark';
 
 
 
 export default function TrmericCard() {
   const navigate = useNavigate();
+  const [active, setActive] = useState(false);
+ 
+const  changeIcon = () =>{
+    setActive((active)=> !active)
+    alert(active)
+  }
 
-
+  
   return (
-    <Card sx={{ maxWidth: 345 }}>
+    <Card sx={{ width: 345 }}>
       {/* <CardMedia
         sx={{ height: 140 }}
         image="https://picsum.photos/200/300"
@@ -51,7 +57,13 @@ export default function TrmericCard() {
        
        <div className="dflex">
        <span>Shortlist</span>
-        <BookmarkBorderIcon className="ml-8 shortlist-color"></BookmarkBorderIcon>
+
+        <BookmarkBorderIcon  className="ml-8 shortlist-color" onClick={changeIcon} ></BookmarkBorderIcon>
+        {/* <BookmarkIcon  className="ml-8 shortlist-color" ></BookmarkIcon> */}
+   
+     
+
+
        </div>
        
        
@@ -79,7 +91,7 @@ export default function TrmericCard() {
           </div>
          
           <div>
-                 <a href="#" className="shortlist-color">45 Reviews</a>
+                 <a href="#" className="shortlist-color" >45 Reviews</a>
                  
           </div>
           </div>
