@@ -33,7 +33,7 @@ export default function SubHeader({detailedPage}) {
     <div>
     
     <>
-      <AppBar position='fixed' style={{ zIndex: 2222, marginTop: '70px' }}>
+    <AppBar position='fixed' style={{ zIndex: 2000, marginTop: '60px' }}>
         <Paper square sx={{ padding: 2, color: '#000', background: '#fff' }}>
           <Box className=''>
             {detailedPage ? (
