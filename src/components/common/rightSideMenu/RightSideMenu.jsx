@@ -83,9 +83,9 @@ const RightSideMenu = () => {
             zIndex: 1,
             height: 'auto',
             borderRadius: '10px',
-            marginTop: '150px',
+            marginTop: '200px',
             marginLeft: '10px',
-            marginRight: '20px',
+            marginRight: '12px',
             width: '104px',
           },
         }}
