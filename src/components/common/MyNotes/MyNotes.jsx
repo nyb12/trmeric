@@ -46,7 +46,7 @@ function MyNotes({ setIsCardOpen }) {
           }}
         ></Box>
 
-        <Card sx={{ width: 300 }}>
+        <Card sx={{ width: 250 }}>
           <CardContent sx={{ padding: '0 !important' }}>
             <Box
               sx={{

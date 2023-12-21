@@ -1,5 +1,5 @@
 /* Need to go back and clean this up. Make names more specific. Maybe use sass? */
-@import url("https://fonts.googleapis.com/css?family=Amatic+SC:700|Roboto");
+@import url('https://fonts.googleapis.com/css?family=Amatic+SC:700|Roboto');
 
 :root {
   --primary: #2196f3;
@@ -11,7 +11,7 @@
 
 * {
   box-sizing: border-box;
-  font-family: "Roboto", sans-serif;
+  font-family: 'Roboto', sans-serif;
   margin: 0;
   padding: 0;
 }
@@ -171,14 +171,14 @@
   margin: 20px 8px;
 }
 .or::after {
-  content: "";
+  content: '';
   height: 4px;
   width: 47.5%;
   display: inline-block;
   background-color: rgb(175, 168, 168);
 }
 .or::before {
-  content: "";
+  content: '';
   height: 4px;
   width: 47.5%;
   background-color: rgb(175, 168, 168);
@@ -254,24 +254,33 @@ html {
 }
 
 .display-view-details {
-  display: flex;
-  justify-content: space-evenly;
-  flex-direction: row;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
   gap: 20px;
   width: 95%;
+  margin: 0 auto;
 }
 
 .display-column-center {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  gap: 10px;
 }
 
-.details-box-main {
+/* .details-box-main {
   height: auto;
   width: 100%;
   margin-top: 140px;
   display: flex;
+} */
+
+.details-box-main {
+  height: 100%;
+  width: 100%;
+  margin-top: 75px;
+  display: flex;
+  overflow-y: auto;
 }
 
 .details-box-inner {
@@ -279,4 +288,55 @@ html {
   width: 90%;
   margin: 10px;
   gap: 24px;
+}
+
+.details-box-video {
+  flex: 0 0 auto;
+  order: -1;
+  margin-right: 10px;
+}
+
+.details-box-accordion {
+  background-color: white;
+  padding: 10px;
+  height: 100%;
+}
+
+input[type='number']::-webkit-inner-spin-button,
+input[type='number']::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  margin: 0;
+}
+
+.css-i9fmh8-MuiBackdrop-root-MuiModal-backdrop {
+  position: unset !important;
+}
+
+.css-xghey7-MuiModal-root-MuiDrawer-root {
+  z-index: unset !important;
+}
+
+.d-flex {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.align-center {
+  align-items: center;
+}
+
+.right-icons {
+  position: fixed;
+  right: 0;
+}
+.css-xghey7-MuiModal-root-MuiDrawer-root .MuiDrawer-paper {
+  right: 78px !important;
+  padding: 135px 0 0 0;
+  width: 20% !important;
+}
+
+.css-10c1qr2-MuiPaper-root-MuiDrawer-paper {
+  margin-top: 160px !important;
 }
