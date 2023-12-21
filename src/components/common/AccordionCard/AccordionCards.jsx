@@ -66,8 +66,8 @@ export default function AccordionCard() {
   React.useEffect(() => {
     const handleScroll = () => {
       const scrollThreshold1 = -100;
-      const scrollThreshold2 = 350;
-      const scrollThreshold3 = 450;
+      const scrollThreshold2 = 550;
+      const scrollThreshold3 = 650;
       if (window.scrollY > scrollThreshold3) {
         setExpanded("panel3");
       } else if (window.scrollY > scrollThreshold2) {
