@@ -330,10 +330,11 @@ input[type='number']::-webkit-outer-spin-button {
 .right-icons {
   position: fixed;
   right: 0;
+  margin-top: 10px;
 }
 .css-xghey7-MuiModal-root-MuiDrawer-root .MuiDrawer-paper {
   right: 78px !important;
-  padding: 135px 0 0 0;
+  padding: 150px 0 0 0;
   width: 20% !important;
 }
 
