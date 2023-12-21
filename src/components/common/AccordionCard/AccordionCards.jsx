@@ -63,30 +63,30 @@ export default function AccordionCard() {
     setExpanded(newExpanded ? panel : false);
   };
 
-  React.useEffect(() => {
-    // const handleScroll = () => {
-    //   const scrollThreshold1 = -100;
-    //   const scrollThreshold2 = 550;
-    //   const scrollThreshold3 = 650;
-    //   if (window.scrollY > scrollThreshold3) {
-    //     setExpanded("panel3");
-    //   } else if (window.scrollY > scrollThreshold2) {
-    //     setExpanded("panel2");
-    //   } else if (window.scrollY > scrollThreshold1) {
-    //     setExpanded("panel1");
-    //   } else {
-    //     setExpanded(false);
-    //   }
-    // };
+  // React.useEffect(() => {
+  //   const handleScroll = () => {
+  //     const scrollThreshold1 = -100;
+  //     const scrollThreshold2 = 550;
+  //     const scrollThreshold3 = 650;
+  //     if (window.scrollY > scrollThreshold3) {
+  //       setExpanded("panel3");
+  //     } else if (window.scrollY > scrollThreshold2) {
+  //       setExpanded("panel2");
+  //     } else if (window.scrollY > scrollThreshold1) {
+  //       setExpanded("panel1");
+  //     } else {
+  //       setExpanded(false);
+  //     }
+  //   };
 
-    // Add event listener for scroll
-   // window.addEventListener("scroll", handleScroll);
+  //   // Add event listener for scroll
+  //   window.addEventListener("scroll", handleScroll);
 
-    // Remove the event listener when the component unmounts
-    // return () => {
-    //   window.removeEventListener("scroll", handleScroll);
-    // };
-  }, []);
+  //   // Remove the event listener when the component unmounts
+  //   return () => {
+  //     window.removeEventListener("scroll", handleScroll);
+  //   };
+  // }, []);
 
   return (
     <div>
