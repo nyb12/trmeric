@@ -63,7 +63,7 @@ const RightSideMenu = () => {
   };
 
   return (
-    <div style={{ position: 'sticky', marginTop:"250px" }}>
+    <div style={{ position: 'sticky' }}>
       {/* Right Side Menu */}
       <Drawer
         className={classes.drawer}
@@ -83,9 +83,9 @@ const RightSideMenu = () => {
             zIndex: 1,
             height: 'auto',
             borderRadius: '10px',
-            marginTop: '150px',
+            marginTop: '200px',
             marginLeft: '10px',
-            marginRight: '20px',
+            marginRight: '12px',
             width: '104px',
           },
         }}
