@@ -338,9 +338,6 @@ input[type="number"]::-webkit-outer-spin-button {
   z-index: unset !important;
 }
 
-.css-i9fmh8-MuiBackdrop-root-MuiModal-backdrop {
-  position: unset !important;
-}
 .css-qwb5vk-MuiPaper-root-MuiAppBar-root {
   padding-right: 0px !important;
 }
