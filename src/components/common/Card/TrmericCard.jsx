@@ -23,8 +23,8 @@ export default function TrmericCard() {
   const [active, setActive] = useState(false);
  
 const  changeIcon = () =>{
-    setActive((active)=> !active)
-    alert(active)
+    setActive(active => !active)
+    
   }
 
   
@@ -58,8 +58,15 @@ const  changeIcon = () =>{
        <div className="dflex">
        <span>Shortlist</span>
 
-        <BookmarkBorderIcon  className="ml-8 shortlist-color" onClick={changeIcon} ></BookmarkBorderIcon>
-        {/* <BookmarkIcon  className="ml-8 shortlist-color" ></BookmarkIcon> */}
+                  {
+        
+                    active ? <>  <BookmarkIcon  className="ml-8 shortlist-color cursor-ptr" onClick={changeIcon} ></BookmarkIcon>
+                           </> :
+                      <>  
+                      <BookmarkBorderIcon  className="ml-8 shortlist-color cursor-ptr" onClick={changeIcon} ></BookmarkBorderIcon> 
+                      </>
+                  }
+      
    
      
 
