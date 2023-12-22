@@ -341,3 +341,16 @@ input[type='number']::-webkit-outer-spin-button {
 .css-10c1qr2-MuiPaper-root-MuiDrawer-paper {
   margin-top: 160px !important;
 }
+
+.phone-input {
+  border: 1px solid #ccc;
+  padding: 14px 14px;
+  border-radius: 5px;
+  width: 100%;
+  border-radius: 15px;
+}
+
+.PhoneInputInput {
+  border: 0px;
+  padding: 5px;
+}
