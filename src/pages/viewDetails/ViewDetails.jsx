@@ -15,6 +15,7 @@ import { FontSizes } from '../../constants/Sizes';
 import { Divider, Grid, Link } from '@mui/material';
 import Colors from '../../constants/Colors';
 import { Featured_video } from '../../constants/ImageSvgs';
+import demo from '../../assets/Demo.mp4';
 import TrText from '../../components/common/TrText/TrText';
 import RadarChart from '../../components/common/Charts/TrCharts';
 import ResponsiveDrawer from '../dashboard/Layout/DashLayout';
@@ -203,12 +204,12 @@ export default function ViewDetails() {
               </Box>
               <Box className='display-data'>
                 <Box item xs={6}>
-                  <Box
-                    component='img'
-                    alt='Featured_video'
-                    src={Featured_video}
-                    className='details-box-video'
-                  />
+                  <video className='details-box-video' controls>
+                    <source src={demo} type='video/mp4' />
+                    <source src={demo} type='video/webm' />
+                    <source src={demo} type='video/ogg' />
+                    Your browser does not support the video tag.
+                  </video>
                 </Box>
               </Box>
             </Box>

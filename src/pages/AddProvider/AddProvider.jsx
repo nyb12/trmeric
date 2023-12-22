@@ -14,6 +14,8 @@ import IconButton from '@mui/material/IconButton';
 import ErrorMessage from '../../components/common/ErrorMessages/ErrorMessage';
 import TrText from '../../components/common/TrText/TrText';
 import Fonts from '../../constants/Fonts';
+import PhoneInput from 'react-phone-number-input';
+import 'react-phone-number-input/style.css';
 
 function AddProvider({ openModal, modal }) {
   const [selectedValue, setSelectedValue] = useState('no');
@@ -46,11 +48,7 @@ function AddProvider({ openModal, modal }) {
         const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         return regex.test(value);
       }),
-    phone: yup
-      .string()
-      .matches(/^[6-9]\d{9}$/, 'Invalid phone number')
-      .typeError('Phone must be a number *')
-      .required('Phone is required *'),
+    phone: yup.string().required('Phone is required *'),
     description: yup.string().required('Description is required *'),
   });
   const [error, setError] = useState({
@@ -392,29 +390,23 @@ function AddProvider({ openModal, modal }) {
                   {/* {error && <FormHelperText>{error?.email}</FormHelperText>} */}
                 </FormControl>
                 <FormControl>
-                  <OutlinedInput
-                    id='my-input'
-                    aria-describedby='my-helper-text'
+                  <PhoneInput
+                    className='phone-input'
                     placeholder='Phone'
-                    sx={{
-                      borderRadius: '15px',
-                      width: '100%',
+                    style={{
+                      borderColor: error?.phone ? 'red' : '',
                     }}
                     value={formData.phone}
-                    type='number'
-                    inputProps={{
-                      maxLength: MAX_PHONE_LENGTH,
-                      inputMode: 'numeric',
-                      pattern: '[0-9]*',
-                    }}
-                    onChange={(e) => {
-                      const value = e.target.value.slice(0, MAX_PHONE_LENGTH);
+                    onChange={(value) => {
                       handleInputChange('phone', value);
                     }}
                     onBlur={() => validateField('phone', formData.phone)}
-                    error={error?.phone}
                   />
-                  {/* {error && <FormHelperText>{error?.phone}</FormHelperText>} */}
+                  {/* {error && (
+                    <FormHelperText style={{ color: 'red' }}>
+                      {error?.phone}
+                    </FormHelperText>
+                  )} */}
                 </FormControl>
               </Box>
               <FormControl>
