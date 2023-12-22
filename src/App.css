@@ -15,7 +15,6 @@
   margin: 0;
   padding: 0;
 }
-
 .steps {
   display: flex;
   min-height: 4rem;
@@ -193,9 +192,7 @@
   width: 100px;
   right: 0px;
 }
-.css-i9fmh8-MuiBackdrop-root-MuiModal-backdrop {
-  position: unset !important;
-}
+
 
 .cursor-pointer {
   cursor: pointer;
@@ -310,13 +307,7 @@ input[type='number']::-webkit-outer-spin-button {
   margin: 0;
 }
 
-.css-i9fmh8-MuiBackdrop-root-MuiModal-backdrop {
-  position: unset !important;
-}
 
-.css-xghey7-MuiModal-root-MuiDrawer-root {
-  z-index: unset !important;
-}
 
 .d-flex {
   display: flex;
@@ -340,4 +331,22 @@ input[type='number']::-webkit-outer-spin-button {
 
 .css-10c1qr2-MuiPaper-root-MuiDrawer-paper {
   margin-top: 160px !important;
+}
+
+
+
+.css-i9fmh8-MuiBackdrop-root-MuiModal-backdrop {
+  position: unset !important;
+}
+
+.css-xghey7-MuiModal-root-MuiDrawer-root {
+  z-index: unset !important;
+}
+
+
+.css-i9fmh8-MuiBackdrop-root-MuiModal-backdrop {
+  position: unset !important;
+}
+.css-qwb5vk-MuiPaper-root-MuiAppBar-root{
+  padding-right: 0px !important;
 }
