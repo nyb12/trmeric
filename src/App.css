@@ -1,5 +1,5 @@
 /* Need to go back and clean this up. Make names more specific. Maybe use sass? */
-@import url('https://fonts.googleapis.com/css?family=Amatic+SC:700|Roboto');
+@import url("https://fonts.googleapis.com/css?family=Amatic+SC:700|Roboto");
 
 :root {
   --primary: #2196f3;
@@ -11,7 +11,7 @@
 
 * {
   box-sizing: border-box;
-  font-family: 'Roboto', sans-serif;
+  font-family: "Roboto", sans-serif;
   margin: 0;
   padding: 0;
 }
@@ -170,14 +170,14 @@
   margin: 20px 8px;
 }
 .or::after {
-  content: '';
+  content: "";
   height: 4px;
   width: 47.5%;
   display: inline-block;
   background-color: rgb(175, 168, 168);
 }
 .or::before {
-  content: '';
+  content: "";
   height: 4px;
   width: 47.5%;
   background-color: rgb(175, 168, 168);
@@ -192,7 +192,6 @@
   width: 100px;
   right: 0px;
 }
-
 
 .cursor-pointer {
   cursor: pointer;
@@ -299,15 +298,13 @@ html {
   height: 100%;
 }
 
-input[type='number']::-webkit-inner-spin-button,
-input[type='number']::-webkit-outer-spin-button {
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
   margin: 0;
 }
-
-
 
 .d-flex {
   display: flex;
@@ -333,8 +330,6 @@ input[type='number']::-webkit-outer-spin-button {
   margin-top: 160px !important;
 }
 
-
-
 .css-i9fmh8-MuiBackdrop-root-MuiModal-backdrop {
   position: unset !important;
 }
@@ -343,10 +338,21 @@ input[type='number']::-webkit-outer-spin-button {
   z-index: unset !important;
 }
 
-
 .css-i9fmh8-MuiBackdrop-root-MuiModal-backdrop {
   position: unset !important;
 }
-.css-qwb5vk-MuiPaper-root-MuiAppBar-root{
+.css-qwb5vk-MuiPaper-root-MuiAppBar-root {
   padding-right: 0px !important;
+}
+.phone-input {
+  border: 1px solid #ccc;
+  padding: 14px 14px;
+  border-radius: 5px;
+  width: 100%;
+  border-radius: 15px;
+}
+
+.PhoneInputInput {
+  border: 0px;
+  padding: 5px;
 }
