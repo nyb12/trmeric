@@ -7,7 +7,7 @@ import dum2 from './../../../../src/assets/Screen3.png';
 import dum3 from './../../../../src/assets/Screen1.png';
 import { useNavigate } from 'react-router-dom';
 
-export default function Tutorial() {
+export default function Tutorial({ open, handleOpen, handleClose, navigate }) {
   const style = {
     position: 'absolute',
     top: '50%',
@@ -34,10 +34,7 @@ export default function Tutorial() {
       setCounter(counter - 1);
     }
   };
-  const [open, setOpen] = React.useState(false);
-  const handleOpen = () => setOpen(true);
-  const handleClose = () => setOpen(false);
-  const navigate = useNavigate();
+  // const [open, setOpen] = React.useState(false);
   const [isChecked, setIsChecked] = useState({
     customerRating1: false,
     customerRating2: false,
@@ -46,10 +43,13 @@ export default function Tutorial() {
     customerRating5: false,
     customerRating6: false,
   });
+  const [ourPick, setourPick] = useState({
+    ourPick1: false,
+  });
   // console.log(isChecked.customerRating1);
   return (
     <>
-      <Button onClick={handleOpen}>Open modal</Button>
+      {/* <Button onClick={handleOpen}>Open modal</Button> */}
       <Modal
         open={open}
         onClose={handleClose}
@@ -481,9 +481,35 @@ export default function Tutorial() {
                         Began with Trmeric curated suggesstion. Configure
                         anything to fit your needs.
                       </Box>
+                      <br />
                       <Box className='flex-center'>
-                        <Box className='checkBoxBorder mt-20'>
+                        <Box
+                          className={`${
+                            ourPick.ourPick1
+                              ? 'checkBoxBorderBlack'
+                              : 'checkBoxBorder'
+                          }`}
+                        >
+                          <Box className='flex-center'>
+                            <Checkbox
+                              onClick={(e) =>
+                                setourPick({
+                                  ...ourPick,
+                                  ourPick1: e.target.checked,
+                                })
+                              }
+                            />
+                            <Box
+                              className={`${
+                                ourPick.ourPick1 ? 'text-white ' : 'text-black'
+                              }`}
+                            >
+                              Star with our picks
+                            </Box>
+                          </Box>
+                          {/* <Box className='checkBoxBorder mt-20'>
                           Star with our picks
+                        </Box> */}
                         </Box>
                       </Box>
                     </Box>
@@ -504,7 +530,7 @@ export default function Tutorial() {
                     )}
                     <button
                       onClick={() => {
-                        navigate('/');
+                        navigate('/homepage');
                       }}
                       class='btn yell_btn step-next'
                     >

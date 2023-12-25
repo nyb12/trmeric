@@ -9,19 +9,38 @@ import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { useNavigate } from 'react-router-dom';
 import Tutorial from '../dashboard/onBoardingTutorial/Tutorial';
-import React from 'react';
+import React, { useEffect } from 'react';
 export default function Login() {
   const [open, setOpen] = React.useState(false);
 
   const navigate = useNavigate();
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    const data = new FormData(event.currentTarget);
 
-    console.log({
-      email: data.get('email'),
-      password: data.get('password'),
-    });
+  const handleOpen = () => {
+    setOpen(true);
+  };
+  const handleClose = () => setOpen(false);
+
+  const login = () => {
+    localStorage.setItem('login', true);
+  };
+  useEffect(() => {
+    let login = localStorage.getItem('token');
+    if (login) {
+      navigate('/');
+    }
+  }, []);
+
+  const handleSubmit = (event) => {
+    login();
+    event.preventDefault();
+    // const data = new FormData(event.currentTarget);
+    // console.log({
+    //   email: data.get('email'),
+    //   password: data.get('password'),
+    // });
+
+    // Open the modal when the form is submitted
+    handleOpen();
   };
 
   return (
@@ -73,20 +92,16 @@ export default function Login() {
             fullWidth
             variant='contained'
             sx={{ mt: 3, mb: 2 }}
-            onClick={() => {
-              navigate('/tutorial');
-              setOpen(true);
-            }}
+            onClick={handleSubmit}
           >
             Login In
           </Button>
-          {open && (
-            <Tutorial
-              onClose={() => setOpen(false)}
-              open={open}
-              setOpen={setOpen}
-            />
-          )}
+          <Tutorial
+            open={open}
+            handleOpen={handleOpen}
+            handleClose={handleClose}
+            navigate={navigate}
+          />
 
           {/* <Grid container>
             <Grid item xs>
