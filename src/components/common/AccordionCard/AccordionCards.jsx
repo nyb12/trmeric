@@ -27,7 +27,8 @@ const Accordion = styled((props) => (
   },
   borderTop:`8px solid #FF8A00`,
   borderRadius:"20px",
-  marginBottom:"32px"
+  marginBottom:"32px",
+ 
 }));
 
 const AccordionSummary = styled((props) => (
@@ -58,7 +59,7 @@ const AccordionDetails = styled(MuiAccordionDetails)(({ theme }) => ({
 
 export default function AccordionCard() {
   const [expanded, setExpanded] = React.useState("panel1");
-
+  const cardList = ["one","two","three","four"];
   const handleChange = (panel) => (event, newExpanded) => {
     setExpanded(newExpanded ? panel : false);
   };
@@ -117,9 +118,12 @@ export default function AccordionCard() {
           
          
         </AccordionSummary>
-        <AccordionDetails>
+        <AccordionDetails className="of-x">
           <Typography sx={{display:'flex',flexDirection:'row', justifyContent:"flex-start"}}>
-          <TrmericCard />  <TrmericCard />  <TrmericCard />  <TrmericCard />  
+            {
+             (cardList.length > 3) ? <><TrmericCard />  <TrmericCard />  <TrmericCard /> <TrmericCard />  <TrmericCard />  <TrmericCard /> <TrmericCard />  <TrmericCard />  <TrmericCard /> <TrmericCard />  <TrmericCard />  <TrmericCard /></> : <><TrmericCard />  <TrmericCard />  <TrmericCard /></>
+            }
+          {/* <TrmericCard />  <TrmericCard />  <TrmericCard />  <TrmericCard />   */}
           </Typography>
         </AccordionDetails>
       </Accordion>

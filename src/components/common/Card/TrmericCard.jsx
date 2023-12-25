@@ -26,10 +26,10 @@ const  changeIcon = () =>{
     setActive(active => !active)
     
   }
-
+  
   
   return (
-    <Card sx={{ width: 345 }}>
+    <Card sx={{ minWidth: 345 }}>
       {/* <CardMedia
         sx={{ height: 140 }}
         image="https://picsum.photos/200/300"
