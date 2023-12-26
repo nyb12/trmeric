@@ -10,6 +10,7 @@ import Container from '@mui/material/Container';
 import { useNavigate } from 'react-router-dom';
 import Tutorial from '../dashboard/onBoardingTutorial/Tutorial';
 import React, { useEffect } from 'react';
+import { login } from '../../api/ApiCalls';
 export default function Login() {
   const [open, setOpen] = React.useState(false);
 
@@ -20,8 +21,14 @@ export default function Login() {
   };
   const handleClose = () => setOpen(false);
 
-  const login = () => {
-    localStorage.setItem('login', true);
+  const loggedIn = async () => {
+    const bodyData = {
+      username: 'frontend_user',
+      password: '1w`Mxc<67b%A',
+    };
+    const response = await login(bodyData);
+    localStorage.setItem('token', response?.access);
+    // localStorage.setItem('login', true);
   };
   useEffect(() => {
     let login = localStorage.getItem('token');
@@ -31,7 +38,7 @@ export default function Login() {
   }, []);
 
   const handleSubmit = (event) => {
-    login();
+    loggedIn();
     event.preventDefault();
     // const data = new FormData(event.currentTarget);
     // console.log({

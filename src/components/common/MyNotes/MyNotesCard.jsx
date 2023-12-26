@@ -3,6 +3,8 @@ import Box from '@mui/material/Box';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import Divider from '@mui/material/Divider';
+import moment from 'moment';
+
 import DriveFileRenameOutlineIcon from '@mui/icons-material/DriveFileRenameOutline';
 import DeleteOutlinedIcon from '@mui/icons-material/DeleteOutlined';
 import ReactQuill from 'react-quill';
@@ -12,8 +14,9 @@ import Fonts from '../../../constants/Fonts';
 import Colors from '../../../constants/Colors';
 
 function MyNotesCards({ setIsCardOpen, data }) {
+  const { content, created_on } = data;
   const [isEditorOpen, setIsEditorOpen] = useState(false);
-  const [editorContent, setEditorContent] = useState(data);
+  const [editorContent, setEditorContent] = useState(content);
 
   const handleEditClick = () => {
     setIsEditorOpen(true);
@@ -28,7 +31,14 @@ function MyNotesCards({ setIsCardOpen, data }) {
   };
 
   return (
-    <Box>
+    <Box
+      sx={{
+        marginBottom: '10px',
+        display: 'flex',
+        flexDirection: 'column',
+        borderRadius: '12px',
+      }}
+    >
       <Box
         sx={{ display: 'flex', flexDirection: 'column', borderRadius: '12px' }}
       >
@@ -82,7 +92,7 @@ function MyNotesCards({ setIsCardOpen, data }) {
                   fontFamily: Fonts.Poppins,
                 }}
               >
-                Nov 30 10:30am
+                {moment(created_on).format('MMM D hh:mma')}
               </Box>
               <Divider orientation='vertical' sx={{ height: '20px' }} />
               <Box

@@ -15,7 +15,7 @@ function PrivateRoutes(props) {
   const navigate = useNavigate();
 
   useEffect(() => {
-    const login = localStorage.getItem('login');
+    const login = localStorage.getItem('token');
     if (!login) {
       navigate('/');
     }

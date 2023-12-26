@@ -27,7 +27,6 @@ import KeyboardDoubleArrowLeftIcon from '@mui/icons-material/KeyboardDoubleArrow
 import AddProvider from '../../AddProvider/AddProvider.jsx';
 import Header from '../../../components/common/Header/header.jsx';
 import SubHeader from '../../../components/common/subHeader/subHearder.jsx';
-import RightSideMenu from '../../../components/common/rightSideMenu/RightSideMenu.jsx';
 import Colors from '../../../constants/Colors.jsx';
 import { Paper } from '@mui/material';
 import CloseIcon from '@mui/icons-material/Close';
@@ -39,6 +38,9 @@ import ContentPasteIcon from '@mui/icons-material/ContentPaste';
 import PsychologyIcon from '@mui/icons-material/Psychology';
 import { makeStyles } from '@mui/styles';
 import Chatbot from '../../../components/common/ChatBot/ChatBot.jsx';
+import MyNotes from '../../../components/common/MyNotes/MyNotes.jsx';
+import TrText from '../../../components/common/TrText/TrText.jsx';
+import { FontSizes } from '../../../constants/Sizes.jsx';
 const drawerWidth = 240;
 
 const MainContent = styled('div')(({ theme }) => ({
@@ -132,8 +134,7 @@ const PaperPanel = styled(Paper)({
 });
 
 const DrawerContent = styled(Box)({
-  width: '250xp',
-  marginTop: '150px',
+  marginTop: '175px',
 });
 
 const ResponsiveDrawer = ({ children, detailedPage }) => {
@@ -442,10 +443,10 @@ const ResponsiveDrawer = ({ children, detailedPage }) => {
         sx={{
           marginLeft: openLeft ? `0` : '0',
           marginRight: openRight ? `0` : '0',
+          width: '50%',
         }}
       >
         <DrawerHeader />
-        {/* Main Content */}
         {children}
       </MainContent>
       {/* <MuiDrawer
@@ -529,7 +530,6 @@ const ResponsiveDrawer = ({ children, detailedPage }) => {
         <DrawerContent
           sx={{
             background: Colors.lightBackground,
-            marginRight: '85px',
             maxWidth: '100%',
           }}
         >
@@ -561,7 +561,7 @@ const ResponsiveDrawer = ({ children, detailedPage }) => {
         <DrawerContent
           sx={{
             background: Colors.lightBackground,
-            marginRight: '85px',
+            marginRight: '95px',
             maxWidth: '100%',
           }}
         >
@@ -569,11 +569,26 @@ const ResponsiveDrawer = ({ children, detailedPage }) => {
             <Box
               sx={{
                 display: 'flex',
-                justifyContent: 'flex-end',
+                justifyContent: 'space-between',
+                alignItems: 'center',
                 margin: '5px',
                 padding: '5px',
               }}
             >
+              <Box className='notes'>
+                <ContentPasteIcon
+                  sx={{
+                    fontSize: FontSizes.fontSixteen,
+                  }}
+                />
+                <TrText
+                  title={'Notes'}
+                  sx={{
+                    fontFamily: Fonts.Poppins,
+                    fontSize: FontSizes.fontFourteen,
+                  }}
+                />
+              </Box>
               <IconButton
                 onClick={() => {
                   setOpenRight(false);
@@ -583,7 +598,7 @@ const ResponsiveDrawer = ({ children, detailedPage }) => {
               </IconButton>
             </Box>
             <Box sx={{ maxHeight: 'calc(100vh - 50px)', overflowY: 'auto' }}>
-              <RightSideMenu />
+              <MyNotes />
             </Box>
           </Box>
         </DrawerContent>
