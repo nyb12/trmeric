@@ -16,10 +16,15 @@ import TrText from '../../components/common/TrText/TrText';
 import Fonts from '../../constants/Fonts';
 import PhoneInput from 'react-phone-number-input';
 import 'react-phone-number-input/style.css';
+import { addProvider } from '../../api/ApiCalls';
+
 
 function AddProvider({ openModal, modal }) {
   const [selectedValue, setSelectedValue] = useState('no');
   const [selectedRecommend, setSelectedRecommend] = useState('no');
+  const [open, setOpen] = React.useState(false);
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
   const MAX_PHONE_LENGTH = 10;
   const style = {
     position: 'absolute',
@@ -35,6 +40,17 @@ function AddProvider({ openModal, modal }) {
     padding: '0 !important',
   };
 
+  const successStyle = {
+    position: 'absolute',
+    top: '50%',
+    left: '50%',
+    transform: 'translate(-50%, -50%)',
+    width: 400,
+    bgcolor: 'background.paper',
+    border: '2px solid #000',
+    boxShadow: 24,
+    p: 4,
+  };
   const validationSchema = yup.object().shape({
     companyName: yup.string().required('Company Name is required *'),
     companyWebsite: yup.string().required('Company Website is required *'),
@@ -131,6 +147,32 @@ function AddProvider({ openModal, modal }) {
     try {
       await validationSchema.validate(formData, { abortEarly: false });
       console.log('Form Data:', formData);
+      const payload = {
+        "company_name": formData.companyName,
+        "company_website": formData.companyWebsite,
+        "contact_name": formData.contactName,
+        "email": formData.email,
+        "phone": formData.phone,
+        "params": formData.description,
+        "provider_existing": formData.provider,
+        "provider_recommend": formData.recommend
+      }
+    
+      
+      const response = await addProvider(payload);
+      if (response?.status === 'success') {
+      handleClear();
+      alert("successfully added provider");
+      openModal(false);
+      //setOpen(true);
+      //setsuccessMessage(response?.message);
+  
+     
+    } else {
+      alert(response?.error);
+    }
+  
+
     } catch (error) {
       if (error.inner) {
         const validationErrors = {};
@@ -570,7 +612,24 @@ function AddProvider({ openModal, modal }) {
           </Box>
         </Box>
       </Modal>
+
+      <Modal
+open={open}
+onClose={handleClose}
+aria-labelledby="modal-modal-title"
+aria-describedby="modal-modal-description"
+>
+<Box sx={successStyle}>
+  <TrText id="modal-modal-title" variant="h6" component="h2">
+    Provider Added Successfully!
+  </TrText>
+
+</Box>
+</Modal>
     </Box>
+
+
+
   );
 }
 

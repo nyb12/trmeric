@@ -61,6 +61,7 @@ const AccordionDetails = styled(MuiAccordionDetails)(({ theme }) => ({
 
 export default function CustomizedAccordions() {
   const [expanded, setExpanded] = React.useState('panel1');
+
   const [providerData, setProviderData] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, seterror] = useState('');
