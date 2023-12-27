@@ -16,6 +16,7 @@ import Loader from '../loader/loader';
 import Colors from '../../../constants/Colors';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
+import { useNavigate } from 'react-router-dom';
 
 const Accordion = styled((props) => (
   <MuiAccordion disableGutters elevation={0} square {...props} />
@@ -65,6 +66,7 @@ export default function CustomizedAccordions() {
   const [isLoading, setIsLoading] = useState(true);
   const [error, seterror] = useState('');
 
+  const navigate = useNavigate();
   const carouselRef = React.useRef(null);
 
   const scrollNext = () => {
@@ -82,6 +84,7 @@ export default function CustomizedAccordions() {
   useEffect(() => {
     getAllProviders();
   }, []);
+
   const getAllProviders = async () => {
     const response = await getProvider();
     if (response?.status === 'success') {
@@ -133,6 +136,7 @@ export default function CustomizedAccordions() {
               // alignItems: 'center',
               overflowX: 'auto',
               overflowY: 'auto',
+              scrollBehavior: 'smooth',
             }}
             ref={carouselRef}
           >

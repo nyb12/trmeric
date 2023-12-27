@@ -361,7 +361,7 @@ export default function Tutorial({ open, handleOpen, handleClose, navigate }) {
                                   : 'text-black'
                               }`}
                             >
-                              Customer Rating
+                              Company
                             </Box>
                           </Box>
                         </Box>
@@ -388,7 +388,7 @@ export default function Tutorial({ open, handleOpen, handleClose, navigate }) {
                                   : 'text-black'
                               }`}
                             >
-                              Customer Rating
+                              Capabilities
                             </Box>
                           </Box>
                         </Box>
@@ -417,7 +417,7 @@ export default function Tutorial({ open, handleOpen, handleClose, navigate }) {
                                   : 'text-black'
                               }`}
                             >
-                              Customer Rating
+                              Readiness to Engage
                             </Box>
                           </Box>
                         </Box>
@@ -444,7 +444,7 @@ export default function Tutorial({ open, handleOpen, handleClose, navigate }) {
                                   : 'text-black'
                               }`}
                             >
-                              Customer Rating
+                              Finance
                             </Box>
                           </Box>
                         </Box>
@@ -471,7 +471,7 @@ export default function Tutorial({ open, handleOpen, handleClose, navigate }) {
                                   : 'text-black'
                               }`}
                             >
-                              Customer Rating
+                              Testimonials
                             </Box>
                           </Box>
                         </Box>

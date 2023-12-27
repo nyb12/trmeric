@@ -12,11 +12,15 @@ import 'react-quill/dist/quill.snow.css';
 import { FontSizes } from '../../../constants/Sizes';
 import Fonts from '../../../constants/Fonts';
 import Colors from '../../../constants/Colors';
+import { deleteNotes } from '../../../api/ApiCalls';
+import { Button, Popover, Tooltip } from '@mui/material';
+import TrText from '../TrText/TrText';
 
 function MyNotesCards({ setIsCardOpen, data }) {
   const { id, content, created_on } = data;
   const [isEditorOpen, setIsEditorOpen] = useState(false);
   const [editorContent, setEditorContent] = useState(content);
+  const [isPopoverOpen, setPopoverOpen] = useState(false);
 
   const handleEditClick = () => {
     setIsEditorOpen(true);
@@ -28,6 +32,27 @@ function MyNotesCards({ setIsCardOpen, data }) {
 
   const handleSaveClick = () => {
     setIsEditorOpen(false);
+  };
+  const deleteMyNotes = async () => {
+    const response = await deleteNotes(id);
+  };
+
+  const handleClick = (event) => {
+    setPopoverOpen(true);
+  };
+
+  const handleClose = () => {
+    setPopoverOpen(false);
+  };
+
+  const handleYes = () => {
+    deleteMyNotes();
+    handleClose();
+  };
+
+  const handleNo = () => {
+    // Close the popover
+    handleClose();
   };
 
   return (
@@ -136,7 +161,45 @@ function MyNotesCards({ setIsCardOpen, data }) {
                 onClick={handleEditClick}
               />
             )}
-            <DeleteOutlinedIcon className='cursor-pointer' />
+            <Box
+              onClick={handleClick}
+              sx={{
+                cursor: 'pointer',
+              }}
+            >
+              <DeleteOutlinedIcon />
+            </Box>
+
+            <Popover
+              open={isPopoverOpen}
+              anchorEl={null}
+              onClose={handleClose}
+              anchorOrigin={{
+                vertical: 'center',
+                horizontal: 'center',
+              }}
+              transformOrigin={{
+                vertical: 'center',
+                horizontal: 'center',
+              }}
+            >
+              <Box p={2}>
+                <TrText title={'Are you sure you want to delete?'} />
+                <Box mt={2} display='flex' justifyContent='flex-end'>
+                  <Button onClick={handleYes} variant='contained' color='error'>
+                    Yes
+                  </Button>
+                  <Button
+                    onClick={handleNo}
+                    variant='contained'
+                    color='primary'
+                    sx={{ ml: 2 }}
+                  >
+                    No
+                  </Button>
+                </Box>
+              </Box>
+            </Popover>
           </Box>
         </Card>
       </Box>
