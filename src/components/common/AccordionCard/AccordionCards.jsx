@@ -61,14 +61,7 @@ const AccordionDetails = styled(MuiAccordionDetails)(({ theme }) => ({
 
 export default function CustomizedAccordions() {
   const [expanded, setExpanded] = React.useState('panel1');
-  const cardList = 4;
-  const settings = {
-    dots: true,
-    infinite: true,
-    speed: 500,
-    slidesToShow: 1,
-    slidesToScroll: 1
-  };
+
   const [providerData, setProviderData] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, seterror] = useState('');

@@ -17,7 +17,6 @@ import Fonts from '../../constants/Fonts';
 import PhoneInput from 'react-phone-number-input';
 import 'react-phone-number-input/style.css';
 import { addProvider } from '../../api/ApiCalls';
-import Typography from '@mui/material/Typography';
 
 
 function AddProvider({ openModal, modal }) {
@@ -621,9 +620,9 @@ aria-labelledby="modal-modal-title"
 aria-describedby="modal-modal-description"
 >
 <Box sx={successStyle}>
-  <Typography id="modal-modal-title" variant="h6" component="h2">
+  <TrText id="modal-modal-title" variant="h6" component="h2">
     Provider Added Successfully!
-  </Typography>
+  </TrText>
 
 </Box>
 </Modal>
