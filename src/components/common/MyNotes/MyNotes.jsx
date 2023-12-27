@@ -24,6 +24,7 @@ import React, { useEffect, useState } from 'react';
 import MyNotesCards from './MyNotesCard';
 import Loader from '../loader/loader';
 import moment from 'moment';
+import TrText from '../TrText/TrText';
 
 const modules = {
   toolbar: [
@@ -218,6 +219,12 @@ function MyNotes() {
 
                 <Box className='mt-20'>
                   {isLoading && <Loader />}
+                  {notesRecords?.length === 0 && (
+                    <TrText
+                      title={'No Notes Data'}
+                      sx={{ fontFamily: Fonts.Poppins }}
+                    />
+                  )}
                   {notesRecords
                     ?.sort((a, b) =>
                       moment(b.created_on).diff(moment(a.created_on))
