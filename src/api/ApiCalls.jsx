@@ -125,3 +125,30 @@ export const addProvider = async (params = {}, header = {}, pid = 1) => {
     };
   }
 };
+
+export const deleteNotes = async (id, params = {}, header = {}) => {
+  try {
+    let headers = {
+      ...header,
+      Authorization: 'Bearer ' + localStorage.getItem('token'),
+    };
+    const result = await distory(
+      `${baseUrl}/note/delete/${id}`,
+      {},
+      {
+        headers: headers ? headers : {},
+      }
+    );
+
+    if (result?.data) {
+      return result.data;
+    } else {
+      return {};
+    }
+  } catch ({ response, message }) {
+    return {
+      status: response?.status ? response?.status : 404,
+      error: response?.data?.message ? response?.data?.message : message,
+    };
+  }
+};

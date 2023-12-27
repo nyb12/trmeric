@@ -18,7 +18,6 @@ import PhoneInput from 'react-phone-number-input';
 import 'react-phone-number-input/style.css';
 import { addProvider } from '../../api/ApiCalls';
 
-
 function AddProvider({ openModal, modal }) {
   const [selectedValue, setSelectedValue] = useState('no');
   const [selectedRecommend, setSelectedRecommend] = useState('no');
@@ -52,9 +51,9 @@ function AddProvider({ openModal, modal }) {
     p: 4,
   };
   const validationSchema = yup.object().shape({
-    companyName: yup.string().required('Company Name is required *'),
-    companyWebsite: yup.string().required('Company Website is required *'),
-    contactName: yup.string().required('Contact Name is required *'),
+    company_name: yup.string().required('Company Name is required *'),
+    company_website: yup.string().required('Company Website is required *'),
+    contact_name: yup.string().required('Contact Name is required *'),
     email: yup
       .string()
       .email('Invalid email format *')
@@ -65,15 +64,15 @@ function AddProvider({ openModal, modal }) {
         return regex.test(value);
       }),
     phone: yup.string().required('Phone is required *'),
-    description: yup.string().required('Description is required *'),
+    params: yup.string().required('Description is required *'),
   });
   const [error, setError] = useState({
-    companyName: '',
-    companyWebsite: '',
-    contactName: '',
+    company_name: '',
+    company_website: '',
+    contact_name: '',
     email: '',
     phone: '',
-    description: '',
+    params: '',
   });
   const handleButtonClick = (event) => {
     setSelectedValue(event);
@@ -90,21 +89,21 @@ function AddProvider({ openModal, modal }) {
   };
 
   const [formData, setFormData] = useState({
-    companyName: '',
-    companyWebsite: '',
-    contactName: '',
+    company_name: '',
+    company_website: '',
+    contact_name: '',
     email: '',
     phone: '',
-    description: '',
-    provider: selectedValue,
-    recommend: selectedRecommend,
+    params: '',
+    provider_existing: selectedValue,
+    provider_recommend: selectedRecommend,
   });
 
   useEffect(() => {
     setFormData((prevFormData) => ({
       ...prevFormData,
-      provider: selectedValue,
-      recommend: selectedRecommend,
+      provider_existing: selectedValue,
+      provider_recommend: selectedRecommend,
     }));
   }, [selectedValue, selectedRecommend]);
 
@@ -112,14 +111,14 @@ function AddProvider({ openModal, modal }) {
     setSelectedValue('');
     setSelectedRecommend('');
     setFormData({
-      companyName: '',
-      companyWebsite: '',
-      contactName: '',
+      company_name: '',
+      company_website: '',
+      contact_name: '',
       email: '',
       phone: '',
-      description: '',
-      provider: '',
-      recommend: '',
+      params: '',
+      provider_existing: '',
+      provider_recommend: '',
     });
   };
 
@@ -146,33 +145,16 @@ function AddProvider({ openModal, modal }) {
   const handleSubmit = async () => {
     try {
       await validationSchema.validate(formData, { abortEarly: false });
-      console.log('Form Data:', formData);
-      const payload = {
-        "company_name": formData.companyName,
-        "company_website": formData.companyWebsite,
-        "contact_name": formData.contactName,
-        "email": formData.email,
-        "phone": formData.phone,
-        "params": formData.description,
-        "provider_existing": formData.provider,
-        "provider_recommend": formData.recommend
-      }
-    
-      
-      const response = await addProvider(payload);
+      const response = await addProvider(formData);
       if (response?.status === 'success') {
-      handleClear();
-      alert("successfully added provider");
-      openModal(false);
-      //setOpen(true);
-      //setsuccessMessage(response?.message);
-  
-     
-    } else {
-      alert(response?.error);
-    }
-  
-
+        handleClear();
+        alert('successfully added provider');
+        openModal(false);
+        //setOpen(true);
+        //setsuccessMessage(response?.message);
+      } else {
+        alert(response?.error);
+      }
     } catch (error) {
       if (error.inner) {
         const validationErrors = {};
@@ -352,17 +334,17 @@ function AddProvider({ openModal, modal }) {
                     borderRadius: '15px',
                     width: '100%',
                   }}
-                  value={formData.companyName}
+                  value={formData.company_name}
                   onChange={(e) =>
-                    handleInputChange('companyName', e.target.value)
+                    handleInputChange('company_name', e.target.value)
                   }
                   onBlur={() =>
-                    validateField('companyName', formData.companyName)
+                    validateField('company_name', formData.company_name)
                   }
-                  error={error?.companyName}
+                  error={error?.company_name}
                 />
                 {/* {error && (
-                <FormHelperText>{error?.companyName}</FormHelperText>
+                <FormHelperText>{error?.company_name}</FormHelperText>
               )} */}
               </FormControl>
 
@@ -374,17 +356,17 @@ function AddProvider({ openModal, modal }) {
                   borderRadius: '15px',
                   width: '100%',
                 }}
-                value={formData.companyWebsite}
+                value={formData.company_website}
                 onChange={(e) =>
-                  handleInputChange('companyWebsite', e.target.value)
+                  handleInputChange('company_website', e.target.value)
                 }
                 onBlur={() =>
-                  validateField('companyWebsite', formData.companyWebsite)
+                  validateField('company_website', formData.company_website)
                 }
-                error={error?.companyWebsite}
+                error={error?.company_website}
               />
               {/* {error && (
-              <FormHelperText>{error?.companyWebsite}</FormHelperText>
+              <FormHelperText>{error?.company_website}</FormHelperText>
             )} */}
               <FormControl>
                 <OutlinedInput
@@ -395,17 +377,17 @@ function AddProvider({ openModal, modal }) {
                     borderRadius: '15px',
                     width: '100%',
                   }}
-                  value={formData.contactName}
+                  value={formData.contact_name}
                   onChange={(e) =>
-                    handleInputChange('contactName', e.target.value)
+                    handleInputChange('contact_name', e.target.value)
                   }
                   onBlur={() =>
-                    validateField('contactName', formData.contactName)
+                    validateField('contact_name', formData.contact_name)
                   }
-                  error={error?.contactName}
+                  error={error?.contact_name}
                 />
                 {/* {error && (
-                <FormHelperText>{error?.contactName}</FormHelperText>
+                <FormHelperText>{error?.contact_name}</FormHelperText>
               )} */}
               </FormControl>
               <Box
@@ -462,17 +444,13 @@ function AddProvider({ openModal, modal }) {
                     borderRadius: '15px',
                     width: '100%',
                   }}
-                  value={formData.description}
-                  onChange={(e) =>
-                    handleInputChange('description', e.target.value)
-                  }
-                  onBlur={() =>
-                    validateField('description', formData.description)
-                  }
-                  error={error?.description}
+                  value={formData.params}
+                  onChange={(e) => handleInputChange('params', e.target.value)}
+                  onBlur={() => validateField('params', formData.params)}
+                  error={error?.params}
                 />
                 {/* {error && (
-                <FormHelperText>{error?.description}</FormHelperText>
+                <FormHelperText>{error?.params}</FormHelperText>
               )} */}
               </FormControl>
             </Box>
@@ -614,22 +592,18 @@ function AddProvider({ openModal, modal }) {
       </Modal>
 
       <Modal
-open={open}
-onClose={handleClose}
-aria-labelledby="modal-modal-title"
-aria-describedby="modal-modal-description"
->
-<Box sx={successStyle}>
-  <TrText id="modal-modal-title" variant="h6" component="h2">
-    Provider Added Successfully!
-  </TrText>
-
-</Box>
-</Modal>
+        open={open}
+        onClose={handleClose}
+        aria-labelledby='modal-modal-title'
+        aria-describedby='modal-modal-description'
+      >
+        <Box sx={successStyle}>
+          <TrText id='modal-modal-title' variant='h6' component='h2'>
+            Provider Added Successfully!
+          </TrText>
+        </Box>
+      </Modal>
     </Box>
-
-
-
   );
 }
 
