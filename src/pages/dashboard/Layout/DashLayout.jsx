@@ -18,6 +18,7 @@ import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import InboxIcon from '@mui/icons-material/MoveToInbox';
 import MailIcon from '@mui/icons-material/Mail';
+import AccordionCard from '../../../components/common/AccordionCard/AccordionCards';
 import AddIcon from '@mui/icons-material/Add';
 import { Provdr, Eval, Milestones } from '../../../svg.js';
 import Fonts from '../../../constants/Fonts.jsx';
@@ -37,12 +38,13 @@ import ChatBubbleOutlineIcon from '@mui/icons-material/ChatBubbleOutline';
 import ContentPasteIcon from '@mui/icons-material/ContentPaste';
 import PsychologyIcon from '@mui/icons-material/Psychology';
 import { makeStyles } from '@mui/styles';
-
+import Chatbot from '../../../components/common/ChatBot/ChatBot.jsx';
 const drawerWidth = 240;
 
 const MainContent = styled('div')(({ theme }) => ({
   flexGrow: 1,
   padding: theme.spacing(3),
+  marginTop: '100px',
   transition: theme.transitions.create('margin', {
     easing: theme.transitions.easing.sharp,
     duration: theme.transitions.duration.leavingScreen,
@@ -116,13 +118,31 @@ const useStyles = makeStyles((theme) => ({
     borderRadius: '50%',
   },
 }));
+
+const PaperPanel = styled(Paper)({
+  position: 'fixed',
+  top: 0,
+  right: 0,
+  height: '100%',
+  padding: '5px',
+  display: 'flex',
+  flexDirection: 'column',
+  alignItems: 'center',
+  zIndex: (theme) => theme.zIndex.drawer + 2,
+});
+
+const DrawerContent = styled(Box)({
+  width: '250xp',
+  marginTop: '150px',
+});
+
 const ResponsiveDrawer = ({ children, detailedPage }) => {
   const theme = useTheme();
   const classes = useStyles();
 
   const [openLeft, setOpenLeft] = React.useState(false);
   const [modal, openModal] = React.useState(false);
-
+  const [chatbotOpen, setChatbotOpen] = React.useState(false);
   const [openRight, setOpenRight] = React.useState(false);
 
   const toggleDrawer = (side, open) => () => {
@@ -135,6 +155,14 @@ const ResponsiveDrawer = ({ children, detailedPage }) => {
 
   const renderAppBarIcons = () => (
     <>
+      <IconButton
+        color='inherit'
+        aria-label='open left drawer'
+        onClick={toggleDrawer('left', !openLeft)}
+        edge='start'
+      >
+        <MenuIcon />
+      </IconButton>
       <Typography variant='h6' noWrap component='div'>
         Your App
       </Typography>
@@ -176,44 +204,42 @@ const ResponsiveDrawer = ({ children, detailedPage }) => {
   );
 
   return (
-    <Box>
-      <Box
-        sx={{
-          display: 'flex',
-        }}
+    <Box sx={{ display: 'flex' }}>
+      <CssBaseline />
+      {/* <MuiAppBar
+        // position='fixed'
+        sx={{ zIndex: (theme) => theme.zIndex.drawer + 1 }}
       >
-        {/* Left Side menu */}
-        <CssBaseline />
-        {/* <MuiAppBar
-          position='fixed'
-          sx={{ zIndex: (theme) => theme.zIndex.drawer + 1 }}
+        <Toolbar>
+          {openLeft || openRight ? renderAppBarText() : renderAppBarIcons()}
+        </Toolbar>
+      </MuiAppBar> */}
+      <Header />
+      {detailedPage ? <SubHeader detailedPage /> : <SubHeader />}
+
+      {detailedPage ? (
+        <Box></Box>
+      ) : (
+        <Drawer
+          variant='permanent'
+          anchor='left'
+          open={openLeft}
+          onClose={toggleDrawer('left', false)}
+          PaperProps={{
+            sx: {
+              border: 'none',
+              background: 'white',
+              zIndex: 1,
+              height: 'auto',
+              borderRadius: '18px',
+              marginTop: '190px',
+              marginLeft: '10px',
+              marginRight: '10px',
+              width: '50px',
+            },
+          }}
         >
-          <Toolbar>
-            {openLeft || openRight ? renderAppBarText() : renderAppBarIcons()}
-          </Toolbar>
-        </MuiAppBar> */}
-        <Header />
-        {detailedPage ? <SubHeader detailedPage /> : <SubHeader />}
-        {detailedPage ? (
-          <Box></Box>
-        ) : (
-          <Drawer
-            variant='permanent'
-            open={openLeft}
-            PaperProps={{
-              sx: {
-                border: 'none',
-                background: 'white',
-                zIndex: 1,
-                height: 'auto',
-                borderRadius: '18px',
-                marginTop: '200px',
-                marginLeft: '10px',
-                marginRight: '10px',
-                width: '50px',
-              },
-            }}
-          >
+          <Box>
             <List>
               <ListItem>
                 <ListItemButton
@@ -377,7 +403,6 @@ const ResponsiveDrawer = ({ children, detailedPage }) => {
                 </ListItemButton>
               </ListItem>
             </List>
-
             <Divider></Divider>
             <DrawerHeader
               sx={{
@@ -410,80 +435,57 @@ const ResponsiveDrawer = ({ children, detailedPage }) => {
               )}
             </DrawerHeader>
             <Divider />
-          </Drawer>
-        )}
-
-        {/* Main Content */}
-        <MainContent
-          sx={{
-            marginLeft: openLeft ? `0` : '0',
-            marginRight: openRight ? `${drawerWidth}px` : '0',
-          }}
-        >
-          <DrawerHeader />
-
-          {children}
-        </MainContent>
-
-        <MuiDrawer
-          variant='temporary'
-          anchor='right'
-          open={openRight}
-          onClose={toggleDrawer('right', false)}
-          sx={{
-            width: drawerWidth,
-            flexShrink: 0,
-            '& .MuiDrawer-paper': { width: drawerWidth },
-          }}
-        >
-          {/* <DrawerHeader>
-            <IconButton onClick={toggleDrawer('right', false)}>
-              <ChevronRightIcon />
-            </IconButton>
-          </DrawerHeader> */}
-          <Divider />
-          <RightSideMenu />
-        </MuiDrawer>
-        <Box>
-          <AddProvider openModal={openModal} modal={modal} />;
-        </Box>
-      </Box>
-
-      <Drawer
-        variant='permanent'
-        anchor='right'
-        open={openRight}
-        onClose={() => {
-          setOpenRight(false);
-        }}
+          </Box>
+        </Drawer>
+      )}
+      <MainContent
         sx={{
-          right: '85px !important',
-          height: '100% !important',
-        }}
-        PaperProps={{
-          sx: {
-            border: 'none',
-            background: 'white',
-            zIndex: 1,
-            height: 'auto',
-            borderRadius: '10px',
-            marginTop: '150px',
-            marginLeft: '10px',
-            marginRight: '5px',
-            width: '104px',
-          },
+          marginLeft: openLeft ? `0` : '0',
+          marginRight: openRight ? `0` : '0',
         }}
       >
-        <div />
-        <Paper className='right-icons' elevation={0}>
+        <DrawerHeader />
+        {/* Main Content */}
+        {children}
+      </MainContent>
+      {/* <MuiDrawer
+        variant='temporary'
+        anchor='right'
+        open={openRight}
+        onClose={toggleDrawer('right', false)}
+        sx={{
+          width: drawerWidth,
+          flexShrink: 0,
+          '& .MuiDrawer-paper': { width: drawerWidth },
+        }}
+      >
+        <DrawerHeader>
+          <IconButton onClick={toggleDrawer('right', false)}>
+            <ChevronRightIcon />
+          </IconButton>
+        </DrawerHeader>
+        <Divider />
+        <List>
+          <ListItemButton></ListItemButton>
+          <ListItemButton></ListItemButton>
+        </List>
+      </MuiDrawer> */}
+
+      <Box>
+        <PaperPanel className='right-icons' elevation={0}>
           <List>
             <ListItem className='d-flex align-center'>
               <ListItemIcon
                 className={classes.customIcon}
                 sx={{ minWidth: '10px', background: Colors.gradient }}
               >
-                <IconButton>
-                  <AllInclusiveIcon />
+                <IconButton
+                // onClick={() => {
+                //   setOpenRight(false);
+                //   setChatbotOpen(!chatbotOpen);
+                // }}
+                >
+                  {chatbotOpen ? <CloseIcon /> : <AllInclusiveIcon />}
                 </IconButton>
               </ListItemIcon>
 
@@ -491,46 +493,15 @@ const ResponsiveDrawer = ({ children, detailedPage }) => {
                 className={classes.customIcon}
                 sx={{ minWidth: '10px' }}
               >
-                {openRight === false ? (
-                  <IconButton
-                    onClick={() => {
-                      setOpenRight(true);
-                    }}
-                  >
-                    <ContentPasteIcon />
-                  </IconButton>
-                ) : (
-                  <IconButton
-                    onClick={() => {
-                      setOpenRight(false);
-                    }}
-                  >
-                    {theme.direction === 'rtl' ? (
-                      <ContentPasteIcon />
-                    ) : (
-                      <CloseIcon />
-                    )}
-                  </IconButton>
-                )}
-
-                {/* <IconButton
+                <IconButton
                   onClick={() => {
-                    setOpenRight(true);
+                    setOpenRight(!openRight);
+                    setChatbotOpen(false);
                   }}
                 >
-                  <ContentPasteIcon />
-                </IconButton> */}
-              </ListItemIcon>
-
-              <ListItemIcon
-                className={classes.customIcon}
-                sx={{ minWidth: '10px' }}
-              >
-                <IconButton>
-                  <PsychologyIcon />
+                  {openRight ? <CloseIcon /> : <ContentPasteIcon />}
                 </IconButton>
               </ListItemIcon>
-
               <ListItemIcon
                 className={classes.customIcon}
                 sx={{ minWidth: '10px' }}
@@ -550,8 +521,78 @@ const ResponsiveDrawer = ({ children, detailedPage }) => {
               </ListItemIcon>
             </ListItem>
           </List>
-        </Paper>
-      </Drawer>
+        </PaperPanel>
+      </Box>
+
+      {/* Right Drawer */}
+      {chatbotOpen && (
+        <DrawerContent
+          sx={{
+            background: Colors.lightBackground,
+            marginRight: '85px',
+            maxWidth: '100%',
+          }}
+        >
+          <Box>
+            <Box
+              sx={{
+                display: 'flex',
+                justifyContent: 'flex-end',
+                margin: '5px',
+                padding: '5px',
+              }}
+            >
+              <IconButton
+                onClick={() => {
+                  setChatbotOpen(false);
+                }}
+              >
+                <CloseIcon />
+              </IconButton>
+            </Box>
+            <Box sx={{ maxHeight: 'calc(100vh - 50px)', overflowY: 'auto' }}>
+              <Chatbot />
+            </Box>
+          </Box>
+        </DrawerContent>
+      )}
+
+      {openRight && (
+        <DrawerContent
+          sx={{
+            background: Colors.lightBackground,
+            marginRight: '85px',
+            maxWidth: '100%',
+          }}
+        >
+          <Box>
+            <Box
+              sx={{
+                display: 'flex',
+                justifyContent: 'flex-end',
+                margin: '5px',
+                padding: '5px',
+              }}
+            >
+              <IconButton
+                onClick={() => {
+                  setOpenRight(false);
+                }}
+              >
+                <CloseIcon />
+              </IconButton>
+            </Box>
+            <Box sx={{ maxHeight: 'calc(100vh - 50px)', overflowY: 'auto' }}>
+              <RightSideMenu />
+            </Box>
+          </Box>
+        </DrawerContent>
+      )}
+      <Box>
+        <Box>
+          <AddProvider openModal={openModal} modal={modal} />;
+        </Box>
+      </Box>
     </Box>
   );
 };

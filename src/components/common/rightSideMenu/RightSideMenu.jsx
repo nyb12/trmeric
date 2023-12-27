@@ -14,7 +14,7 @@ const RightSideMenu = () => {
   };
 
   return (
-    <Box style={{ height: '100%', overflowY: 'scroll' }}>
+    <Box style={{ height: '100%' }}>
       <List>
         <ListItem>
           <Box>
@@ -61,7 +61,6 @@ const RightSideMenu = () => {
             </Box>
           </Box>
         </ListItem>
-        {/* Add more Swipeable Drawer content as needed */}
       </List>
     </Box>
   );
