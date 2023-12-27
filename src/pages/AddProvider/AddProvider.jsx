@@ -163,9 +163,9 @@ function AddProvider({ openModal, modal }) {
       const response = await addProvider(payload);
       if (response?.status === 'success') {
       handleClear();
-      //alert("succress");
+      alert("successfully added provider");
       openModal(false);
-      setOpen(true);
+      //setOpen(true);
       //setsuccessMessage(response?.message);
   
      

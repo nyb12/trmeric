@@ -417,3 +417,50 @@ input[type='number']::-webkit-outer-spin-button {
   align-items: center;
   gap: 10px;
 }
+
+.badge {
+  font-size: 14px;
+  font-weight: 400;
+  background: #f2f4f4;
+  width: auto;
+  border-radius: 8px;
+  padding: 4px 8px;
+  font-family: 'Poppins', sans-serif;
+  margin-right: 8px;
+}
+.w-95 {
+  width: 95%;
+}
+
+.dflex {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.display-start-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.g-8 {
+  gap: 8px;
+}
+
+.carousel-container {
+  display: flex;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  white-space: nowrap;
+  flex-direction: row;
+  margin-top: 70px;
+}
+
+.carousel-card {
+  flex: 0 0 auto;
+  width: 345px; /* Adjust the width based on your card width */
+  scroll-snap-align: start;
+  margin-right: 16px; /* Adjust the margin between cards */
+}

@@ -6,11 +6,16 @@ import MuiAccordionSummary from '@mui/material/AccordionSummary';
 import MuiAccordionDetails from '@mui/material/AccordionDetails';
 import Typography from '@mui/material/Typography';
 import TrmericCard from '../Card/TrmericCard';
-import { Box } from '@mui/material';
+import { Box, Button } from '@mui/material';
 import TrText from '../TrText/TrText';
 import { FontSizes } from '../../../constants/Sizes';
 import Fonts from '../../../constants/Fonts';
-import Slider from "react-slick";
+import { getProvider } from '../../../api/ApiCalls';
+import { useState, useEffect } from 'react';
+import Loader from '../loader/loader';
+import Colors from '../../../constants/Colors';
+import ArrowBackIcon from '@mui/icons-material/ArrowBack';
+import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 
 const Accordion = styled((props) => (
   <MuiAccordion disableGutters elevation={0} square {...props} />
@@ -64,16 +69,46 @@ export default function CustomizedAccordions() {
     slidesToShow: 1,
     slidesToScroll: 1
   };
+  const [providerData, setProviderData] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, seterror] = useState('');
 
+  const carouselRef = React.useRef(null);
+
+  const scrollNext = () => {
+    if (carouselRef.current) {
+      carouselRef.current.scrollLeft += carouselRef.current.offsetWidth;
+    }
+  };
+
+  const scrollPrev = () => {
+    if (carouselRef.current) {
+      carouselRef.current.scrollLeft -= carouselRef.current.offsetWidth;
+    }
+  };
+
+  useEffect(() => {
+    getAllProviders();
+  }, []);
+  const getAllProviders = async () => {
+    const response = await getProvider();
+    if (response?.status === 'success') {
+      setProviderData(response?.data?.records);
+      setIsLoading(false);
+    } else {
+      seterror(response?.error);
+      setIsLoading(false);
+    }
+  };
   const handleChange = (panel) => (event, newExpanded) => {
     setExpanded(newExpanded ? panel : false);
   };
 
   return (
-    <div>
+    <div className='mt-150'>
       <div className='mt-150'></div>
       <Accordion
-        className='w-90'
+        className='w-95'
         expanded={expanded === 'panel1'}
         onChange={handleChange('panel1')}
       >
@@ -99,15 +134,61 @@ export default function CustomizedAccordions() {
           </Box>
         </AccordionSummary>
         <AccordionDetails>
-          <Box sx={{ display: 'flex', flexDirection: 'row' }}>
-            <TrmericCard />
-            <TrmericCard />
-            <TrmericCard />
-           
+          <Box
+            sx={{
+              display: 'flex',
+              flexDirection: 'row',
+              // alignItems: 'center',
+              overflowX: 'auto',
+              overflowY: 'auto',
+            }}
+            ref={carouselRef}
+          >
+            <Box>
+              <Box
+                sx={{
+                  display: 'flex',
+                  gap: '10px',
+                  justifyContent: 'flex-end',
+                  alignContent: 'flex-end',
+                  position: 'absolute',
+                  marginLeft: '85%',
+                }}
+              >
+                <Box>
+                  <Button sx={{ color: Colors.black }} onClick={scrollPrev}>
+                    <ArrowBackIcon />
+                  </Button>
+                </Box>
+                <Box>
+                  <Button sx={{ color: Colors.black }} onClick={scrollNext}>
+                    <ArrowForwardIcon />
+                  </Button>
+                </Box>
+              </Box>
+            </Box>
+            <Box>
+              <Box className='carousel-container'>
+                {providerData?.map((item) => (
+                  <Box className='carousel-card' key={item.id}>
+                    <TrmericCard data={item} />
+                  </Box>
+                ))}
+              </Box>
+            </Box>
+
+            {isLoading && <Loader />}
+            {providerData?.length === 0 && (
+              <TrText
+                title={'No Provider Data'}
+                sx={{ fontFamily: Fonts.Poppins }}
+              />
+            )}
           </Box>
         </AccordionDetails>
       </Accordion>
       <Accordion
+        className='w-95'
         expanded={expanded === 'panel2'}
         onChange={handleChange('panel2')}
       >
@@ -142,6 +223,7 @@ export default function CustomizedAccordions() {
         </AccordionDetails>
       </Accordion>
       <Accordion
+        className='w-95'
         expanded={expanded === 'panel3'}
         onChange={handleChange('panel3')}
       >

@@ -16,8 +16,10 @@ import { SpatialTracking } from '@mui/icons-material';
 import BookmarkBorderIcon from '@mui/icons-material/BookmarkBorder';
 import BookmarkIcon from '@mui/icons-material/Bookmark';
 import '../../../../src/index.css'
+import Colors from '../../../constants/Colors.jsx';
+import { Divider } from '@mui/material';
 
-export default function TrmericCard() {
+export default function TrmericCard({ data }) {
   const navigate = useNavigate();
   const [active, setActive] = useState(false);
 
@@ -26,15 +28,11 @@ export default function TrmericCard() {
   };
 
   return (
-    <Card sx={{ minWidth: '24%' }}>
-      {/* <CardMedia
-        sx={{ height: 140 }}
-        image="https://picsum.photos/200/300"
-        title="green iguana"
-      /> */}
+    <Card sx={{ width: 345 }}>
       <CardContent>
         <div className='display-row p-24 g-8'>
           <img className='logo' src={Nexatech} alt='logo' />
+          {/* <img className='logo' src={data?.avatar} alt='logo' /> */}
 
           <TrText
             sx={{
@@ -43,7 +41,7 @@ export default function TrmericCard() {
               fontWeight: '600',
             }}
           >
-            Nexatech Solutions
+            {data?.company_name || 'N/A'}
           </TrText>
         </div>
       </CardContent>
@@ -60,12 +58,19 @@ export default function TrmericCard() {
         </Button>
 
         <div className='dflex'>
-          <span>Shortlist</span>
+          <TrText
+            title={'ShortList'}
+            sx={{
+              fontFamily: Fonts.Inter,
+              fontSize: FontSizes.fontFourteen,
+            }}
+          />
 
           {active ? (
             <>
               {' '}
               <BookmarkIcon
+                sx={{ color: Colors.blue }}
                 className='ml-8 shortlist-color cursor-ptr'
                 onClick={changeIcon}
               ></BookmarkIcon>
@@ -73,6 +78,7 @@ export default function TrmericCard() {
           ) : (
             <>
               <BookmarkBorderIcon
+                sx={{ color: Colors.blue }}
                 className='ml-8 shortlist-color cursor-ptr'
                 onClick={changeIcon}
               ></BookmarkBorderIcon>
@@ -93,26 +99,27 @@ export default function TrmericCard() {
               Average Customer Rating
             </TrText>
           </div>
+          <br />
+          <div className='display-start-row  g-8'>
+            <div>
+              <span>4 </span>
+              <Rating
+                name='half-rating-read'
+                className='mt-5'
+                defaultValue={4.0}
+                precision={0.5}
+                readOnly
+                size='small'
+              />
+            </div>
+            <div>
+              <Divider orientation='vertical' sx={{ height: '20px' }} />
+            </div>
 
-          <div>
-            <div className='display-start-row  g-8'>
-              <div className='rating'>
-                <span>3 </span>{' '}
-                <Rating
-                  name='half-rating-read'
-                  className='mt-5'
-                  defaultValue={3.0}
-                  precision={0.5}
-                  readOnly
-                  size='small'
-                />
-              </div>
-
-              <div>
-                <a href='#' className='shortlist-color'>
-                  45 Reviews
-                </a>
-              </div>
+            <div>
+              <a href='#' className='shortlist-color'>
+                45 Reviews
+              </a>
             </div>
           </div>
         </div>
@@ -139,7 +146,7 @@ export default function TrmericCard() {
                 fontWeight: '400',
               }}
             >
-              Established 2005, HQ in San Fransico
+              {data?.params || 'N/A'}
             </TrText>
           </div>
         </div>

@@ -14,7 +14,7 @@ import Fonts from '../../../constants/Fonts';
 import Colors from '../../../constants/Colors';
 
 function MyNotesCards({ setIsCardOpen, data }) {
-  const { content, created_on } = data;
+  const { id, content, created_on } = data;
   const [isEditorOpen, setIsEditorOpen] = useState(false);
   const [editorContent, setEditorContent] = useState(content);
 

@@ -526,10 +526,12 @@ const ResponsiveDrawer = ({ children, detailedPage }) => {
       </Box>
 
       {/* Right Drawer */}
+      {/* ChatBot */}
       {chatbotOpen && (
         <DrawerContent
           sx={{
             background: Colors.lightBackground,
+            marginRight: '95px',
             maxWidth: '100%',
           }}
         >
@@ -556,6 +558,7 @@ const ResponsiveDrawer = ({ children, detailedPage }) => {
           </Box>
         </DrawerContent>
       )}
+      {/* Notes */}
 
       {openRight && (
         <DrawerContent
