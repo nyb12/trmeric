@@ -30,7 +30,7 @@
 
 /* Widths */
 .w-90 {
-  width: 93%;
+  max-width: 90% !important;
 }
 .w-auto {
   width: auto;
@@ -63,6 +63,7 @@
   align-items: center;
 }
 
+.dis
 .align-center {
   align-items: center;
 }
@@ -194,4 +195,8 @@
 
 .cursor-ptr{
   cursor: pointer;
+}
+
+.of-x{
+  overflow-x: scroll !important;
 }

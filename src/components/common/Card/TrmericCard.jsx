@@ -15,6 +15,7 @@ import Stack from '@mui/material/Stack';
 import { SpatialTracking } from '@mui/icons-material';
 import BookmarkBorderIcon from '@mui/icons-material/BookmarkBorder';
 import BookmarkIcon from '@mui/icons-material/Bookmark';
+import '../../../../src/index.css'
 import Colors from '../../../constants/Colors.jsx';
 import { Divider } from '@mui/material';
 

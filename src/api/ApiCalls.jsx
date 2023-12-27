@@ -100,7 +100,7 @@ export const getProvider = async (params = {}, header = {}) => {
   }
 };
 
-export const createProvider = async (params = {}, header = {}, pid = 1) => {
+export const addProvider = async (params = {}, header = {}, pid = 1) => {
   let headers = {
     ...header,
     Authorization: 'Bearer ' + localStorage.getItem('token'),
