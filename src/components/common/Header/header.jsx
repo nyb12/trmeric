@@ -12,6 +12,9 @@ import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import { TrmericImage } from '../../../constants/ImageSvgs';
 import { useNavigate } from 'react-router-dom';
+import Menu from '@mui/material/Menu';
+import MenuItem from '@mui/material/MenuItem';
+
 const theme = createTheme({
   palette: {
     primary: {
@@ -32,6 +35,21 @@ export default function Header() {
   const steps = ['Discover', 'Engage', 'Build', 'Transact'];
   const [activeStep, setActiveStep] = React.useState(0);
   const [skipped, setSkipped] = React.useState(new Set());
+
+  const [anchorEl, setAnchorEl] = React.useState(null);
+  const open = Boolean(anchorEl);
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+  const handleLogout = () => {
+    localStorage.clear();
+    navigate('/');
+    setAnchorEl(null);
+  };
+
   const navigate = useNavigate();
   const isStepOptional = (step) => {
     return step === 1;
@@ -118,12 +136,26 @@ export default function Header() {
                 <Settings />
                 &nbsp;
                 <Avatar
-                  onClick={() => {
-                    navigate('/tutorial');
-                  }}
                   alt='Travis Howard'
                   src='https://robohash.org/impeditautest.png'
+                  id='basic-button'
+                  aria-controls={open ? 'basic-menu' : undefined}
+                  aria-haspopup='true'
+                  aria-expanded={open ? 'true' : undefined}
+                  onClick={handleClick}
                 />
+                <Menu
+                  id='basic-menu'
+                  anchorEl={anchorEl}
+                  open={open}
+                  onClose={handleClose}
+                  MenuListProps={{
+                    'aria-labelledby': 'basic-button',
+                  }}
+                  sx={{ zIndex: 9999 }}
+                >
+                  <MenuItem onClick={handleLogout}>Logout</MenuItem>
+                </Menu>
               </Box>
             </Box>
           </Toolbar>
