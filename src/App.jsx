@@ -1,4 +1,10 @@
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import {
+  BrowserRouter,
+  Route,
+  Routes,
+  useSearchParams,
+  useLocation,
+} from 'react-router-dom';
 
 // Common components
 import { Suspense, useEffect } from 'react';
@@ -19,7 +25,7 @@ export const initGA = () => {
 export const logPageView = () => {
   ReactGA.set({ page: window.location.pathname });
   ReactGA.send(window.location.pathname);
-  console.log('From Google', JSON.stringify(window.location.pathname));
+  // console.log('From Google', JSON.stringify(window.location.pathname));
 };
 
 function App() {
