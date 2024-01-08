@@ -7,12 +7,39 @@ import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import Tutorial from '../dashboard/onBoardingTutorial/Tutorial';
 import React, { useEffect } from 'react';
 import { login } from '../../api/ApiCalls';
+import ReactGA from 'react-ga4';
+
+export const initGA = () => {
+  ReactGA.initialize('G-46H3DEL1ZB');
+};
 export default function Login() {
   const [open, setOpen] = React.useState(false);
+
+  const location = useLocation();
+
+  useEffect(() => {
+    const { search } = location;
+    const params = new URLSearchParams(search);
+
+    ReactGA.event({
+      category: 'UTM',
+      action: 'Visit',
+      label: `Source: ${params.get('utm_source')}, Medium: ${params.get(
+        'utm_medium'
+      )}, Campaign: ${params.get('utm_campaign')}`,
+    });
+  }, [location]);
+
+  useEffect(() => {
+    initGA();
+    logPageView();
+  }, []);
+
+  ReactGA.event(window.location.pathname);
 
   const navigate = useNavigate();
 
