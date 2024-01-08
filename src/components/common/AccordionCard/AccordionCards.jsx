@@ -16,7 +16,7 @@ import Loader from '../loader/loader';
 import Colors from '../../../constants/Colors';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 const Accordion = styled((props) => (
   <MuiAccordion disableGutters elevation={0} square {...props} />
@@ -61,11 +61,17 @@ const AccordionDetails = styled(MuiAccordionDetails)(({ theme }) => ({
 }));
 
 export default function CustomizedAccordions() {
+  const location = useLocation();
+  const utmParams = new URLSearchParams(location.search).get('utm_source');
+
+  console.log(utmParams, 'utmParams');
+
   const [expanded, setExpanded] = React.useState('panel1');
 
   const [providerData, setProviderData] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, seterror] = useState('');
+  const lastThreeItems = providerData?.slice(-3);
 
   const navigate = useNavigate();
   const carouselRef = React.useRef(null);
@@ -101,8 +107,7 @@ export default function CustomizedAccordions() {
   };
 
   return (
-    <div className='mt-150'>
-      <div className='mt-150'></div>
+    <div>
       <Accordion
         className='w-95'
         expanded={expanded === 'panel1'}
@@ -166,7 +171,7 @@ export default function CustomizedAccordions() {
             </Box>
             <Box>
               <Box className='carousel-container'>
-                {providerData?.map((item) => (
+                {lastThreeItems?.map((item) => (
                   <Box className='carousel-card' key={item.id}>
                     <TrmericCard data={item} />
                   </Box>
