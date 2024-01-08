@@ -205,9 +205,18 @@ export default function ViewDetails() {
               <Box className='display-data'>
                 <Box item xs={6}>
                   <video className='details-box-video' controls>
-                    <source src={demo} type='video/mp4' />
-                    <source src={demo} type='video/webm' />
-                    <source src={demo} type='video/ogg' />
+                    <source
+                      src={'https://trmeric-dev.trmeric.com/Demo.mp4'}
+                      type='video/mp4'
+                    />
+                    <source
+                      src={'https://trmeric-dev.trmeric.com/Demo.mp4'}
+                      type='video/webm'
+                    />
+                    <source
+                      src={'https://trmeric-dev.trmeric.com/Demo.mp4'}
+                      type='video/ogg'
+                    />
                     Your browser does not support the video tag.
                   </video>
                 </Box>
